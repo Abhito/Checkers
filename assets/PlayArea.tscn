@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 9.853, 0.25, 10 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 20, 0.5, 20 )
+
+[node name="PlayArea" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TableBody" type="StaticBody" parent="."]
+
+[node name="TableCollision" type="CollisionShape" parent="TableBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="TableBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125213, -0.307597, 0.293905 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Spatial" type="Spatial" parent="."]
