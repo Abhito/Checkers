@@ -8,8 +8,8 @@
 
 [node name="ChessBoard" parent="." instance=ExtResource( 2 )]
 
-[node name="BlackGrid" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 2, -7.25 )
+[node name="BlackGrid" parent="ChessBoard" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.225, 2, -7.225 )
 
-[node name="WhiteGrid" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[node name="WhiteGrid" parent="ChessBoard" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.152, 2, -7.225 )
