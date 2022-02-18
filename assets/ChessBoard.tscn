@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://imports/Steel_001.material" type="Material" id=1]
+[ext_resource path="res://materials/Steel_001.material" type="Material" id=1]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "ChessBoard_ChessTable_Cube001"
@@ -17,9 +17,33 @@ surfaces/0 = {
 "vertex_count": 2337
 }
 
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 4.43529, -9.24199, -0.48824, 4.36123, -9.51542, 0.287119, 4.36123, 9.51542, 0.287119, 9.3698, -8.97774, 1.3986, 9.31714, -9.11677, -1.29832, 4.5684, 8.5672, -1.18677, 4.7082, 8.92065, 1.39027, 9.3698, 8.97774, 1.3986, 9.31714, 9.11677, -1.29832, 4.7082, -8.92065, 1.39027, 4.5684, -8.5672, -1.18677, 9.11887, 9.31609, -1.29832, 9.11887, -9.31609, -1.29832, 9.36379, -8.95555, -0.283692, 4.43529, 9.24199, -0.48824, 9.36379, 8.95555, -0.283692 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -2.97357, -9.51542, 0.287429, 4.36123, -9.51542, 0.287429, -2.97357, 9.51542, 0.287429, -2.97357, -9.31609, -1.29816, 4.36123, 9.31609, -1.29816, 4.36123, -9.31609, -1.29816, -2.97357, 9.31609, -1.29816, 4.36123, 9.51542, 0.287429 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -3.06764, 9.24199, -0.48824, -9.36104, -9.06631, -0.288306, -9.33059, -8.97774, 1.3986, -2.97365, -9.51542, 0.28739, -9.33059, 8.97774, 1.3986, -9.31627, 9.11677, -1.29832, -3.56853, -8.1276, -1.29832, -4.7082, 8.67716, 1.35477, -9.11776, -9.31609, -1.29832, -4.7082, -8.67716, 1.35477, -3.23658, 8.5672, -1.18652, -2.97365, 9.51542, 0.28739, -3.23658, -8.5672, -1.18652, -9.11776, 9.31609, -1.29832, -9.31627, -9.11677, -1.29832, -3.06764, -9.24199, -0.48824, -9.36104, 9.06631, -0.288306 )
+
 [node name="ChessBoard" type="Spatial"]
 
-[node name="ChessTable" type="MeshInstance" parent="."]
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="ChessTable" type="MeshInstance" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 1, 0 )
 mesh = SubResource( 1 )
+skeleton = NodePath("../..")
 material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 1, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 1, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 1, 0 )
+shape = SubResource( 4 )
