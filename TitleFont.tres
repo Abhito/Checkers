@@ -1,0 +1,12 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/FFFFORWA.TTF"
+
+[resource]
+size = 81
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 15
+extra_spacing_char = 7
+font_data = SubResource( 1 )
