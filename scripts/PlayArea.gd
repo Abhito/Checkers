@@ -5,11 +5,25 @@ var rayStart = Vector3()
 var rayStop = Vector3()
 var xCord
 var yCord
+var held_object = null
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for node in get_tree().get_nodes_in_group("PlayerPieces"):
+		node.connect("clicked", self, "_on_pickable_clicked")
+		
+		
+func _on_pickable_clicked(object):
+	if !held_object:
+		held_object = object
+		held_object.pickup()
+		
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if held_object and !event.pressed:
+			held_object.drop(Vector3.ZERO)
+			held_object = null
 
 func _physics_process(_delta):
 	
