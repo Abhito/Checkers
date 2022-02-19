@@ -6,6 +6,8 @@ var rayStop = Vector3()
 var xCord
 var yCord
 var held_object = null
+signal clicked
+
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
 # Called when the node enters the scene tree for the first time.

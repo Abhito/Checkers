@@ -38,6 +38,8 @@ surfaces/0 = {
 
 [node name="RigidBody" type="RigidBody" parent="." groups=["PlayerPieces"]]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
+contacts_reported = 4
+contact_monitor = true
 script = ExtResource( 3 )
 
 [node name="PhysicsCollision" type="CollisionShape" parent="RigidBody"]
@@ -63,6 +65,8 @@ mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 material/0 = null
 
+[connection signal="body_shape_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_shape_entered"]
 [connection signal="mouse_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_mouse_entered"]
 [connection signal="mouse_exited" from="RigidBody" to="RigidBody" method="_on_RigidBody_mouse_exited"]
+[connection signal="area_entered" from="RigidBody/checker/Area" to="RigidBody" method="_on_Area_area_entered"]
 [connection signal="input_event" from="RigidBody/checker/Area" to="." method="_on_Area_input_event"]

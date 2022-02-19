@@ -47,3 +47,11 @@ func _on_RigidBody_mouse_entered():
 
 func _on_RigidBody_mouse_exited():
 	get_node("checker/Area/COutline").visible = false
+
+
+func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	print(body)
+	var colCords = body.get_global_transform().origin
+	global_transform.origin = colCords + Vector3(0, .45, 0)
+	print(colCords)
+	

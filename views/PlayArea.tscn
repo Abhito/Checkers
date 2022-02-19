@@ -20,7 +20,7 @@ transform = Transform( -1, 6.69697e-08, -5.61943e-08, 0, 0.642788, 0.766045, 8.7
 
 [node name="Grid" type="Spatial" parent="ChessBoard"]
 
-[node name="G11" parent="ChessBoard/Grid" groups=["Grid"] instance=ExtResource( 5 )]
+[node name="G11" parent="ChessBoard/Grid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.225, 2, 7.3 )
 
 [node name="G12" parent="ChessBoard/Grid" instance=ExtResource( 3 )]
@@ -212,8 +212,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 2, -5.15 )
 [node name="G88" parent="ChessBoard/Grid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30012, 2, -7.225 )
 
-[node name="P1" parent="ChessBoard" groups=["PlayerPieces"] instance=ExtResource( 1 )]
+[node name="P1" parent="ChessBoard" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 4, -7.25 )
 
-[node name="P2" parent="ChessBoard" groups=["PlayerPieces"] instance=ExtResource( 2 )]
+[node name="P2" parent="ChessBoard" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 4, 7.25 )
