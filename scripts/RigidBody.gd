@@ -23,11 +23,11 @@ func _physics_process(delta):
 		var crossData = phyState.intersect_ray(rayStart, rayStop)
 		if not crossData.empty():
 			var loc = crossData.position
-			print(loc)
+			#print(loc)
 			xCord = loc[0]
 			yCord = loc[2]
 			#Move the piece to the mouse location
-			global_transform.origin = Vector3(xCord, 2.4, yCord)
+			global_transform.origin = Vector3(xCord, 3.5, yCord)
 
 func pickup():
 	if held:
@@ -40,3 +40,10 @@ func drop(impulse = Vector3.ZERO):
 		mode = RigidBody.MODE_RIGID
 		apply_central_impulse(impulse)
 		held = false
+
+func _on_RigidBody_mouse_entered():
+	get_node("checker/Area/COutline").visible = true
+
+
+func _on_RigidBody_mouse_exited():
+	get_node("checker/Area/COutline").visible = false

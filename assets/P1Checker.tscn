@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://materials/Orange_001.material" type="Material" id=1]
-[ext_resource path="res://scripts/P1Checker.gd" type="Script" id=2]
 [ext_resource path="res://scripts/RigidBody.gd" type="Script" id=3]
 
 [sub_resource type="ConvexPolygonShape" id=2]
@@ -36,7 +35,6 @@ surfaces/0 = {
 }
 
 [node name="P1Checker" type="Spatial"]
-script = ExtResource( 2 )
 
 [node name="RigidBody" type="RigidBody" parent="." groups=["PlayerPieces"]]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
@@ -54,8 +52,9 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, 1, 0, -1, -1.19209e-07, 0, 0, 0 )
 
 [node name="MouseDetection" type="CollisionShape" parent="RigidBody/checker/Area"]
-transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
+transform = Transform( 1.05, 0, 0, 0, -4.5897e-08, -1.05, 0, 1.05, -4.5897e-08, 0, 0, 0 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="COutline" type="MeshInstance" parent="RigidBody/checker/Area"]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
@@ -64,7 +63,6 @@ mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[connection signal="area_entered" from="RigidBody/checker/Area" to="." method="_on_Area_area_entered"]
+[connection signal="mouse_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_mouse_entered"]
+[connection signal="mouse_exited" from="RigidBody" to="RigidBody" method="_on_RigidBody_mouse_exited"]
 [connection signal="input_event" from="RigidBody/checker/Area" to="." method="_on_Area_input_event"]
-[connection signal="mouse_entered" from="RigidBody/checker/Area" to="." method="_on_Area_mouse_entered"]
-[connection signal="mouse_exited" from="RigidBody/checker/Area" to="." method="_on_Area_mouse_exited"]

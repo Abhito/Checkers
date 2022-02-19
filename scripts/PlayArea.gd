@@ -36,7 +36,7 @@ func _physics_process(_delta):
 	
 	if not crossData.empty():
 		var loc = crossData.position
-		print(loc)
+		#print(loc)
 		xCord = loc[0]
 		yCord = loc[2]
 	
