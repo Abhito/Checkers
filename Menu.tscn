@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://MenuFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Menu.gd" type="Script" id=2]
+[ext_resource path="res://TitleFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Theme" id=5]
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/activity-ga38aa5a6c_1920.jpg-b1c4ce800a29797b7ebfe0482353b708.stex"
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 5 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -231.0
+margin_top = -421.0
+margin_right = 1689.0
+margin_bottom = 855.0
+texture = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -300.0
+margin_top = 8.0
+margin_right = 400.0
+margin_bottom = 148.0
+custom_colors/default_color = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+text = " Checkers"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -424.0
+margin_right = 366.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Solo" type="Button" parent="VBoxContainer"]
+light_mask = 0
+margin_right = 366.0
+margin_bottom = 103.0
+custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 1 )
+text = "Solo"
+flat = true
+align = 0
+
+[node name="Online" type="Button" parent="VBoxContainer"]
+margin_top = 107.0
+margin_right = 366.0
+margin_bottom = 210.0
+custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 2 )
+text = "Online"
+flat = true
+align = 0
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+margin_top = 214.0
+margin_right = 366.0
+margin_bottom = 317.0
+custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 3 )
+text = "Options"
+flat = true
+align = 0
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+margin_top = 321.0
+margin_right = 366.0
+margin_bottom = 424.0
+custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 4 )
+text = "Exit"
+flat = true
+align = 0
+
+[connection signal="pressed" from="VBoxContainer/Solo" to="." method="_on_Solo_pressed"]
+[connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
