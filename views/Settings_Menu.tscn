@@ -184,3 +184,19 @@ custom_constants/separation = 10
 margin_right = 96.0
 margin_bottom = 14.0
 text = "Account settings here."
+
+[node name="Return" type="Button" parent="."]
+anchor_left = 0.941
+anchor_top = 0.968
+anchor_right = 0.941
+anchor_bottom = 0.968
+margin_left = -52.584
+margin_top = -11.8
+margin_right = 53.416
+margin_bottom = 12.2
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]

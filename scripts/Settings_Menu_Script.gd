@@ -21,3 +21,8 @@ func add_game_options_main_game_mode_options_dropdown():
 func add_game_options_video_display_mode_options_dropdown():
 	add_game_options_video_display_mode_options_dropdown.add_item("Windowed")
 	add_game_options_video_display_mode_options_dropdown.add_item("Fullscreen")
+
+#Quick return to menu button
+func _on_Return_pressed():
+	get_tree().change_scene("res://views/Menu.tscn")
+
