@@ -1,20 +1,22 @@
 extends RigidBody
 
 signal clicked
-onready var getCam = get_tree().get_root().get_node("Game/Camera")
+onready var getCam = get_tree().get_root().get_node("Game/Rotation/Camera")
 var rayStart = Vector3()
 var rayStop = Vector3()
 var xCord
 var yCord
 var held = false
+var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
 
-func _input_event(camera, event, position, normal, shape_idx):
+func _input_event(_camera, event, _position, _normal, _shape_idx):
 	#Let PlayArea know when piece is clicked
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("clicked", self)
-			
+	
+	
 func _physics_process(delta):
 	if held:
 		var phyState = get_world().direct_space_state
@@ -41,7 +43,6 @@ func drop(destination):
 		apply_central_impulse(impulse)
 		global_transform.origin = Vector3(destination) + Vector3(0, 1, 0)
 		held = false
-		
 
 func _on_RigidBody_mouse_entered():
 	get_node("checker/Area/COutline").visible = true
