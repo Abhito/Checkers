@@ -15,10 +15,10 @@ func _ready():
 
 #transfers to different scene based on which button is pressed (for now, they all go to the same test scene until we have the other components)
 func _on_Solo_pressed():
-	get_tree().change_scene("res://TestScene.tscn")
+	get_tree().change_scene("res://views/PlayArea.tscn")
 
 func _on_Online_pressed():
-	get_tree().change_scene("res://TestScene.tscn")
+	get_tree().change_scene("res://views/PlayArea.tscn")
 
 func _on_Options_pressed():
 	get_tree().change_scene("res://TestScene.tscn")
