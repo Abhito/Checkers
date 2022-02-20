@@ -28,11 +28,12 @@ func _unhandled_input(event):
 			held_object.drop(find_closest(held_object))
 			held_object = null
 
+#TaboutHandeling
 func _notification(isfocus):
 	if isfocus == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		print("Focus Lost")
 		if held_object:
-			held_object.drop(Vector3.ZERO)
+			held_object.drop(find_closest(held_object))
 #
 func find_closest(piece):
 	var position = piece.get_global_transform().origin

@@ -7,6 +7,7 @@ var rayStop = Vector3()
 var xCord
 var yCord
 var held = false
+var impulse = Vector3(0, -.5, 0)
 
 func _input_event(camera, event, position, normal, shape_idx):
 	#Let PlayArea know when piece is clicked
@@ -23,11 +24,10 @@ func _physics_process(delta):
 		var crossData = phyState.intersect_ray(rayStart, rayStop)
 		if not crossData.empty():
 			var loc = crossData.position
-			#print(loc)
 			xCord = loc[0]
 			yCord = loc[2]
 			#Move the piece to the mouse location
-			global_transform.origin = Vector3(xCord, 3.5, yCord)
+			global_transform.origin = Vector3(xCord, 3, yCord)
 
 func pickup():
 	if held:
@@ -37,7 +37,6 @@ func pickup():
 	
 func drop(destination):
 	if held:
-		var impulse = Vector3.ZERO
 		mode = RigidBody.MODE_RIGID
 		apply_central_impulse(impulse)
 		global_transform.origin = Vector3(destination) + Vector3(0, 1, 0)
@@ -51,8 +50,8 @@ func _on_RigidBody_mouse_entered():
 func _on_RigidBody_mouse_exited():
 	get_node("checker/Area/COutline").visible = false
 
-
-func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	var colCords = body.get_global_transform().origin
-	global_transform.origin = colCords + Vector3(0, .45, 0)
+#
+#func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+#	var colCords = body.get_global_transform().origin
+#	global_transform.origin = colCords + Vector3(0, .45, 0)
 	
