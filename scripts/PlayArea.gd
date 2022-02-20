@@ -6,15 +6,16 @@ var rayStop = Vector3()
 var xCord
 var yCord
 var held_object = null
-signal clicked
-
+var gridLoc = PoolVector3Array()
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for node in get_tree().get_nodes_in_group("PlayerPieces"):
 		node.connect("clicked", self, "_on_pickable_clicked")
-		
+	for grid in get_tree().get_nodes_in_group("ValidGrid"):
+		gridLoc.append(grid.get_global_transform().origin)
+	print(gridLoc)
 		
 func _on_pickable_clicked(object):
 	if !held_object:
@@ -24,21 +25,38 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
-			held_object.drop(Vector3.ZERO)
+			held_object.drop(find_closest(held_object))
 			held_object = null
 
-func _physics_process(_delta):
+func _notification(isfocus):
+	if isfocus == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+		print("Focus Lost")
+		if held_object:
+			held_object.drop(Vector3.ZERO)
+#
+func find_closest(piece):
+	var position = piece.get_global_transform().origin
+	var smallest = 100
+	var returnGrid
+	for grid in gridLoc:
+		var compare = grid.distance_to(position)
+		if compare < smallest:
+			smallest = compare
+			returnGrid = grid
+	return returnGrid
 	
-	var phyState = get_world().direct_space_state
-	
-	var mouseLocation = get_viewport().get_mouse_position()
-	rayStart = getCam.project_ray_origin(mouseLocation)
-	rayStop = rayStart + getCam.project_ray_normal(mouseLocation) * 2000
-	var crossData = phyState.intersect_ray(rayStart, rayStop)
-	
-	if not crossData.empty():
-		var loc = crossData.position
-		#print(loc)
-		xCord = loc[0]
-		yCord = loc[2]
+#func _physics_process(_delta):
+#
+#	var phyState = get_world().direct_space_state
+#
+#	var mouseLocation = get_viewport().get_mouse_position()
+#	rayStart = getCam.project_ray_origin(mouseLocation)
+#	rayStop = rayStart + getCam.project_ray_normal(mouseLocation) * 2000
+#	var crossData = phyState.intersect_ray(rayStart, rayStop)
+#
+#	if not crossData.empty():
+#		var loc = crossData.position
+#		#print(loc)
+#		xCord = loc[0]
+#		yCord = loc[2]
 	

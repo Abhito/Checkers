@@ -35,11 +35,14 @@ func pickup():
 	mode = RigidBody.MODE_STATIC
 	held = true
 	
-func drop(impulse = Vector3.ZERO):
+func drop(destination):
 	if held:
+		var impulse = Vector3.ZERO
 		mode = RigidBody.MODE_RIGID
 		apply_central_impulse(impulse)
+		global_transform.origin = Vector3(destination) + Vector3(0, 1, 0)
 		held = false
+		
 
 func _on_RigidBody_mouse_entered():
 	get_node("checker/Area/COutline").visible = true
@@ -50,8 +53,6 @@ func _on_RigidBody_mouse_exited():
 
 
 func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print(body)
 	var colCords = body.get_global_transform().origin
 	global_transform.origin = colCords + Vector3(0, .45, 0)
-	print(colCords)
 	
