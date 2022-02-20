@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://materials/Orange_001.material" type="Material" id=1]
-[ext_resource path="res://scripts/RigidBody.gd" type="Script" id=3]
+[ext_resource path="res://scripts/P1RigidBody.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( -0.66924, -2.10404e-05, -0.0787489, -0.646443, -0.173242, -0.0787489, -0.66924, -2.10404e-05, 0.314951, -0.646443, 0.1732, -0.0787489, -0.646443, -0.173242, 0.314951, -0.579754, -0.334671, -0.0787489, -0.646443, 0.1732, 0.314951, -0.579754, 0.334629, -0.0787489, -0.579754, -0.334671, 0.314951, -0.473365, -0.473301, -0.0787489, -0.579754, 0.334629, 0.314951, -0.473365, 0.473258, -0.0787489, -0.473365, -0.473301, 0.314951, -0.334746, -0.579697, -0.0787489, -0.473365, 0.473258, 0.314951, -0.334746, 0.579655, -0.0787489, -0.334746, -0.579697, 0.314951, -0.17333, -0.646522, -0.0787489, -0.334746, 0.579655, 0.314951, -0.17333, 0.646349, -0.0787489, -0.17333, -0.646522, 0.314951, -0.000121355, -0.669321, -0.0787489, -0.17333, 0.646349, 0.314951, -0.000121355, 0.669279, -0.0787489, -0.000121355, -0.669321, 0.314951, 0.173218, -0.646522, -0.0787489, -0.000121355, 0.669279, 0.314951, 0.173218, 0.646349, -0.0787489, 0.173218, -0.646522, 0.314951, 0.334635, -0.579697, -0.0787489, 0.173218, 0.646349, 0.314951, 0.334635, 0.579655, -0.0787489, 0.334635, -0.579697, 0.314951, 0.473254, -0.473301, -0.0787489, 0.334635, 0.579655, 0.314951, 0.473254, 0.473258, -0.0787489, 0.473254, -0.473301, 0.314951, 0.579642, -0.334671, -0.0787489, 0.473254, 0.473258, 0.314951, 0.579642, 0.334629, -0.0787489, 0.579642, -0.334671, 0.314951, 0.646331, -0.173242, -0.0787489, 0.579642, 0.334629, 0.314951, 0.646331, 0.1732, -0.0787489, 0.646331, -0.173242, 0.314951, 0.66926, -2.10404e-05, -0.0787489, 0.646331, 0.1732, 0.314951, 0.66926, -2.10404e-05, 0.314951 )
@@ -36,36 +36,35 @@ surfaces/0 = {
 
 [node name="P1Checker" type="Spatial"]
 
-[node name="RigidBody" type="RigidBody" parent="." groups=["PlayerPieces"]]
+[node name="P1RigidBody" type="RigidBody" parent="." groups=["PlayerPieces"]]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
 contact_monitor = true
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
-[node name="PhysicsCollision" type="CollisionShape" parent="RigidBody"]
+[node name="PhysicsCollision" type="CollisionShape" parent="P1RigidBody"]
 shape = SubResource( 2 )
 
-[node name="checker" type="MeshInstance" parent="RigidBody"]
+[node name="checker" type="MeshInstance" parent="P1RigidBody"]
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="Area" type="Area" parent="RigidBody/checker"]
+[node name="Area" type="Area" parent="P1RigidBody/checker"]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, 1, 0, -1, -1.19209e-07, 0, 0, 0 )
 
-[node name="MouseDetection" type="CollisionShape" parent="RigidBody/checker/Area"]
+[node name="MouseDetection" type="CollisionShape" parent="P1RigidBody/checker/Area"]
 transform = Transform( 1.05, 0, 0, 0, -4.5897e-08, -1.05, 0, 1.05, -4.5897e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 disabled = true
 
-[node name="COutline" type="MeshInstance" parent="RigidBody/checker/Area"]
+[node name="COutline" type="MeshInstance" parent="P1RigidBody/checker/Area"]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
 visible = false
 mesh = SubResource( 3 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[connection signal="body_shape_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_shape_entered"]
-[connection signal="mouse_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_mouse_entered"]
-[connection signal="mouse_exited" from="RigidBody" to="RigidBody" method="_on_RigidBody_mouse_exited"]
-[connection signal="area_entered" from="RigidBody/checker/Area" to="RigidBody" method="_on_Area_area_entered"]
-[connection signal="input_event" from="RigidBody/checker/Area" to="." method="_on_Area_input_event"]
+[connection signal="body_shape_entered" from="P1RigidBody" to="P1RigidBody" method="_on_RigidBody_body_shape_entered"]
+[connection signal="mouse_entered" from="P1RigidBody" to="P1RigidBody" method="_on_RigidBody_mouse_entered"]
+[connection signal="mouse_exited" from="P1RigidBody" to="P1RigidBody" method="_on_RigidBody_mouse_exited"]
+[connection signal="input_event" from="P1RigidBody/checker/Area" to="." method="_on_Area_input_event"]

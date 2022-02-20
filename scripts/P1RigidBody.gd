@@ -46,17 +46,19 @@ func drop(destination):
 		held = false
 
 func turnToggle():
-	if turnState:
+	if turnState == true:
 		turnState = false
 	else:
 		turnState = true
 
 func _on_RigidBody_mouse_entered():
-	get_node("checker/Area/COutline").visible = true
+	if turnState == true:
+		get_node("checker/Area/COutline").visible = true
 
 
 func _on_RigidBody_mouse_exited():
-	get_node("checker/Area/COutline").visible = false
+	if turnState == true:
+		get_node("checker/Area/COutline").visible = false
 
 #
 #func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

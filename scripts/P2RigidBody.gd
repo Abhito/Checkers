@@ -9,14 +9,9 @@ var yCord
 var held = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
-var turnState = true
+var turnState = false
 
-func _input_event(_camera, event, _position, _normal, _shape_idx):
-	#Let PlayArea know when piece is clicked
-	if event is InputEventMouseButton and turnState:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("clicked", self)
-	
+
 	
 func _physics_process(_delta):
 	if held:
@@ -46,20 +41,22 @@ func drop(destination):
 		held = false
 
 func turnToggle():
-	if turnState:
+	if turnState == true:
 		turnState = false
 	else:
 		turnState = true
 
-func _on_RigidBody_mouse_entered():
-	get_node("checker/Area/COutline").visible = true
+func _on_P2RigidBody_mouse_entered():
+	if turnState == true:
+		get_node("checker/Area/COutline").visible = true
 
 
-func _on_RigidBody_mouse_exited():
-	get_node("checker/Area/COutline").visible = false
+func _on_P2RigidBody_mouse_exited():
+	if turnState == true:
+		get_node("checker/Area/COutline").visible = false
 
-#
-#func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-#	var colCords = body.get_global_transform().origin
-#	global_transform.origin = colCords + Vector3(0, .45, 0)
-	
+
+func _input_event(camera, event, position, normal, shape_idx):
+	if event is InputEventMouseButton and turnState:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("clicked", self)
