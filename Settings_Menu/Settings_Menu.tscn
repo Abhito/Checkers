@@ -1,0 +1,186 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Settings_Menu/Settings_Menu_Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Settings_Menu/Settings_Menu_Script.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+add_game_options_main_game_mode_options_dropdown_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/Game_Mode_Options_Dropdown")
+add_game_options_video_display_mode_options_dropdown_path = NodePath("TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.2
+margin_top = 20.0
+margin_bottom = -5.0
+custom_colors/default_color = Color( 0.478431, 0.188235, 0.482353, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Game Settings[/center]"
+text = "Game Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Main"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 337.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Main/CenterContainer"]
+margin_left = 441.0
+margin_top = 83.0
+margin_right = 575.0
+margin_bottom = 243.0
+custom_constants/separation = 10
+
+[node name="Local_Player_1_Name" type="Label" parent="TabContainer/Main/CenterContainer/VBoxContainer"]
+margin_right = 134.0
+margin_bottom = 14.0
+text = "Local Player 1 Name:"
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Main/CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 134.0
+margin_bottom = 48.0
+
+[node name="Local_Player_2_Name" type="Label" parent="TabContainer/Main/CenterContainer/VBoxContainer"]
+margin_top = 58.0
+margin_right = 134.0
+margin_bottom = 72.0
+text = "Local Player 2 Name:"
+
+[node name="LineEdit2" type="LineEdit" parent="TabContainer/Main/CenterContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 134.0
+margin_bottom = 106.0
+
+[node name="Game_Mode" type="Label" parent="TabContainer/Main/CenterContainer/VBoxContainer"]
+margin_top = 116.0
+margin_right = 134.0
+margin_bottom = 130.0
+text = "Game Mode:"
+
+[node name="Game_Mode_Options_Dropdown" type="OptionButton" parent="TabContainer/Main/CenterContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 134.0
+margin_bottom = 160.0
+
+[node name="Video" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="TabContainer/Video"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 337.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/CenterContainer2"]
+margin_left = 462.0
+margin_top = 141.0
+margin_right = 553.0
+margin_bottom = 185.0
+custom_constants/separation = 10
+
+[node name="Display_Mode" type="Label" parent="TabContainer/Video/CenterContainer2/VBoxContainer"]
+margin_right = 91.0
+margin_bottom = 14.0
+text = "Display Mode:"
+
+[node name="Display_Mode_Options_Dropdown" type="OptionButton" parent="TabContainer/Video/CenterContainer2/VBoxContainer"]
+margin_top = 24.0
+margin_right = 91.0
+margin_bottom = 44.0
+__meta__ = {
+"_editor_description_": "Full Screen"
+}
+
+[node name="Audio" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Audio"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 337.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/CenterContainer3"]
+margin_left = 443.0
+margin_top = 156.0
+margin_right = 572.0
+margin_bottom = 170.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/Audio/CenterContainer3/VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 14.0
+text = "Audio settings here."
+
+[node name="Account" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="CenterContainer4" type="CenterContainer" parent="TabContainer/Account"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 337.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Account/CenterContainer4"]
+margin_left = 436.0
+margin_top = 156.0
+margin_right = 580.0
+margin_bottom = 170.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/Account/CenterContainer4/VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 14.0
+text = "Account settings here."
