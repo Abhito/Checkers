@@ -1,8 +1,6 @@
 extends Spatial
 
 onready var getCam = $Rotation/Camera
-var xCord
-var yCord
 var held_object = null
 var gridLoc = PoolVector3Array()
 var turnProcessing = false;
@@ -11,6 +9,11 @@ var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
+
+func validMove(held_object):
+	print("im checking")
+	print("this piece's x value is ", held_object.get_X())
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +32,7 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
+			validMove(held_object)
 			held_object.drop(find_closest(held_object))
 			held_object = null
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:

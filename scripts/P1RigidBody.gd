@@ -51,6 +51,9 @@ func turnToggle():
 	else:
 		turnState = true
 
+func get_X():
+	return xCord
+
 func _on_RigidBody_mouse_entered():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = true
