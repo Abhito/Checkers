@@ -10,7 +10,7 @@ var rotationAmount = 0
 var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
-#onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +20,16 @@ func _ready():
 		gridLoc.append(grid.get_global_transform().origin)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
-		
+	#Set settings according to settings menu
+	#Set camera tilt
+	#getCam.rotate_z(this)
+	#Set FOV
+	#getCam.
+	#Set Background
+	
+	
+	
+	
 func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
