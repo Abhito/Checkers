@@ -56,7 +56,7 @@ func _on_P2RigidBody_mouse_exited():
 		get_node("checker/Area/COutline").visible = false
 
 
-func _input_event(camera, event, position, normal, shape_idx):
+func _input_event(_camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and turnState:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("clicked", self)

@@ -11,7 +11,6 @@ var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for node in get_tree().get_nodes_in_group("PlayerPieces"):
@@ -27,9 +26,6 @@ func _ready():
 	#getCam.
 	#Set Background
 	
-	
-	
-	
 func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
@@ -38,10 +34,14 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
+			AudioManager.play("res://sounds/CheckerPlace.mp3")
+			print("called")
 			held_object.drop(find_closest(held_object))
 			held_object = null
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
+	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
+		get_node("Rotation/Camera/Pause").visible = true
 
 #TaboutHandeling
 func _notification(isfocus):
