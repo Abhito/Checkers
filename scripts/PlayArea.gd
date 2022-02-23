@@ -1,6 +1,8 @@
 extends Spatial
 
 onready var getCam = $Rotation/Camera
+onready var getTimer = $Rotation/Camera/TimerOverlay/Timer
+onready var getTimerLabel = $Rotation/Camera/TimerOverlay/Timer/TimerLabel
 var xCord
 var yCord
 var held_object = null
@@ -10,6 +12,7 @@ var rotationAmount = 0
 var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
+var turnCounter = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +22,8 @@ func _ready():
 		gridLoc.append(grid.get_global_transform().origin)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
+	if(turnCounter):
+		getTimer.start()
 	#Set settings according to settings menu
 	#Set camera tilt
 	#getCam.rotate_z(this)
@@ -74,21 +79,7 @@ func _process(delta):
 		if rotationAmount > PI:
 			rotationAmount = 0
 			turnProcessing = false
-		
-		
 
-#func _physics_process(_delta):
-#
-#	var phyState = get_world().direct_space_state
-#
-#	var mouseLocation = get_viewport().get_mouse_position()
-#	rayStart = getCam.project_ray_origin(mouseLocation)
-#	rayStop = rayStart + getCam.project_ray_normal(mouseLocation) * 2000
-#	var crossData = phyState.intersect_ray(rayStart, rayStop)
-#
-#	if not crossData.empty():
-#		var loc = crossData.position
-#		#print(loc)
-#		xCord = loc[0]
-#		yCord = loc[2]
-	
+
+func _on_Timer_timeout():
+	getTimerLabel
