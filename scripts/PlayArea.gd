@@ -17,7 +17,10 @@ var currentTurn = true
 
 func validMove(held_object):
 	
-	
+	if currentPos > held_object.get_X():
+		print("this move is valid")
+	else:
+		print("this move is invalid")
 	
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
@@ -35,7 +38,6 @@ func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
 		currentPos = held_object.pickup()
-		print(currentPos)
 		
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and held_object:
