@@ -46,7 +46,7 @@ func turnToggle():
 	else:
 		turnState = true
 		
-func get_xCord():
+func get_X():
 	return xCord
 
 func _on_P2RigidBody_mouse_entered():
