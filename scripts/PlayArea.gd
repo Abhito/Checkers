@@ -16,7 +16,10 @@ var currentTurn = true
 
 
 func validMove(held_object):
-	print("this piece's x value is ", held_object.get_X(), "when you dropped it")
+	
+	
+	
+	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +34,8 @@ func _ready():
 func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
-		held_object.pickup()
+		currentPos = held_object.pickup()
+		print(currentPos)
 		
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and held_object:

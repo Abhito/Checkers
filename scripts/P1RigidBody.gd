@@ -38,6 +38,7 @@ func pickup():
 	print("My xpos before you picked me up: ", (global_transform.origin)[0])
 	mode = RigidBody.MODE_STATIC
 	held = true
+	return (global_transform.origin)[0]
 	
 func drop(destination):
 	if held:
