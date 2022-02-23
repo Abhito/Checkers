@@ -10,6 +10,7 @@ var rotationAmount = 0
 var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
+var cameraFOV = ConfigController.cameraFov
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
 # Called when the node enters the scene tree for the first time.

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/Settings_Menu_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Settings_Menu_Script.gd" type="Script" id=2]
+[ext_resource path="res://scripts/ConfigController.gd" type="Script" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -198,5 +199,8 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ConfigController" type="Node" parent="."]
+script = ExtResource( 3 )
 
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
