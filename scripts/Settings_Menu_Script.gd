@@ -25,4 +25,12 @@ func add_game_options_video_display_mode_options_dropdown():
 #Quick return to menu button
 func _on_Return_pressed():
 	get_tree().change_scene("res://views/Menu.tscn")
+	
 
+
+func _on_Display_Mode_Options_Dropdown_item_selected(index):
+	if index == 1:
+		OS.window_fullscreen = true
+		
+	else:
+		OS.window_fullscreen = false
