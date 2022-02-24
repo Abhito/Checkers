@@ -6,8 +6,7 @@ var gridLoc = PoolVector3Array()
 var turnProcessing = false;
 var rotationAmount = 0
 var player_pieces = Array()
-#current coordinate
-var invalid_state = false
+
 #current xpos
 var currentPos
 #current turn bool, true = player 1, false = player 2
@@ -17,10 +16,12 @@ var currentTurn = true
 
 func validMove(held_object):
 	
-	if currentPos > held_object.get_X():
+	if currentPos[0] > held_object.get_X():
 		print("this move is valid")
+		return true;
 	else:
 		print("this move is invalid")
+		return false;
 	
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
@@ -42,9 +43,13 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and held_object:
 		if !event.pressed:
-			validMove(held_object)
-			held_object.drop(find_closest(held_object))
-			held_object = null
+			if !validMove(held_object):
+				held_object.drop(currentPos)
+				held_object = null
+			else:
+				held_object.drop(find_closest(held_object))
+				held_object = null
+			
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
 

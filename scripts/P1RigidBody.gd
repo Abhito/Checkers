@@ -38,7 +38,7 @@ func pickup():
 	print("My xpos before you picked me up: ", (global_transform.origin)[0])
 	mode = RigidBody.MODE_STATIC
 	held = true
-	return (global_transform.origin)[0]
+	return (global_transform.origin)
 	
 func drop(destination):
 	if held:
@@ -54,8 +54,7 @@ func turnToggle():
 		turnState = true
 
 func get_X():
-	if held:
-		return xCord
+	return xCord
 
 func _on_RigidBody_mouse_entered():
 	if turnState == true:
