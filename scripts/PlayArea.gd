@@ -12,7 +12,9 @@ var rotationAmount = 0
 var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
-var turnCounter = true
+var turnTimer = true
+var turnCount = 1
+var oldCount = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +24,7 @@ func _ready():
 		gridLoc.append(grid.get_global_transform().origin)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
-	if(turnCounter):
+	if(turnTimer):
 		getTimer.start()
 	#Set settings according to settings menu
 	#Set camera tilt
@@ -70,6 +72,7 @@ func nextTurn():
 	for piece in player_pieces:
 		piece.turnToggle()
 	turnProcessing = true
+	turnCount = turnCount + 1
 	
 
 func _process(delta):
@@ -82,4 +85,6 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	getTimerLabel
+	if oldCount == turnCount:
+		nextTurn()
+	var oldcount = turnCount

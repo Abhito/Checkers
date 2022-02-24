@@ -12,6 +12,6 @@ func _on_timeout() -> void:
 	_count -= 1
 	if _count < 0:
 		stop()
-		
+
 func startTimer():
 	start()
