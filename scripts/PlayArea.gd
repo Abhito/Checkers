@@ -12,9 +12,14 @@ var rotationAmount = 0
 var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
+<<<<<<< HEAD
 var turnTimer = true
 var turnCount = 1
 var oldCount = 0
+=======
+var cameraFOV = ConfigController.cameraFOV
+#onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
+>>>>>>> e9ebf1028d3bc7c0c15cfa71858bf98309c91acb
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
