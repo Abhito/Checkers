@@ -28,3 +28,10 @@ func _on_Return_pressed():
 
 func _on_Button_pressed():
 	ConfigController.updateSettings()
+	
+func _on_Display_Mode_Options_Dropdown_item_selected(index):
+	if index == 1:
+		OS.window_fullscreen = true
+		
+	else:
+		OS.window_fullscreen = false

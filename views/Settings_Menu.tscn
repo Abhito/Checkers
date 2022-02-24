@@ -246,7 +246,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="ApplySettings" type="Button" parent="."]
 margin_left = 793.0
 margin_top = 571.0
 margin_right = 895.0
@@ -256,6 +256,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="item_selected" from="TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown" to="." method="_on_Display_Mode_Options_Dropdown_item_selected"]
 [connection signal="value_changed" from="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value/HSlider" to="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value" method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ApplySettings" to="." method="_on_Button_pressed"]

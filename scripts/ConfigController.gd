@@ -5,7 +5,7 @@ onready var cameraFOV
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Uncomment following line if you want to reset config or change add more catagories.
-	resetConfig()
+	#resetConfig()
 	var config = ConfigFile.new()
 	config.load("res://userconfig.cfg")
 	var cameraFOV = config.get_value("Settings", "CameraFOV")
@@ -36,5 +36,4 @@ func setCameraFOV(value):
 	print(value)
 	cameraFOV = value
 	print(cameraFOV)
-
 	updateSettings()
