@@ -25,17 +25,6 @@ func add_game_options_video_display_mode_options_dropdown():
 #Quick return to menu button
 func _on_Return_pressed():
 	get_tree().change_scene("res://views/Menu.tscn")
-	
 
-<<<<<<< HEAD
 func _on_Button_pressed():
 	ConfigController.updateSettings()
-=======
-
-func _on_Display_Mode_Options_Dropdown_item_selected(index):
-	if index == 1:
-		OS.window_fullscreen = true
-		
-	else:
-		OS.window_fullscreen = false
->>>>>>> 6dba9dc6e3ad20d9048a3c83a32067cbf4dc9f1a

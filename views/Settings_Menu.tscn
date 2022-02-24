@@ -37,7 +37,6 @@ __meta__ = {
 }
 
 [node name="Main" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -130,6 +129,7 @@ __meta__ = {
 }
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -153,7 +153,7 @@ margin_bottom = 170.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Audio/CenterContainer3/VBoxContainer"]
-margin_right = 129.0
+margin_right = 96.0
 margin_bottom = 14.0
 text = "Audio settings here."
 
@@ -256,10 +256,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-<<<<<<< HEAD
 [connection signal="value_changed" from="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value/HSlider" to="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value" method="_on_HSlider_value_changed"]
-=======
-[connection signal="item_selected" from="TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown" to="." method="_on_Display_Mode_Options_Dropdown_item_selected"]
->>>>>>> 6dba9dc6e3ad20d9048a3c83a32067cbf4dc9f1a
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
