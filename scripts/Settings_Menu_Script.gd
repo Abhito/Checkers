@@ -26,3 +26,5 @@ func add_game_options_video_display_mode_options_dropdown():
 func _on_Return_pressed():
 	get_tree().change_scene("res://views/Menu.tscn")
 
+func _on_Button_pressed():
+	ConfigController.updateSettings()

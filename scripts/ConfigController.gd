@@ -14,9 +14,11 @@ func _ready():
 #This is a stub where you update all settings from the values provided in the parameters
 func updateSettings():
 	print("This is a stub where you update all settings from the values provided in the parameters")
-	var config = ConfigFile.new()
-	config.set_value("Settings", "CameraFOV", cameraFOV)
-	config.save("res://userconfig.cfg")
+	print(cameraFOV)
+	var updateconfig = ConfigFile.new()
+	updateconfig.load("res://userconfig.cfg")
+	updateconfig.set_value("Settings", "CameraFOV", cameraFOV)
+	updateconfig.save("res://userconfig.cfg")
 	#Alternatively can just change this scruipts properties from another function like Controls in the form of ConfigController.cameraFov = 40
 
 #Run if you want to quickly add new catagories/defaults to the cfg, or reset to default values
@@ -31,7 +33,8 @@ func getCameraFOV():
 
 #Should probably be made a global attribute setter
 func setCameraFOV(value):
+	print(value)
 	cameraFOV = value
-	
-func _on_Button_pressed():
+	print(cameraFOV)
+
 	updateSettings()

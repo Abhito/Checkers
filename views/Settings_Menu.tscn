@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/Settings_Menu_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Settings_Menu_Script.gd" type="Script" id=2]
-[ext_resource path="res://scripts/ConfigController.gd" type="Script" id=3]
-[ext_resource path="res://views/CameraValue.gd" type="Script" id=4]
+[ext_resource path="res://scripts/CameraValue.gd" type="Script" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -38,7 +37,6 @@ __meta__ = {
 }
 
 [node name="Main" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -189,12 +187,13 @@ margin_bottom = 14.0
 text = "Account settings here."
 
 [node name="Customization" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -980.0
-margin_bottom = -424.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Customization"]
 margin_right = 40.0
@@ -257,10 +256,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ConfigController" type="Node" parent="."]
-script = ExtResource( 3 )
-
 [connection signal="value_changed" from="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value/HSlider" to="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value" method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Button" to="ConfigController" method="_on_Button_pressed"]
-[connection signal="ready" from="ConfigController" to="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value" method="_on_ConfigController_ready"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

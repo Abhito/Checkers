@@ -6,9 +6,7 @@ func _ready():
 	pass
 
 func _on_HSlider_value_changed(value):
-	ConfigController.setCameraFOV(value)
+	print(value)
+	ConfigController.setCameraFOV(int(value))
 	text = str(value)
-
-func _on_ConfigController_ready():
-	text = str(ConfigController.getCameraFOV())
 
