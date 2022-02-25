@@ -39,7 +39,15 @@ func pickup():
 	mode = RigidBody.MODE_STATIC
 	held = true
 	return (global_transform.origin)
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	
+=======
+=======
+>>>>>>> Stashed changes
+
+
+>>>>>>> Stashed changes
 func drop(destination):
 	if held:
 		mode = RigidBody.MODE_RIGID
@@ -56,6 +64,14 @@ func turnToggle():
 func get_X():
 	return xCord
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 func _on_RigidBody_mouse_entered():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = true
