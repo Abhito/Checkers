@@ -7,6 +7,8 @@ var rayStop = Vector3()
 var xCord
 var yCord
 var held = false
+#True for P1 pieces, False for P2 Pieces
+var playerOwner = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
 var turnState = true
