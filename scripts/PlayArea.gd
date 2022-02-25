@@ -64,19 +64,13 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
-<<<<<<< scripts/PlayArea.gd
 			if !validMove(held_object):
 				held_object.drop(currentPos)
 				held_object = null
 			else:
+				AudioManager.play("res://sounds/CheckerPlace.mp3")
 				held_object.drop(find_closest(held_object))
 				held_object = null
-=======
-			AudioManager.play("res://sounds/CheckerPlace.mp3")
-			print("called")
-			held_object.drop(find_closest(held_object))
-			held_object = null
->>>>>>> scripts/PlayArea.gd
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
