@@ -14,6 +14,7 @@ __meta__ = {
 add_game_options_main_game_mode_options_dropdown_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/Game_Mode_Options_Dropdown")
 add_game_options_video_display_mode_options_dropdown_path = NodePath("TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown")
 add_game_options_main_local_player_one_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit")
+add_game_options_main_local_player_two_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit2")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 1.0
@@ -188,7 +189,6 @@ margin_bottom = 14.0
 text = "Account settings here."
 
 [node name="Customization" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
