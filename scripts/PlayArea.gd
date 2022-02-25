@@ -7,6 +7,7 @@ var xCord
 var yCord
 var held_object = null
 var gridLoc = PoolVector3Array()
+var gridItem = Array()
 var turnProcessing = false;
 var rotationAmount = 0
 var player_pieces = Array()
@@ -24,11 +25,14 @@ func _ready():
 		node.connect("clicked", self, "_on_pickable_clicked")
 	for grid in get_tree().get_nodes_in_group("ValidGrid"):
 		gridLoc.append(grid.get_global_transform().origin)
+		gridItem.append(grid)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
 	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
+	for item in gridItem:
+		print(item.name)
 	#Set settings according to settings menu
 	#Set camera tilt
 	#getCam.rotate_z(this)
