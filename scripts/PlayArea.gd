@@ -11,6 +11,9 @@ var gridItem = Array()
 var turnProcessing = false;
 var rotationAmount = 0
 var player_pieces = Array()
+
+#current xpos
+var currentPos
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
 var turnTimer = true
@@ -18,6 +21,23 @@ var turnCount = 1
 var oldCount = 0
 var cameraFOV = ConfigController.cameraFOV
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
+
+
+func validMove(held_object):
+	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
+	
+	#wrong direction case
+	if currentPos[0] < held_object.get_X():
+		print("this move is invalid because you went in the wrong direction")
+		return false
+	
+	elif currentPos[0] + (-held_object.get_X()) >= 3.0:
+		print("this move is invalid because it went too far")
+		return false
+	
+	else:
+		print("this move is valid")
+		return true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,14 +61,18 @@ func _ready():
 func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
-		held_object.pickup()
-		
+		currentPos = held_object.pickup()
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
-			AudioManager.play("res://sounds/CheckerPlace.mp3")
-			held_object.drop(find_closest(held_object))
-			held_object = null
+			if !validMove(held_object):
+				held_object.drop(currentPos)
+				held_object = null
+			else:
+				AudioManager.play("res://sounds/CheckerPlace.mp3")
+				held_object.drop(find_closest(held_object))
+				held_object = null
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
