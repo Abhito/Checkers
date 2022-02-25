@@ -31,8 +31,6 @@ func _ready():
 	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
-	for item in gridItem:
-		print(item.name)
 	#Set settings according to settings menu
 	#Set camera tilt
 	#getCam.rotate_z(this)
@@ -49,7 +47,6 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
 			AudioManager.play("res://sounds/CheckerPlace.mp3")
-			print("called")
 			held_object.drop(find_closest(held_object))
 			held_object = null
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:

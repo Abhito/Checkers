@@ -11,12 +11,10 @@ func _ready():
 
 func _on_Area_body_entered(body):
 	checkerPresent = body
-	print(checkerPresent.get_class())
-#	if checkerPresent.playerOwner:
-#		print("P1 Checker")
-#	else:
-#		print("P2 Checker")
+	if checkerPresent.playerOwner:
+		checkerColor = true
+	else:
+		checkerColor = false
 	
 func _on_Area_body_exited(body):
 	checkerPresent = null
-	print(checkerPresent)
