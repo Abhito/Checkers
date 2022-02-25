@@ -12,8 +12,7 @@ var currentPos
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
-#current xpos
-var currentPos
+
 
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
@@ -30,22 +29,6 @@ func validMove(held_object):
 	else:
 		print("this move is valid")
 		return true
-<<<<<<< Updated upstream
-
-
-func validMove(held_object):
-	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
-	if currentPos[0] > held_object.get_X():
-		print("this move is valid")
-		return true;
-	else:
-		print("this move is invalid")
-		return false;
-	
-	
-	
-=======
->>>>>>> Stashed changes
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,44 +43,16 @@ func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
 		currentPos = held_object.pickup()
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and held_object:
-		if !event.pressed:
-=======
-=======
->>>>>>> Stashed changes
 
-		
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 			if !validMove(held_object):
 				held_object.drop(currentPos)
 				held_object = null
 			else:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 				held_object.drop(find_closest(held_object))
 				held_object = null
-			
-=======
-=======
->>>>>>> Stashed changes
-				AudioManager.play("res://sounds/CheckerPlace.mp3")
-				print("called")
-				held_object.drop(find_closest(held_object))
-				held_object = null
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
 

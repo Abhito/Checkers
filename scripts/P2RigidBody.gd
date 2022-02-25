@@ -37,20 +37,8 @@ func pickup():
 	print("My xpos before you picked me up: ", (global_transform.origin)[0])
 	mode = RigidBody.MODE_STATIC
 	held = true
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	return (global_transform.origin)[0]
 	
-=======
-	return (global_transform.origin)
-
-
->>>>>>> Stashed changes
-=======
-	return (global_transform.origin)
-
-
->>>>>>> Stashed changes
 func drop(destination):
 	if held:
 		mode = RigidBody.MODE_RIGID
@@ -67,14 +55,6 @@ func turnToggle():
 func get_X():
 	return xCord
 
-func get_X():
-	return xCord
-
-
-func get_X():
-	return xCord
-
-
 func _on_P2RigidBody_mouse_entered():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = true
@@ -83,23 +63,8 @@ func _on_P2RigidBody_mouse_entered():
 func _on_P2RigidBody_mouse_exited():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = false
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-func _input_event(camera, event, position, normal, shape_idx):
-	if event is InputEventMouseButton and turnState:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("clicked", self)
-=======
-=======
->>>>>>> Stashed changes
 #
 #func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 #	var colCords = body.get_global_transform().origin
 #	global_transform.origin = colCords + Vector3(0, .45, 0)
 	
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
