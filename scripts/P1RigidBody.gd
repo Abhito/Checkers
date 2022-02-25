@@ -17,7 +17,6 @@ func _input_event(_camera, event, _position, _normal, _shape_idx):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("clicked", self)
 	
-	
 func _physics_process(_delta):
 	if held:
 		var phyState = get_world().direct_space_state

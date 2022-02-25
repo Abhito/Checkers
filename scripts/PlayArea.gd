@@ -1,6 +1,10 @@
 extends Spatial
 
 onready var getCam = $Rotation/Camera
+onready var getTimer = $Rotation/Camera/TimerOverlay/Timer
+onready var getTimerLabel = $Rotation/Camera/TimerOverlay/Timer/TimerLabel
+var xCord
+var yCord
 var held_object = null
 var gridLoc = PoolVector3Array()
 var turnProcessing = false;
@@ -11,6 +15,10 @@ var player_pieces = Array()
 var currentPos
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
+var turnTimer = true
+var turnCount = 1
+var oldCount = 0
+var cameraFOV = ConfigController.cameraFOV
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
 
@@ -38,7 +46,16 @@ func _ready():
 		gridLoc.append(grid.get_global_transform().origin)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
-		
+	#Stub for turn Timer, unfinished
+	if(turnTimer):
+		getTimer.start()
+	#Set settings according to settings menu
+	#Set camera tilt
+	#getCam.rotate_z(this)
+	#Set FOV
+	#getCam.
+	#Set Background
+	
 func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
@@ -47,14 +64,23 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
+<<<<<<< scripts/PlayArea.gd
 			if !validMove(held_object):
 				held_object.drop(currentPos)
 				held_object = null
 			else:
 				held_object.drop(find_closest(held_object))
 				held_object = null
+=======
+			AudioManager.play("res://sounds/CheckerPlace.mp3")
+			print("called")
+			held_object.drop(find_closest(held_object))
+			held_object = null
+>>>>>>> scripts/PlayArea.gd
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
+	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
+		get_node("Rotation/Camera/Pause").visible = true
 
 #TaboutHandeling
 func _notification(isfocus):
@@ -78,6 +104,7 @@ func nextTurn():
 	for piece in player_pieces:
 		piece.turnToggle()
 	turnProcessing = true
+	turnCount = turnCount + 1
 	
 
 func _process(delta):
@@ -87,21 +114,9 @@ func _process(delta):
 		if rotationAmount > PI:
 			rotationAmount = 0
 			turnProcessing = false
-		
-		
 
-#func _physics_process(_delta):
-#
-#	var phyState = get_world().direct_space_state
-#
-#	var mouseLocation = get_viewport().get_mouse_position()
-#	rayStart = getCam.project_ray_origin(mouseLocation)
-#	rayStop = rayStart + getCam.project_ray_normal(mouseLocation) * 2000
-#	var crossData = phyState.intersect_ray(rayStart, rayStop)
-#
-#	if not crossData.empty():
-#		var loc = crossData.position
-#		#print(loc)
-#		xCord = loc[0]
-#		yCord = loc[2]
-	
+#Stub for turn Timer, unfinished
+func _on_Timer_timeout():
+	if oldCount == turnCount:
+		nextTurn()
+	var oldcount = turnCount

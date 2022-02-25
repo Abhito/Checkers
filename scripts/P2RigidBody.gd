@@ -63,8 +63,9 @@ func _on_P2RigidBody_mouse_entered():
 func _on_P2RigidBody_mouse_exited():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = false
-#
-#func _on_RigidBody_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-#	var colCords = body.get_global_transform().origin
-#	global_transform.origin = colCords + Vector3(0, .45, 0)
-	
+
+
+func _input_event(_camera, event, position, normal, shape_idx):
+	if event is InputEventMouseButton and turnState:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("clicked", self)
