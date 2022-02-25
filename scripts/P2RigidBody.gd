@@ -9,9 +9,13 @@ var yCord
 var held = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
-var turnState = false
+var turnState = true
 
-
+func _input_event(_camera, event, _position, _normal, _shape_idx):
+	#Let PlayArea know when piece is clicked
+	if event is InputEventMouseButton and turnState:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("clicked", self)
 	
 func _physics_process(_delta):
 	if held:
@@ -30,8 +34,10 @@ func _physics_process(_delta):
 func pickup():
 	if held:
 		return
+	print("My xpos before you picked me up: ", (global_transform.origin)[0])
 	mode = RigidBody.MODE_STATIC
 	held = true
+	return (global_transform.origin)[0]
 	
 func drop(destination):
 	if held:
@@ -45,6 +51,9 @@ func turnToggle():
 		turnState = false
 	else:
 		turnState = true
+		
+func get_X():
+	return xCord
 
 func _on_P2RigidBody_mouse_entered():
 	if turnState == true:
