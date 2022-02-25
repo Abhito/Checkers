@@ -11,7 +11,7 @@ var held = false
 var playerOwner = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
-var turnState = true
+var turnState = false
 
 func _input_event(_camera, event, _position, _normal, _shape_idx):
 	#Let PlayArea know when piece is clicked
