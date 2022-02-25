@@ -15,7 +15,7 @@ var currentTurn = true
 
 
 func validMove(held_object):
-	
+	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	if currentPos[0] > held_object.get_X():
 		print("this move is valid")
 		return true;
@@ -23,7 +23,7 @@ func validMove(held_object):
 		print("this move is invalid")
 		return false;
 	
-	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
+	
 	
 
 # Called when the node enters the scene tree for the first time.
