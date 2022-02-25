@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/Settings_Menu_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Settings_Menu_Script.gd" type="Script" id=2]
+[ext_resource path="res://menu_images/wood-gaaad74975_1920.jpg" type="Texture" id=3]
 [ext_resource path="res://scripts/CameraValue.gd" type="Script" id=4]
 
 [node name="Control" type="Control"]
@@ -15,6 +16,16 @@ add_game_options_main_game_mode_options_dropdown_path = NodePath("TabContainer/M
 add_game_options_video_display_mode_options_dropdown_path = NodePath("TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown")
 add_game_options_main_local_player_one_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit")
 add_game_options_main_local_player_two_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit2")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -231.0
+margin_top = -421.0
+margin_right = 1689.0
+margin_bottom = 1388.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 1.0
@@ -177,18 +188,19 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Account/CenterContainer4"]
-margin_left = 436.0
+margin_left = 412.0
 margin_top = 156.0
-margin_right = 580.0
+margin_right = 603.0
 margin_bottom = 170.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Account/CenterContainer4/VBoxContainer"]
 margin_right = 96.0
 margin_bottom = 14.0
-text = "Account settings here."
+text = "Account feature coming soon."
 
 [node name="Customization" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
