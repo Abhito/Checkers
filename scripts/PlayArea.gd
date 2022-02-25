@@ -12,14 +12,11 @@ var rotationAmount = 0
 var player_pieces = Array()
 #current turn bool, true = player 1, false = player 2
 var currentTurn = true
-<<<<<<< HEAD
 var turnTimer = true
 var turnCount = 1
 var oldCount = 0
-=======
 var cameraFOV = ConfigController.cameraFOV
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
->>>>>>> e9ebf1028d3bc7c0c15cfa71858bf98309c91acb
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +26,7 @@ func _ready():
 		gridLoc.append(grid.get_global_transform().origin)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
+	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
 	#Set settings according to settings menu
@@ -88,7 +86,7 @@ func _process(delta):
 			rotationAmount = 0
 			turnProcessing = false
 
-
+#Stub for turn Timer, unfinished
 func _on_Timer_timeout():
 	if oldCount == turnCount:
 		nextTurn()

@@ -17,9 +17,6 @@ config/icon="res://images/menu_images/icon.png"
 [autoload]
 
 AudioManager="*res://scripts/AudioManager.gd"
-
-[autoload]
-
 ConfigController="*res://scripts/ConfigController.gd"
 
 [display]

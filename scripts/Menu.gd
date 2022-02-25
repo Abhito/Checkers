@@ -21,11 +21,7 @@ func _on_Online_pressed():
 	get_tree().change_scene("res://views/PlayArea.tscn")
 
 func _on_Options_pressed():
-<<<<<<< HEAD
-	pass
-=======
 	get_tree().change_scene("res://views/Settings_Menu.tscn")
->>>>>>> e9ebf1028d3bc7c0c15cfa71858bf98309c91acb
 
 func _on_Exit_pressed():
 	get_tree().quit()

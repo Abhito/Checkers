@@ -30,7 +30,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0 )
 [node name="Rotation" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="Rotation"]
-transform = Transform( -4.15687e-08, -0.60162, 0.798782, 1.35177e-08, 0.798782, 0.60162, -1, 3.58063e-08, -2.50718e-08, 11, 15, 0 )
+transform = Transform( -4.37114e-08, -0.866025, 0.5, 0, 0.5, 0.866025, -1, 3.78552e-08, -2.18557e-08, 9.5, 15, 0 )
+fov = 60.0
 far = 800.0
 
 [node name="Pause" type="Control" parent="Rotation/Camera"]
@@ -394,6 +395,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15, 3, 7.3 )
 [node name="Customization" type="Node" parent="."]
 
 [node name="beachBackground" parent="Customization" instance=ExtResource( 7 )]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Customization"]
 environment = SubResource( 2 )
