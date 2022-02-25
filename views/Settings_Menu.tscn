@@ -13,6 +13,7 @@ __meta__ = {
 }
 add_game_options_main_game_mode_options_dropdown_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/Game_Mode_Options_Dropdown")
 add_game_options_video_display_mode_options_dropdown_path = NodePath("TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown")
+add_game_options_main_local_player_one_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 1.0
