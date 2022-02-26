@@ -7,10 +7,10 @@ var xCord
 var yCord
 var held_object = null
 var gridLoc = PoolVector3Array()
+var grids = Array()
 var turnProcessing = false;
 var rotationAmount = 0
 var player_pieces = Array()
-
 #current xpos
 var currentPos
 #current turn bool, true = player 1, false = player 2
@@ -58,7 +58,7 @@ func _ready():
 	for node in get_tree().get_nodes_in_group("PlayerPieces"):
 		node.connect("clicked", self, "_on_pickable_clicked")
 	for grid in get_tree().get_nodes_in_group("ValidGrid"):
-		gridLoc.append(grid.get_global_transform().origin)
+		grids.append(grid)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
 	#Stub for turn Timer, unfinished
@@ -102,13 +102,13 @@ func find_closest(piece):
 	var position = piece.get_global_transform().origin
 	var smallest = 100
 	var returnGrid
-	for grid in gridLoc:
-		var compare = grid.distance_to(position)
+	for grid in grids:
+		var compare = (grid.get_global_transform().origin).distance_to(position)
 		if compare < smallest:
 			smallest = compare
-			returnGrid = grid
+			returnGrid = grid.get_global_transform().origin
 	return returnGrid
-	
+
 func nextTurn():
 	for piece in player_pieces:
 		piece.turnToggle()
