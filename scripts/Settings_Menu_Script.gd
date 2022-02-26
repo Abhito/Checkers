@@ -43,15 +43,17 @@ func add_game_options_main_local_player_two_name():
 	var localPlayerTwoName = ConfigController.getLocalPlayerTwoName()
 	add_game_options_main_local_player_two_name.set_text(localPlayerTwoName)
 
-#Quick return to menu button
+# Quick return to menu button
 func _on_Return_pressed():
 	get_tree().change_scene("res://views/Menu.tscn")
 
+# Button to update local gamemode 
 func _on_Button_pressed():
 	ConfigController.setLocalPlayerOneName(add_game_options_main_local_player_one_name.get_text())
 	ConfigController.setLocalPlayerTwoName(add_game_options_main_local_player_two_name.get_text())
 	ConfigController.updateSettings()
 	
+# Functionality to display mode
 func _on_Display_Mode_Options_Dropdown_item_selected(index):
 	if index == 1:
 		ConfigController.setDisplayMode("Fullscreen")
@@ -60,3 +62,9 @@ func _on_Display_Mode_Options_Dropdown_item_selected(index):
 	else:
 		ConfigController.setDisplayMode("Windowed")
 		OS.window_fullscreen = false
+		
+# Adjust music via slider
+func _on_Music_Slider_value_changed(value):
+	#AudioServer.set_bus_volume_db(0, vol)
+	pass # Replace with function body.
+
