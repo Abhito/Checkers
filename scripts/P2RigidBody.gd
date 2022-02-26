@@ -7,9 +7,14 @@ var rayStop = Vector3()
 var xCord
 var yCord
 var held = false
+#True for P1 pieces, False for P2 Pieces
+var playerOwner = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
-var turnState = true
+var turnState = false
+#var piece color
+var color = false
+
 
 func _input_event(_camera, event, _position, _normal, _shape_idx):
 	#Let PlayArea know when piece is clicked
@@ -37,7 +42,7 @@ func pickup():
 	print("My xpos before you picked me up: ", (global_transform.origin)[0])
 	mode = RigidBody.MODE_STATIC
 	held = true
-	return (global_transform.origin)[0]
+	return (global_transform.origin)
 	
 func drop(destination):
 	if held:
@@ -55,6 +60,9 @@ func turnToggle():
 func get_X():
 	return xCord
 
+func get_Color():
+	return color
+
 func _on_P2RigidBody_mouse_entered():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = true
@@ -63,4 +71,3 @@ func _on_P2RigidBody_mouse_entered():
 func _on_P2RigidBody_mouse_exited():
 	if turnState == true:
 		get_node("checker/Area/COutline").visible = false
-

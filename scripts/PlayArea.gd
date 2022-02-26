@@ -25,18 +25,33 @@ var cameraFOV = ConfigController.cameraFOV
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
-	#wrong direction case
-	if currentPos[0] < held_object.get_X():
-		print("this move is invalid because you went in the wrong direction")
-		return false
+	#orange piece
+	if held_object.get_Color() == true:
+		#wrong direction case
+		if currentPos[0] < held_object.get_X():
+			print("this move is invalid because you went in the wrong direction")
+			return false
 	
-	elif currentPos[0] + (-held_object.get_X()) >= 3.0:
-		print("this move is invalid because it went too far")
-		return false
+		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
+			print("this move is invalid because it went too far")
+			return false
+		else:
+			print("this move is valid")
+			return true
 	
+	#blue piece
 	else:
-		print("this move is valid")
-		return true
+		#wrong direction case
+		if currentPos[0] > held_object.get_X():
+			print("this move is invalid because you went in the wrong direction")
+			return false
+	
+		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
+			print("this move is invalid because it went too far")
+			return false
+		else:
+			print("this move is valid")
+			return true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

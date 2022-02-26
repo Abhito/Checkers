@@ -10,6 +10,8 @@ var held = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
 var turnState = true
+#var piece color
+var color = true
 
 func _input_event(_camera, event, _position, _normal, _shape_idx):
 	#Let PlayArea know when piece is clicked
@@ -54,6 +56,9 @@ func turnToggle():
 
 func get_X():
 	return xCord
+	
+func get_Color():
+	return color
 
 func _on_RigidBody_mouse_entered():
 	if turnState == true:
