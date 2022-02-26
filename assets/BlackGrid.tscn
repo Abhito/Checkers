@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://materials/BlackMarble.material" type="Material" id=1]
-
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -1.03255, -1.03255, -0.0755801, -1.03255, -1.03255, 0.0755796, -1.03255, 1.03255, -0.0755801, 1.03255, -1.03255, -0.0755801, 1.03255, -1.03255, 0.0755796, -1.03255, 1.03255, 0.0755796, 1.03255, 1.03255, -0.0755801, 1.03255, 1.03255, 0.0755796 )
+[ext_resource path="res://scripts/GridDetector.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "BlackGrid_ChessTable_Cube002"
@@ -20,15 +18,31 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -1.03255, -1.03255, -0.0755801, -1.03255, -1.03255, 0.0755796, -1.03255, 1.03255, -0.0755801, 1.03255, -1.03255, -0.0755801, 1.03255, -1.03255, 0.0755796, -1.03255, 1.03255, 0.0755796, 1.03255, 1.03255, -0.0755801, 1.03255, 1.03255, 0.0755796 )
+
 [node name="BlackGrid" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 2 )
 
 [node name="GridSeg" type="MeshInstance" parent="StaticBody"]
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = null
+
+[node name="Area" type="Area" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -4.7765e-08, -0.400683 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody/Area"]
+transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, -0.150196, 1.13394e-08 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="StaticBody/Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="StaticBody/Area" to="." method="_on_Area_body_exited"]

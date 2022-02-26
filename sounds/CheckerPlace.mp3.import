@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CheckerPlace.mp3-dcbbfa63268ec340f2d550c7cefb2b7b.mp3str"
+
+[deps]
+
+source_file="res://sounds/CheckerPlace.mp3"
+dest_files=[ "res://.import/CheckerPlace.mp3-dcbbfa63268ec340f2d550c7cefb2b7b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

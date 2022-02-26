@@ -7,11 +7,20 @@ var rayStop = Vector3()
 var xCord
 var yCord
 var held = false
+#True for P1 pieces, False for P2 Pieces
+var playerOwner = false
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
 var turnState = false
+#var piece color
+var color = false
+var interactable = true
 
-
+func _input_event(_camera, event, _position, _normal, _shape_idx):
+	#Let PlayArea know when piece is clicked
+	if event is InputEventMouseButton and turnState and interactable:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("clicked", self)
 	
 func _physics_process(_delta):
 	if held:
@@ -30,8 +39,10 @@ func _physics_process(_delta):
 func pickup():
 	if held:
 		return
+	print("My xpos before you picked me up: ", (global_transform.origin)[0])
 	mode = RigidBody.MODE_STATIC
 	held = true
+	return (global_transform.origin)
 	
 func drop(destination):
 	if held:
@@ -45,18 +56,18 @@ func turnToggle():
 		turnState = false
 	else:
 		turnState = true
+		
+func get_X():
+	return xCord
+
+func get_Color():
+	return color
 
 func _on_P2RigidBody_mouse_entered():
-	if turnState == true:
+	if turnState == true and interactable:
 		get_node("checker/Area/COutline").visible = true
 
 
 func _on_P2RigidBody_mouse_exited():
-	if turnState == true:
+	if turnState == true and interactable:
 		get_node("checker/Area/COutline").visible = false
-
-
-func _input_event(camera, event, position, normal, shape_idx):
-	if event is InputEventMouseButton and turnState:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("clicked", self)
