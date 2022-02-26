@@ -12,10 +12,13 @@ var playerOwner = true
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
 var turnState = true
+#var piece color
+var color = true
+var interactable = true
 
 func _input_event(_camera, event, _position, _normal, _shape_idx):
 	#Let PlayArea know when piece is clicked
-	if event is InputEventMouseButton and turnState:
+	if event is InputEventMouseButton and turnState and interactable:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("clicked", self)
 	
@@ -56,14 +59,17 @@ func turnToggle():
 
 func get_X():
 	return xCord
+	
+func get_Color():
+	return color
 
 func _on_RigidBody_mouse_entered():
-	if turnState == true:
+	if turnState == true and interactable:
 		get_node("checker/Area/COutline").visible = true
 
 
 func _on_RigidBody_mouse_exited():
-	if turnState == true:
+	if turnState == true and interactable:
 		get_node("checker/Area/COutline").visible = false
 
 #
