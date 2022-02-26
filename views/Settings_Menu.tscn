@@ -1,18 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/Settings_Menu_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Settings_Menu_Script.gd" type="Script" id=2]
+[ext_resource path="res://menu_images/wood-gaaad74975_1920.jpg" type="Texture" id=3]
 [ext_resource path="res://scripts/CameraValue.gd" type="Script" id=4]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.349727, 0.928962 )
+colors = PoolColorArray( 0.0533447, 0.0571499, 0.296875, 1, 0.235331, 0.0461426, 0.28125, 1, 0.168991, 0.0708008, 0.3125, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = SubResource( 6 )
+region_rect = Rect2( 0, 0, 2048, 1 )
+
+[sub_resource type="Theme" id=4]
+TabContainer/styles/panel = SubResource( 7 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 add_game_options_main_game_mode_options_dropdown_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/Game_Mode_Options_Dropdown")
 add_game_options_video_display_mode_options_dropdown_path = NodePath("TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown")
+add_game_options_main_local_player_one_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit")
+add_game_options_main_local_player_two_name_path = NodePath("TabContainer/Main/CenterContainer/VBoxContainer/LineEdit2")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -231.0
+margin_top = -421.0
+margin_right = 1689.0
+margin_bottom = 1388.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 1.0
@@ -39,10 +67,7 @@ __meta__ = {
 [node name="Main" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 24.0
 
 [node name="CenterContainer" type="CenterContainer" parent="TabContainer/Main"]
 anchor_right = 1.0
@@ -53,9 +78,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Main/CenterContainer"]
-margin_left = 441.0
+margin_left = 445.0
 margin_top = 83.0
-margin_right = 575.0
+margin_right = 579.0
 margin_bottom = 243.0
 custom_constants/separation = 10
 
@@ -175,16 +200,16 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Account/CenterContainer4"]
-margin_left = 436.0
+margin_left = 412.0
 margin_top = 156.0
-margin_right = 580.0
+margin_right = 603.0
 margin_bottom = 170.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Account/CenterContainer4/VBoxContainer"]
 margin_right = 96.0
 margin_bottom = 14.0
-text = "Account settings here."
+text = "Account feature coming soon."
 
 [node name="Customization" type="Tabs" parent="TabContainer"]
 visible = false
