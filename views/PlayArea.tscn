@@ -103,7 +103,6 @@ margin_bottom = 475.0
 text = "Return"
 
 [node name="TimerOverlay" type="Control" parent="Rotation/Camera"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -112,6 +111,7 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="Rotation/Camera/TimerOverlay"]
 script = ExtResource( 14 )
+_count = 5
 
 [node name="TimerLabel" type="RichTextLabel" parent="Rotation/Camera/TimerOverlay/Timer"]
 margin_right = 65.0

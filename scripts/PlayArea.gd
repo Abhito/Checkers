@@ -19,7 +19,7 @@ var currentPos
 var currentTurn = true
 var turnTimer = true
 var turnCount = 1
-var oldCount = 0
+var oldCount = 1
 var cameraFOV = ConfigController.cameraFOV
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
@@ -137,6 +137,8 @@ func nextTurn():
 		piece.turnToggle()
 	turnProcessing = true
 	turnCount = turnCount + 1
+	if turnTimer:
+		getTimer.reset()
 	
 func destroy(playerpiece, color):
 	if color:
@@ -162,6 +164,5 @@ func _process(delta):
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
-	if oldCount == turnCount:
+	if getTimer._count == 0:
 		nextTurn()
-	var oldcount = turnCount
