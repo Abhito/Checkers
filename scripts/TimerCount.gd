@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 func _on_timeout() -> void:
 	emit_signal("counted_down", _count)
-	$TimerLabel.text = str(_count)
+	$RTU.text = str(_count)
 	_count -= 1
 	if _count < 0:
 		stop()
