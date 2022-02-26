@@ -3,6 +3,8 @@ extends Spatial
 onready var getCam = $Rotation/Camera
 onready var getTimer = $Rotation/Camera/TimerOverlay/Timer
 onready var getTimerLabel = $Rotation/Camera/TimerOverlay/Timer/TimerLabel
+var P1Destroy
+var P2Destroy
 var xCord
 var yCord
 var held_object = null
@@ -34,7 +36,7 @@ func validMove(held_object):
 		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == false:
-				destroy(inbetween.checkerPresent)
+				destroy(inbetween.checkerPresent, true)
 				print("Blue piece in between")
 				return true
 			print("this move is invalid because it went too far")
@@ -49,9 +51,13 @@ func validMove(held_object):
 		if currentPos[0] > held_object.get_X():
 			print("this move is invalid because you went in the wrong direction")
 			return false
-	
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
 			print("this move is invalid because it went too far")
+			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
+			if inbetween.checkerColor == true:
+				destroy(inbetween.checkerPresent, false)
+				print("Orange piece in between")
+				return true
 			return false
 		else:
 			print("this move is valid")
@@ -68,6 +74,8 @@ func _ready():
 	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
+	P1Destroy = (($ChessBoard/P1Holder).get_global_transform().origin + Vector3(0,1,0))
+	P2Destroy = (($ChessBoard/P2Holder).get_global_transform().origin + Vector3(0,1,0))
 	#Set settings according to settings menu
 	#Set camera tilt
 	#getCam.rotate_z(this)
@@ -90,8 +98,9 @@ func _unhandled_input(event):
 				AudioManager.play("res://sounds/CheckerPlace.mp3")
 				held_object.drop(find_closest(held_object).get_global_transform().origin)
 				held_object = null
-	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
-		nextTurn()
+				nextTurn()
+#	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
+#		nextTurn()
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
 		get_node("Rotation/Camera/Pause").visible = true
 
@@ -129,8 +138,19 @@ func nextTurn():
 	turnProcessing = true
 	turnCount = turnCount + 1
 	
-func destroy(playerpiece):
-	print("Remove this player piece: ", playerpiece)
+func destroy(playerpiece, color):
+	if color:
+		playerpiece.MODE_RIGID
+		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
+		playerpiece.global_transform.origin = Vector3(P2Destroy)
+		P2Destroy = P2Destroy + Vector3(0, 1, 0)
+		playerpiece.interactable = false
+	else:
+		playerpiece.MODE_RIGID
+		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
+		playerpiece.global_transform.origin = Vector3(P1Destroy)
+		P1Destroy = P1Destroy + Vector3(0, 1, 0)
+		playerpiece.interactable = false
 
 func _process(delta):
 	if turnProcessing == true:
