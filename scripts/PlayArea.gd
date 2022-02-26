@@ -31,8 +31,12 @@ func validMove(held_object):
 		if currentPos[0] < held_object.get_X():
 			print("this move is invalid because you went in the wrong direction")
 			return false
-	
 		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
+			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
+			if inbetween.checkerColor == false:
+				destroy(inbetween.checkerPresent)
+				print("Blue piece in between")
+				return true
 			print("this move is invalid because it went too far")
 			return false
 		else:
@@ -84,7 +88,7 @@ func _unhandled_input(event):
 				held_object = null
 			else:
 				AudioManager.play("res://sounds/CheckerPlace.mp3")
-				held_object.drop(find_closest(held_object))
+				held_object.drop(find_closest(held_object).get_global_transform().origin)
 				held_object = null
 	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 		nextTurn()
@@ -96,7 +100,7 @@ func _notification(isfocus):
 	if isfocus == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		print("Focus Lost")
 		if held_object:
-			held_object.drop(find_closest(held_object))
+			held_object.drop(find_closest(held_object).get_global_transform().origin)
 #
 func find_closest(piece):
 	var position = piece.get_global_transform().origin
@@ -106,7 +110,17 @@ func find_closest(piece):
 		var compare = (grid.get_global_transform().origin).distance_to(position)
 		if compare < smallest:
 			smallest = compare
-			returnGrid = grid.get_global_transform().origin
+			returnGrid = grid
+	return returnGrid
+	
+func grid_find(loc):
+	var smallest = 1000
+	var returnGrid
+	for grid in grids:
+		var compare = (grid.get_global_transform().origin).distance_to(loc)
+		if compare < smallest:
+			smallest = compare
+			returnGrid = grid
 	return returnGrid
 
 func nextTurn():
@@ -115,6 +129,8 @@ func nextTurn():
 	turnProcessing = true
 	turnCount = turnCount + 1
 	
+func destroy(playerpiece):
+	print("Remove this player piece: ", playerpiece)
 
 func _process(delta):
 	if turnProcessing == true:

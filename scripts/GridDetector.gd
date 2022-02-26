@@ -11,7 +11,7 @@ func _ready():
 
 func _on_Area_body_entered(body):
 	checkerPresent = body
-	if checkerPresent.playerOwner:
+	if checkerPresent.color:
 		checkerColor = true
 	else:
 		checkerColor = false
