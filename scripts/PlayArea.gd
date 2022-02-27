@@ -32,11 +32,12 @@ func validMove(held_object):
 	
 	#orange piece
 	if held_object.get_Color() == true:
-		if held_object.get_X() <= -6:
-			held_object.make_King()
 		#wrong direction case
 		if currentPos[0] < held_object.get_X():
 			print("this move is invalid because you went in the wrong direction")
+			return false
+		elif currentPos[0] + (-held_object.get_X()) >= 4.5:
+			print("This move is too far")
 			return false
 		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
@@ -52,11 +53,12 @@ func validMove(held_object):
 	
 	#blue piece
 	else:
-		if held_object.get_X() >= 6:
-			held_object.make_King()
 		#wrong direction case
 		if currentPos[0] > held_object.get_X():
 			print("this move is invalid because you went in the wrong direction")
+			return false
+		elif (-currentPos[0]) + held_object.get_X() >= 4.5:
+			print("This move is too far")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
 			print("this move is invalid because it went too far")
@@ -75,7 +77,10 @@ func kingValidMove(held_object):
 	
 	if held_object.get_Color() == true:
 		#wrong direction case
-		if (currentPos[0] + (-held_object.get_X()) >= 3.0) || ((-currentPos[0]) + held_object.get_X() >= 3.0):
+		if (currentPos[0] + (-held_object.get_X()) >= 4.5) || ((-currentPos[0]) + held_object.get_X() >= 4.5):
+			print("This move is too far")
+			return false
+		elif (currentPos[0] + (-held_object.get_X()) >= 3.0) || ((-currentPos[0]) + held_object.get_X() >= 3.0):
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == false:
 				destroy(inbetween.checkerPresent, true)
@@ -90,7 +95,10 @@ func kingValidMove(held_object):
 	#blue piece
 	else:
 		#wrong direction case
-		if ((-currentPos[0]) + held_object.get_X() >= 3.0) || (currentPos[0] + (-held_object.get_X()) >= 3.0):
+		if ((-currentPos[0]) + held_object.get_X() >= 4.5) || (currentPos[0] + (-held_object.get_X()) >= 4.5):
+			print("This move is too far")
+			return false
+		elif ((-currentPos[0]) + held_object.get_X() >= 3.0) || (currentPos[0] + (-held_object.get_X()) >= 3.0):
 			print("this move is invalid because it went too far")
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == true:
@@ -137,6 +145,12 @@ func _unhandled_input(event):
 			else:
 				AudioManager.play("res://sounds/CheckerPlace.mp3")
 				held_object.drop(find_closest(held_object).get_global_transform().origin)
+				if held_object.get_Color():
+					if held_object.get_X() <= -6:
+						held_object.make_King()
+				else:
+					if held_object.get_X() >= 6:
+						held_object.make_King()
 				held_object = null
 				nextTurn()
 #	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
