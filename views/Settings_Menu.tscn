@@ -4,6 +4,7 @@
 [ext_resource path="res://scripts/Settings_Menu_Script.gd" type="Script" id=2]
 [ext_resource path="res://menu_images/wood-gaaad74975_1920.jpg" type="Texture" id=3]
 [ext_resource path="res://scripts/CameraValue.gd" type="Script" id=4]
+[ext_resource path="res://images/ui_images/slider/sliderbar.tres" type="StyleBox" id=5]
 
 [sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.349727, 0.928962 )
@@ -65,6 +66,7 @@ __meta__ = {
 }
 
 [node name="Main" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 24.0
@@ -212,7 +214,6 @@ margin_bottom = 14.0
 text = "Account feature coming soon."
 
 [node name="Customization" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -248,9 +249,10 @@ __meta__ = {
 }
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value"]
-margin_left = -216.0
-margin_right = -6.0
-margin_bottom = 16.0
+margin_left = -217.0
+margin_right = -7.0
+margin_bottom = 42.0
+custom_styles/slider = ExtResource( 5 )
 min_value = 60.0
 value = 60.0
 __meta__ = {

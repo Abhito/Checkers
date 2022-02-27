@@ -1,8 +1,12 @@
 extends Spatial
 
 onready var getCam = $Rotation/Camera
-onready var getTimer = $Rotation/Camera/TimerOverlay/Timer
-onready var getTimerLabel = $Rotation/Camera/TimerOverlay/Timer/TimerLabel
+onready var getTimer = $Rotation/Camera/GameInformation/Timer
+onready var getTimerLabel = $Rotation/Camera/GameInformation/Timer/RTU
+onready var getTurnLabel = $Rotation/Camera/GameInformation/TCU
+onready var getPieceLabel = $Rotation/Camera/GameInformation/PPU
+var P1removed
+var P2removed
 var P1Destroy
 var P2Destroy
 var xCord
@@ -19,7 +23,7 @@ var currentPos
 var currentTurn = true
 var turnTimer = true
 var turnCount = 1
-var oldCount = 0
+var oldCount = 1
 var cameraFOV = ConfigController.cameraFOV
 #onready var noIntercept = get_tree().get_nodes_in_group("PlayerPieces")
 
@@ -37,6 +41,7 @@ func validMove(held_object):
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == false:
 				destroy(inbetween.checkerPresent, true)
+				P2removed = P2removed + 1
 				print("Blue piece in between")
 				return true
 			print("this move is invalid because it went too far")
@@ -56,6 +61,7 @@ func validMove(held_object):
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == true:
 				destroy(inbetween.checkerPresent, false)
+				P1removed = P1removed + 1
 				print("Orange piece in between")
 				return true
 			return false
@@ -76,12 +82,11 @@ func _ready():
 		getTimer.start()
 	P1Destroy = (($ChessBoard/P1Holder).get_global_transform().origin + Vector3(0,1,0))
 	P2Destroy = (($ChessBoard/P2Holder).get_global_transform().origin + Vector3(0,1,0))
-	#Set settings according to settings menu
-	#Set camera tilt
-	#getCam.rotate_z(this)
-	#Set FOV
-	#getCam.
-	#Set Background
+	getTurnLabel.text = str(turnCount)
+	getPieceLabel.text = str(0)
+	getTimerLabel.text = str(30)
+	P1removed = 0
+	P2removed = 0
 	
 func _on_pickable_clicked(object):
 	if !held_object:
@@ -133,10 +138,21 @@ func grid_find(loc):
 	return returnGrid
 
 func nextTurn():
+	if currentTurn:
+		currentTurn = false
+	else:
+		currentTurn = true
 	for piece in player_pieces:
 		piece.turnToggle()
 	turnProcessing = true
 	turnCount = turnCount + 1
+	getTurnLabel.text = str(turnCount)
+	if currentTurn:
+		getPieceLabel.text = str(P2removed)
+	else:
+		getPieceLabel.text = str(P1removed)
+	if turnTimer:
+		getTimer.reset()
 	
 func destroy(playerpiece, color):
 	if color:
@@ -162,6 +178,5 @@ func _process(delta):
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
-	if oldCount == turnCount:
+	if getTimer._count == 0:
 		nextTurn()
-	var oldcount = turnCount
