@@ -27,8 +27,13 @@ var cameraFOV = ConfigController.cameraFOV
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
+	if held_object.get_King() == true:
+		return kingValidMove(held_object)
+	
 	#orange piece
 	if held_object.get_Color() == true:
+		if held_object.get_X() <= -6:
+			held_object.make_King()
 		#wrong direction case
 		if currentPos[0] < held_object.get_X():
 			print("this move is invalid because you went in the wrong direction")
@@ -47,6 +52,8 @@ func validMove(held_object):
 	
 	#blue piece
 	else:
+		if held_object.get_X() >= 6:
+			held_object.make_King()
 		#wrong direction case
 		if currentPos[0] > held_object.get_X():
 			print("this move is invalid because you went in the wrong direction")
@@ -62,6 +69,39 @@ func validMove(held_object):
 		else:
 			print("this move is valid")
 			return true
+			
+			
+func kingValidMove(held_object):
+	
+	if held_object.get_Color() == true:
+		#wrong direction case
+		if (currentPos[0] + (-held_object.get_X()) >= 3.0) || ((-currentPos[0]) + held_object.get_X() >= 3.0):
+			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
+			if inbetween.checkerColor == false:
+				destroy(inbetween.checkerPresent, true)
+				print("Blue piece in between")
+				return true
+			print("this move is invalid because it went too far")
+			return false
+		else:
+			print("this move is valid")
+			return true
+	
+	#blue piece
+	else:
+		#wrong direction case
+		if ((-currentPos[0]) + held_object.get_X() >= 3.0) || (currentPos[0] + (-held_object.get_X()) >= 3.0):
+			print("this move is invalid because it went too far")
+			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
+			if inbetween.checkerColor == true:
+				destroy(inbetween.checkerPresent, false)
+				print("Orange piece in between")
+				return true
+			return false
+		else:
+			print("this move is valid")
+			return true
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -140,13 +180,13 @@ func nextTurn():
 	
 func destroy(playerpiece, color):
 	if color:
-		playerpiece.MODE_RIGID
+		#playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
-		playerpiece.MODE_RIGID
+		#playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
 		P1Destroy = P1Destroy + Vector3(0, 1, 0)
@@ -165,3 +205,5 @@ func _on_Timer_timeout():
 	if oldCount == turnCount:
 		nextTurn()
 	var oldcount = turnCount
+	
+
