@@ -115,10 +115,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Rotation/Camera/GameInformation"]
-margin_left = -2.0
-margin_top = 4.0
+margin_left = -17.0
+margin_top = 20.0
 margin_right = 153.0
-margin_bottom = 211.0
+margin_bottom = 114.0
 texture = ExtResource( 13 )
 expand = true
 __meta__ = {
@@ -127,9 +127,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="Rotation/Camera/GameInformation/TextureRect"]
 margin_left = 14.0
-margin_top = 25.0
-margin_right = 139.0
-margin_bottom = 159.0
+margin_top = 10.0
+margin_right = 157.0
+margin_bottom = 83.0
 texture = ExtResource( 15 )
 expand = true
 flip_v = true
@@ -138,10 +138,10 @@ __meta__ = {
 }
 
 [node name="TCL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 19.0
-margin_top = 37.0
-margin_right = 96.0
-margin_bottom = 53.0
+margin_left = 7.0
+margin_top = 40.0
+margin_right = 84.0
+margin_bottom = 56.0
 rect_scale = Vector2( 0.9, 0.9 )
 text = "Turn Count:"
 __meta__ = {
@@ -149,15 +149,15 @@ __meta__ = {
 }
 
 [node name="TCU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 92.0
-margin_top = 35.0
-margin_right = 120.0
-margin_bottom = 51.0
+margin_left = 77.0
+margin_top = 38.0
+margin_right = 105.0
+margin_bottom = 54.0
 
 [node name="PPL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 19.0
+margin_left = 7.0
 margin_top = 59.0
-margin_right = 136.0
+margin_right = 124.0
 margin_bottom = 75.0
 rect_scale = Vector2( 0.9, 0.9 )
 text = "Pieces Captured:"
@@ -166,19 +166,19 @@ __meta__ = {
 }
 
 [node name="PPU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 118.0
-margin_top = 58.0
-margin_right = 137.0
-margin_bottom = 74.0
+margin_left = 106.0
+margin_top = 57.0
+margin_right = 125.0
+margin_bottom = 73.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RTL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 25.0
-margin_top = 89.0
-margin_right = 142.0
-margin_bottom = 105.0
+margin_left = 7.0
+margin_top = 79.0
+margin_right = 124.0
+margin_bottom = 95.0
 rect_scale = Vector2( 0.9, 0.9 )
 text = "Time Remaining:"
 __meta__ = {
@@ -189,11 +189,10 @@ __meta__ = {
 script = ExtResource( 14 )
 
 [node name="RTU" type="RichTextLabel" parent="Rotation/Camera/GameInformation/Timer"]
-margin_left = 923.0
-margin_top = 109.0
-margin_right = 940.0
-margin_bottom = 124.0
-rect_scale = Vector2( 2, 2 )
+margin_left = 976.0
+margin_top = 77.0
+margin_right = 998.0
+margin_bottom = 94.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
