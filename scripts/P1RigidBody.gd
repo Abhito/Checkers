@@ -61,6 +61,9 @@ func turnToggle():
 func get_X():
 	return xCord
 	
+func get_Y():
+	return yCord
+	
 func get_Color():
 	return color
 

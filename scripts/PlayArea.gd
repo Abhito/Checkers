@@ -33,10 +33,10 @@ func validMove(held_object):
 	#orange piece
 	if held_object.get_Color() == true:
 		#wrong direction case
-		if currentPos[0] < held_object.get_X():
+		if currentPos[0] < held_object.get_X() || currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you went in the wrong direction")
 			return false
-		elif currentPos[0] + (-held_object.get_X()) >= 4.5:
+		elif currentPos[0] + (-held_object.get_X()) >= 4.5 || currentPos[2] - held_object.get_Y() >= 4.5 || (-currentPos[2]) + held_object.get_Y() >=4.5:
 			print("This move is too far")
 			return false
 		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
@@ -54,10 +54,10 @@ func validMove(held_object):
 	#blue piece
 	else:
 		#wrong direction case
-		if currentPos[0] > held_object.get_X():
+		if currentPos[0] > held_object.get_X() || currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you went in the wrong direction")
 			return false
-		elif (-currentPos[0]) + held_object.get_X() >= 4.5:
+		elif (-currentPos[0]) + held_object.get_X() >= 4.5 || currentPos[2] - held_object.get_Y() >= 4.5 || (-currentPos[2]) + held_object.get_Y() >=4.5:
 			print("This move is too far")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
@@ -77,7 +77,13 @@ func kingValidMove(held_object):
 	
 	if held_object.get_Color() == true:
 		#wrong direction case
-		if (currentPos[0] + (-held_object.get_X()) >= 4.5) || ((-currentPos[0]) + held_object.get_X() >= 4.5):
+		if currentPos[2] == held_object.get_Y():
+			print("this move is invalid because you didn't move foward")
+			return false
+		elif ((currentPos[0] + (-held_object.get_X()) >= 4.5) || 
+			((-currentPos[0]) + held_object.get_X() >= 4.5) || 
+			currentPos[2] - held_object.get_Y() >= 4.5 || 
+			(-currentPos[2]) + held_object.get_Y() >=4.5):
 			print("This move is too far")
 			return false
 		elif (currentPos[0] + (-held_object.get_X()) >= 3.0) || ((-currentPos[0]) + held_object.get_X() >= 3.0):
@@ -95,7 +101,13 @@ func kingValidMove(held_object):
 	#blue piece
 	else:
 		#wrong direction case
-		if ((-currentPos[0]) + held_object.get_X() >= 4.5) || (currentPos[0] + (-held_object.get_X()) >= 4.5):
+		if currentPos[2] == held_object.get_Y():
+			print("this move is invalid because you didn't move foward")
+			return false
+		elif (((-currentPos[0]) + held_object.get_X() >= 4.7) || 
+			(currentPos[0] + (-held_object.get_X()) >= 4.7) ||
+			currentPos[2] - held_object.get_Y() >= 4.7 || 
+			(-currentPos[2]) + held_object.get_Y() >=4.7):
 			print("This move is too far")
 			return false
 		elif ((-currentPos[0]) + held_object.get_X() >= 3.0) || (currentPos[0] + (-held_object.get_X()) >= 3.0):
@@ -193,14 +205,16 @@ func nextTurn():
 	turnCount = turnCount + 1
 	
 func destroy(playerpiece, color):
+	if playerpiece == null:
+		return
 	if color:
-		#playerpiece.MODE_RIGID
+		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
-		#playerpiece.MODE_RIGID
+		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
 		P1Destroy = P1Destroy + Vector3(0, 1, 0)
