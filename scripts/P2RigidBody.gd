@@ -15,6 +15,7 @@ var turnState = false
 #var piece color
 var color = false
 var interactable = true
+var king = false
 
 func _input_event(_camera, event, _position, _normal, _shape_idx):
 	#Let PlayArea know when piece is clicked
@@ -60,6 +61,9 @@ func turnToggle():
 		
 func get_X():
 	return xCord
+	
+func get_Y():
+	return yCord
 
 func get_Color():
 	return color
@@ -72,3 +76,15 @@ func _on_P2RigidBody_mouse_entered():
 func _on_P2RigidBody_mouse_exited():
 	if turnState == true and interactable:
 		get_node("checker/Area/COutline").visible = false
+		
+func make_King():
+	if king:
+		return
+	var material = SpatialMaterial.new()
+	material.albedo_color = Color(Color.purple)
+	var mesh = get_node("checker")
+	mesh.set_surface_material(0, material)
+	king = true
+	
+func get_King():
+	return king

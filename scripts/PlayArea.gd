@@ -31,11 +31,17 @@ var cameraFOV = ConfigController.cameraFOV
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
+	if held_object.get_King() == true:
+		return kingValidMove(held_object)
+	
 	#orange piece
 	if held_object.get_Color() == true:
 		#wrong direction case
-		if currentPos[0] < held_object.get_X():
+		if currentPos[0] < held_object.get_X() || currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you went in the wrong direction")
+			return false
+		elif currentPos[0] + (-held_object.get_X()) >= 4.5 || currentPos[2] - held_object.get_Y() >= 4.5 || (-currentPos[2]) + held_object.get_Y() >=4.5:
+			print("This move is too far")
 			return false
 		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
@@ -53,8 +59,11 @@ func validMove(held_object):
 	#blue piece
 	else:
 		#wrong direction case
-		if currentPos[0] > held_object.get_X():
+		if currentPos[0] > held_object.get_X() || currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you went in the wrong direction")
+			return false
+		elif (-currentPos[0]) + held_object.get_X() >= 4.5 || currentPos[2] - held_object.get_Y() >= 4.5 || (-currentPos[2]) + held_object.get_Y() >=4.5:
+			print("This move is too far")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
 			print("this move is invalid because it went too far")
@@ -68,6 +77,57 @@ func validMove(held_object):
 		else:
 			print("this move is valid")
 			return true
+			
+			
+func kingValidMove(held_object):
+	
+	if held_object.get_Color() == true:
+		#wrong direction case
+		if currentPos[2] == held_object.get_Y():
+			print("this move is invalid because you didn't move foward")
+			return false
+		elif ((currentPos[0] + (-held_object.get_X()) >= 4.5) || 
+			((-currentPos[0]) + held_object.get_X() >= 4.5) || 
+			currentPos[2] - held_object.get_Y() >= 4.5 || 
+			(-currentPos[2]) + held_object.get_Y() >=4.5):
+			print("This move is too far")
+			return false
+		elif (currentPos[0] + (-held_object.get_X()) >= 3.0) || ((-currentPos[0]) + held_object.get_X() >= 3.0):
+			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
+			if inbetween.checkerColor == false:
+				destroy(inbetween.checkerPresent, true)
+				print("Blue piece in between")
+				return true
+			print("this move is invalid because it went too far")
+			return false
+		else:
+			print("this move is valid")
+			return true
+	
+	#blue piece
+	else:
+		#wrong direction case
+		if currentPos[2] == held_object.get_Y():
+			print("this move is invalid because you didn't move foward")
+			return false
+		elif (((-currentPos[0]) + held_object.get_X() >= 4.7) || 
+			(currentPos[0] + (-held_object.get_X()) >= 4.7) ||
+			currentPos[2] - held_object.get_Y() >= 4.7 || 
+			(-currentPos[2]) + held_object.get_Y() >=4.7):
+			print("This move is too far")
+			return false
+		elif ((-currentPos[0]) + held_object.get_X() >= 3.0) || (currentPos[0] + (-held_object.get_X()) >= 3.0):
+			print("this move is invalid because it went too far")
+			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
+			if inbetween.checkerColor == true:
+				destroy(inbetween.checkerPresent, false)
+				print("Orange piece in between")
+				return true
+			return false
+		else:
+			print("this move is valid")
+			return true
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -102,6 +162,12 @@ func _unhandled_input(event):
 			else:
 				AudioManager.play("res://sounds/CheckerPlace.mp3")
 				held_object.drop(find_closest(held_object).get_global_transform().origin)
+				if held_object.get_Color():
+					if held_object.get_X() <= -6:
+						held_object.make_King()
+				else:
+					if held_object.get_X() >= 6:
+						held_object.make_King()
 				held_object = null
 				nextTurn()
 #	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
@@ -155,6 +221,8 @@ func nextTurn():
 		getTimer.reset()
 	
 func destroy(playerpiece, color):
+	if playerpiece == null:
+		return
 	if color:
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
@@ -180,3 +248,6 @@ func _process(delta):
 func _on_Timer_timeout():
 	if getTimer._count == 0:
 		nextTurn()
+	var oldcount = turnCount
+	
+
