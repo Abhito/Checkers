@@ -50,6 +50,7 @@ func drop(destination):
 		mode = RigidBody.MODE_RIGID
 		apply_central_impulse(impulse)
 		global_transform.origin = Vector3(destination) + Vector3(0, 1, 0)
+		get_node("checker/Area/COutline").visible = false
 		held = false
 
 func turnToggle():
