@@ -67,4 +67,3 @@ func _on_Display_Mode_Options_Dropdown_item_selected(index):
 func _on_Music_Slider_value_changed(value):
 	#AudioServer.set_bus_volume_db(0, vol)
 	pass # Replace with function body.
-
