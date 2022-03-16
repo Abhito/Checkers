@@ -10,7 +10,7 @@ func _ready():
 func _print():
 	show()
 	player.play("rotation")
-	yield(get_tree().create_timer(5.0), "timeout")
+	yield(get_tree().create_timer(4.0), "timeout")
 	_invisible()
 
 func _invisible():

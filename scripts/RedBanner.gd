@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = -500
+export (int) var speed = -550
 var velocity = Vector2(1, 0)
 var start = false
 onready var node = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/AnimatedSprite")
