@@ -137,6 +137,8 @@ func _ready():
 		grids.append(grid)
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
+	_intro()
+	yield(get_tree().create_timer(7.0), "timeout")
 	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
@@ -249,5 +251,19 @@ func _on_Timer_timeout():
 	if getTimer._count == 0:
 		nextTurn()
 	var oldcount = turnCount
+	
+func _intro():
+	var orange_pieces = Array()
+	for piece in get_tree().get_nodes_in_group("OrangePieces"):
+		orange_pieces.append(piece)
+	var info = get_tree().get_root().get_node("Game/Rotation/Camera/GameInformation")
+	var rednode = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/RedBanner")
+	var bluenode = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/BlueBanner")
+	rednode._start()
+	bluenode._start()
+	yield(get_tree().create_timer(7.0), "timeout")
+	info.show()
+	for piece in orange_pieces:
+		piece.turnToggle()
 	
 

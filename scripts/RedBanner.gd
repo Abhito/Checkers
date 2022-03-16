@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (int) var speed = -500
 var velocity = Vector2(1, 0)
-var start = true
+var start = false
 onready var node = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/AnimatedSprite")
 
 func _ready():
@@ -16,3 +16,6 @@ func _physics_process(delta):
 			print("I collided with ", collision.collider.name)
 			node._print()
 			start = false
+
+func _start():
+	start = true

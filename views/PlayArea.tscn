@@ -232,6 +232,7 @@ margin_bottom = 475.0
 text = "Return"
 
 [node name="GameInformation" type="Control" parent="Rotation/Camera"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -156.0
@@ -333,7 +334,6 @@ script = ExtResource( 27 )
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Camera/Intro/RedBanner"]
@@ -347,7 +347,6 @@ script = ExtResource( 28 )
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Camera/Intro/BlueBanner"]

@@ -1,10 +1,6 @@
 extends AnimatedSprite
 
-
-# Declare member variables here. Examples:
-var rotate = 10
 onready var player = get_parent().get_node("AnimationPlayer")
-# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
