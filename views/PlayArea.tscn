@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/P1Checker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/P2Checker.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://scripts/RedBanner.gd" type="Script" id=27]
 [ext_resource path="res://scripts/BlueBanner.gd" type="Script" id=28]
 [ext_resource path="res://scripts/versus.gd" type="Script" id=29]
+[ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -268,36 +269,44 @@ __meta__ = {
 [node name="TCL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 7.0
 margin_top = 40.0
-margin_right = 84.0
-margin_bottom = 56.0
+margin_right = 89.0
+margin_bottom = 58.0
 rect_scale = Vector2( 0.9, 0.9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 text = "Turn Count:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TCU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 77.0
-margin_top = 38.0
-margin_right = 105.0
-margin_bottom = 54.0
+margin_left = 81.0
+margin_top = 40.0
+margin_right = 109.0
+margin_bottom = 59.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 
 [node name="PPL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 7.0
 margin_top = 59.0
 margin_right = 124.0
-margin_bottom = 75.0
+margin_bottom = 79.0
 rect_scale = Vector2( 0.9, 0.9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 text = "Pieces Captured:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PPU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 106.0
-margin_top = 57.0
-margin_right = 125.0
-margin_bottom = 73.0
+margin_left = 112.0
+margin_top = 59.0
+margin_right = 131.0
+margin_bottom = 77.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -305,9 +314,11 @@ __meta__ = {
 [node name="RTL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 7.0
 margin_top = 79.0
-margin_right = 124.0
-margin_bottom = 95.0
+margin_right = 120.0
+margin_bottom = 98.0
 rect_scale = Vector2( 0.9, 0.9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 text = "Time Remaining:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -317,10 +328,12 @@ __meta__ = {
 script = ExtResource( 14 )
 
 [node name="RTU" type="RichTextLabel" parent="Rotation/Camera/GameInformation/Timer"]
-margin_left = 976.0
-margin_top = 77.0
-margin_right = 998.0
-margin_bottom = 94.0
+margin_left = 980.0
+margin_top = 79.0
+margin_right = 1002.0
+margin_bottom = 98.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -334,6 +347,7 @@ script = ExtResource( 27 )
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Camera/Intro/RedBanner"]
@@ -347,6 +361,7 @@ script = ExtResource( 28 )
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Camera/Intro/BlueBanner"]

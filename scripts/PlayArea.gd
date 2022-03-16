@@ -138,7 +138,7 @@ func _ready():
 	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
 		player_pieces.append(piece)
 	_intro()
-	yield(get_tree().create_timer(7.0), "timeout")
+	yield(get_tree().create_timer(6.0), "timeout")
 	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
@@ -261,7 +261,7 @@ func _intro():
 	var bluenode = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/BlueBanner")
 	rednode._start()
 	bluenode._start()
-	yield(get_tree().create_timer(7.0), "timeout")
+	yield(get_tree().create_timer(6.0), "timeout")
 	info.show()
 	for piece in orange_pieces:
 		piece.turnToggle()
