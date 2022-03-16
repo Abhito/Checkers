@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/P1Checker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/P2Checker.tscn" type="PackedScene" id=2]
@@ -15,6 +15,133 @@
 [ext_resource path="res://images/ui_images/panel/panel_brown.png" type="Texture" id=13]
 [ext_resource path="res://scripts/TimerCount.gd" type="Script" id=14]
 [ext_resource path="res://images/ui_images/panel/panelInset_beige.png" type="Texture" id=15]
+[ext_resource path="res://images/intro_images/versusorange2.png" type="Texture" id=16]
+[ext_resource path="res://images/intro_images/versusorange1.png" type="Texture" id=17]
+[ext_resource path="res://images/intro_images/versusorange3.png" type="Texture" id=18]
+[ext_resource path="res://images/intro_images/versus4.png" type="Texture" id=19]
+[ext_resource path="res://images/intro_images/versusblue2.png" type="Texture" id=20]
+[ext_resource path="res://images/intro_images/versus1.png" type="Texture" id=21]
+[ext_resource path="res://images/intro_images/versusblue3.png" type="Texture" id=22]
+[ext_resource path="res://images/intro_images/versus2.png" type="Texture" id=23]
+[ext_resource path="res://images/intro_images/versus0.png" type="Texture" id=24]
+[ext_resource path="res://images/intro_images/versus3.png" type="Texture" id=25]
+[ext_resource path="res://images/intro_images/versusblue1.png" type="Texture" id=26]
+[ext_resource path="res://scripts/RedBanner.gd" type="Script" id=27]
+[ext_resource path="res://scripts/BlueBanner.gd" type="Script" id=28]
+[ext_resource path="res://scripts/versus.gd" type="Script" id=29]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 256.5, 81 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 256, 80 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "animate",
+"speed": 7.0
+} ]
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "default" ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "rotation"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ), Vector2( 0.53, 0.53 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "default", "animate" ]
+}
 
 [sub_resource type="BoxShape" id=3]
 
@@ -196,6 +323,50 @@ margin_bottom = 94.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Intro" type="Node2D" parent="Rotation/Camera"]
+
+[node name="RedBanner" type="KinematicBody2D" parent="Rotation/Camera/Intro"]
+script = ExtResource( 27 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Rotation/Camera/Intro/RedBanner"]
+position = Vector2( 1280, 249 )
+scale = Vector2( 0.533, 0.53 )
+frames = SubResource( 4 )
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Camera/Intro/RedBanner"]
+position = Vector2( 1279.5, 249 )
+shape = SubResource( 5 )
+
+[node name="BlueBanner" type="KinematicBody2D" parent="Rotation/Camera/Intro"]
+script = ExtResource( 28 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Rotation/Camera/Intro/BlueBanner"]
+position = Vector2( -256, 249 )
+scale = Vector2( 0.533, 0.53 )
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Camera/Intro/BlueBanner"]
+position = Vector2( -256, 248 )
+shape = SubResource( 7 )
+
+[node name="Versus" type="Node2D" parent="Rotation/Camera/Intro"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Rotation/Camera/Intro/Versus"]
+visible = false
+position = Vector2( 512, 249 )
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 8 )
+playing = true
+script = ExtResource( 29 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotation/Camera/Intro/Versus"]
+anims/RESET = SubResource( 9 )
+anims/rotation = SubResource( 10 )
 
 [node name="ChessBoard" parent="." instance=ExtResource( 4 )]
 
