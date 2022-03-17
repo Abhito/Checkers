@@ -165,7 +165,31 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../..:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 9.5, 15, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../..:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -60, 90, 0 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -279,6 +303,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("../..:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 20, 20, 20 ), Vector3( 9.5, 15, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../..:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -60, 90, 0 ) ]
+}
 
 [sub_resource type="BoxShape" id=3]
 
@@ -369,6 +417,7 @@ margin_bottom = 475.0
 text = "Return"
 
 [node name="GameInformation" type="Control" parent="Rotation/Camera"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -156.0
@@ -497,7 +546,7 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]
