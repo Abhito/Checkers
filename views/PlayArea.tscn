@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/P1Checker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/P2Checker.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://images/intro_images/versus0.png" type="Texture" id=24]
 [ext_resource path="res://images/intro_images/versus3.png" type="Texture" id=25]
 [ext_resource path="res://images/intro_images/versusblue1.png" type="Texture" id=26]
+[ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
 
 [sub_resource type="SpriteFrames" id=4]
@@ -36,6 +37,10 @@ animations = [ {
 "speed": 6.0
 } ]
 
+[sub_resource type="DynamicFont" id=11]
+size = 45
+font_data = ExtResource( 27 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 22 ) ],
@@ -43,6 +48,10 @@ animations = [ {
 "name": "default",
 "speed": 6.0
 } ]
+
+[sub_resource type="DynamicFont" id=12]
+size = 45
+font_data = ExtResource( 27 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
@@ -530,14 +539,16 @@ __meta__ = {
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
-margin_left = 60.0376
-margin_top = 43.3962
-margin_right = 336.038
-margin_bottom = 98.3962
+margin_left = 60.0
+margin_top = 43.0
+margin_right = 360.0
+margin_bottom = 103.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 11 )
+text = "Player 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -546,14 +557,16 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]
-margin_left = -315.197
-margin_top = 43.3962
-margin_right = -39.197
-margin_bottom = 98.3962
+margin_left = -315.0
+margin_top = 43.0
+margin_right = -39.0
+margin_bottom = 103.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 12 )
+text = "Player 2"
 __meta__ = {
 "_edit_use_anchors_": false
 }

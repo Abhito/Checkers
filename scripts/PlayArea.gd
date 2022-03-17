@@ -254,6 +254,10 @@ func _on_Timer_timeout():
 	
 func _intro():
 	var orange_pieces = Array()
+	var player1 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/red/PlayerName")
+	player1.text = ConfigController.getLocalPlayerOneName()
+	var player2 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/blue/PlayerName2")
+	player2.text = ConfigController.getLocalPlayerTwoName()
 	for piece in get_tree().get_nodes_in_group("OrangePieces"):
 		orange_pieces.append(piece)
 	var intro = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/AnimationPlayer")
