@@ -256,13 +256,9 @@ func _intro():
 	var orange_pieces = Array()
 	for piece in get_tree().get_nodes_in_group("OrangePieces"):
 		orange_pieces.append(piece)
-	var info = get_tree().get_root().get_node("Game/Rotation/Camera/GameInformation")
-	var rednode = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/RedBanner")
-	var bluenode = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/BlueBanner")
-	rednode._start()
-	bluenode._start()
+	var intro = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/AnimationPlayer")
+	intro.play("rotation")
 	yield(get_tree().create_timer(5.0), "timeout")
-	info.show()
 	for piece in orange_pieces:
 		piece.turnToggle()
 	
