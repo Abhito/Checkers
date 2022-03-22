@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/P1Checker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/P2Checker.tscn" type="PackedScene" id=2]
@@ -15,6 +15,369 @@
 [ext_resource path="res://images/ui_images/panel/panel_brown.png" type="Texture" id=13]
 [ext_resource path="res://scripts/TimerCount.gd" type="Script" id=14]
 [ext_resource path="res://images/ui_images/panel/panelInset_beige.png" type="Texture" id=15]
+[ext_resource path="res://images/intro_images/versusorange2.png" type="Texture" id=16]
+[ext_resource path="res://images/intro_images/versusorange1.png" type="Texture" id=17]
+[ext_resource path="res://images/intro_images/versusorange3.png" type="Texture" id=18]
+[ext_resource path="res://images/intro_images/versus4.png" type="Texture" id=19]
+[ext_resource path="res://images/intro_images/versusblue2.png" type="Texture" id=20]
+[ext_resource path="res://images/intro_images/versus1.png" type="Texture" id=21]
+[ext_resource path="res://images/intro_images/versusblue3.png" type="Texture" id=22]
+[ext_resource path="res://images/intro_images/versus2.png" type="Texture" id=23]
+[ext_resource path="res://images/intro_images/versus0.png" type="Texture" id=24]
+[ext_resource path="res://images/intro_images/versus3.png" type="Texture" id=25]
+[ext_resource path="res://images/intro_images/versusblue1.png" type="Texture" id=26]
+[ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=27]
+[ext_resource path="res://sounds/versus.mp3" type="AudioStream" id=28]
+[ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="DynamicFont" id=11]
+size = 45
+font_data = ExtResource( 27 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="DynamicFont" id=12]
+size = 45
+font_data = ExtResource( 27 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "animate",
+"speed": 7.0
+} ]
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("versus:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("versus:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("versus:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "default" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("red:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 249 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("versus:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -256, 249 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("red:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("blue:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../GameInformation:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../..:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 9.5, 15, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../..:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -60, 90, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -22.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "rotation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("versus:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("versus:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.15, 0.15 ), Vector2( 0.53, 0.53 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("versus:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "default", "animate" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("red:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1280, 249 ), Vector2( 768, 249 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("versus:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -256, 249 ), Vector2( 256, 249 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("red:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("blue:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../GameInformation:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../..:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 20, 20, 20 ), Vector3( 9.5, 15, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../..:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -60, 90, 0 ) ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("AudioStreamPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -22.0, -22.0, -40.0 ]
+}
 
 [sub_resource type="BoxShape" id=3]
 
@@ -105,6 +468,7 @@ margin_bottom = 475.0
 text = "Return"
 
 [node name="GameInformation" type="Control" parent="Rotation/Camera"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -156.0
@@ -140,36 +504,44 @@ __meta__ = {
 [node name="TCL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 7.0
 margin_top = 40.0
-margin_right = 84.0
-margin_bottom = 56.0
+margin_right = 89.0
+margin_bottom = 58.0
 rect_scale = Vector2( 0.9, 0.9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 text = "Turn Count:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TCU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 77.0
-margin_top = 38.0
-margin_right = 105.0
-margin_bottom = 54.0
+margin_left = 81.0
+margin_top = 40.0
+margin_right = 109.0
+margin_bottom = 59.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 
 [node name="PPL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 7.0
 margin_top = 59.0
 margin_right = 124.0
-margin_bottom = 75.0
+margin_bottom = 79.0
 rect_scale = Vector2( 0.9, 0.9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 text = "Pieces Captured:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PPU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
-margin_left = 106.0
-margin_top = 57.0
-margin_right = 125.0
-margin_bottom = 73.0
+margin_left = 112.0
+margin_top = 59.0
+margin_right = 131.0
+margin_bottom = 77.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -177,9 +549,11 @@ __meta__ = {
 [node name="RTL" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 7.0
 margin_top = 79.0
-margin_right = 124.0
-margin_bottom = 95.0
+margin_right = 120.0
+margin_bottom = 98.0
 rect_scale = Vector2( 0.9, 0.9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 text = "Time Remaining:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -189,13 +563,70 @@ __meta__ = {
 script = ExtResource( 14 )
 
 [node name="RTU" type="RichTextLabel" parent="Rotation/Camera/GameInformation/Timer"]
-margin_left = 976.0
-margin_top = 77.0
-margin_right = 998.0
-margin_bottom = 94.0
+margin_left = 980.0
+margin_top = 79.0
+margin_right = 1002.0
+margin_bottom = 98.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Intro" type="Node2D" parent="Rotation/Camera"]
+
+[node name="Versus" type="Node2D" parent="Rotation/Camera/Intro"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Rotation/Camera/Intro/Versus"]
+stream = ExtResource( 28 )
+volume_db = -22.0
+
+[node name="red" type="AnimatedSprite" parent="Rotation/Camera/Intro/Versus"]
+position = Vector2( 1280, 249 )
+scale = Vector2( 0.533, 0.53 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
+margin_left = 60.0
+margin_top = 43.0
+margin_right = 360.0
+margin_bottom = 103.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 11 )
+text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blue" type="AnimatedSprite" parent="Rotation/Camera/Intro/Versus"]
+position = Vector2( -256, 249 )
+scale = Vector2( 0.533, 0.53 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]
+margin_left = -315.0
+margin_top = 43.0
+margin_right = -39.0
+margin_bottom = 103.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 12 )
+text = "Player 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="versus" type="AnimatedSprite" parent="Rotation/Camera/Intro/Versus"]
+visible = false
+position = Vector2( 512, 249 )
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 8 )
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotation/Camera/Intro/Versus"]
+anims/RESET = SubResource( 9 )
+anims/rotation = SubResource( 10 )
 
 [node name="ChessBoard" parent="." instance=ExtResource( 4 )]
 
