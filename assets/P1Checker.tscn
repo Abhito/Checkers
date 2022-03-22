@@ -36,7 +36,7 @@ surfaces/0 = {
 
 [node name="P1Checker" type="Spatial"]
 
-[node name="P1RigidBody" type="RigidBody" parent="." groups=["PlayerPieces"]]
+[node name="P1RigidBody" type="RigidBody" parent="." groups=["OrangePieces", "PlayerPieces"]]
 transform = Transform( 1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0 )
 contact_monitor = true
 script = ExtResource( 2 )

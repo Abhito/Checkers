@@ -11,7 +11,7 @@ var held = false
 var playerOwner = true
 var exclusionMap = Array()
 var impulse = Vector3(0, -.5, 0)
-var turnState = true
+var turnState = false
 #var piece color
 var color = true
 var interactable = true
