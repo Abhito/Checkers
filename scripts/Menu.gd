@@ -18,7 +18,7 @@ func _on_Solo_pressed():
 	get_tree().change_scene("res://views/PlayArea.tscn")
 
 func _on_Online_pressed():
-	get_tree().change_scene("res://views/PlayAreaOnline.tscn")
+	get_tree().change_scene("res://views/Lobby.tscn")
 
 func _on_Options_pressed():
 	print("Options Pressed")
