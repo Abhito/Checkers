@@ -26,7 +26,7 @@ func _OnConnectionSucceeded():
 	_myName()
 	
 func _myName():
-	rpc_id(1, "playerName", ConfigController.getLocalPlayerTwoName(), get_instance_id())
+	rpc_id(1, "playerName", ConfigController.getLocalPlayerOneName(), get_instance_id())
 	
 remote func Myturn(turn, player2):
 	myTurn = turn

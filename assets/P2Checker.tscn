@@ -39,7 +39,7 @@ surfaces/0 = {
 
 [node name="P2Checker" type="Spatial"]
 
-[node name="P2RigidBody" type="RigidBody" parent="." groups=["PlayerPieces"]]
+[node name="P2RigidBody" type="RigidBody" parent="." groups=["BluePieces", "PlayerPieces"]]
 script = ExtResource( 2 )
 
 [node name="PhysicsCollision" type="CollisionShape" parent="P2RigidBody"]

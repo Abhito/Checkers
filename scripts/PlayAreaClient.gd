@@ -133,12 +133,22 @@ func kingValidMove(held_object):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for node in get_tree().get_nodes_in_group("PlayerPieces"):
-		node.connect("clicked", self, "_on_pickable_clicked")
+	if(myturn):
+		for node in get_tree().get_nodes_in_group("OrangePieces"):
+			node.connect("clicked", self, "_on_pickable_clicked")
+		for piece in get_tree().get_nodes_in_group("OrangePieces"):
+			player_pieces.append(piece)
+		for piece in player_pieces:
+			piece.turnToggle()
+	else:
+		for node in get_tree().get_nodes_in_group("BluePieces"):
+			node.connect("clicked", self, "_on_pickable_clicked")
+		for piece in get_tree().get_nodes_in_group("BluePieces"):
+			player_pieces.append(piece)
+		turnProcessing = true
+			
 	for grid in get_tree().get_nodes_in_group("ValidGrid"):
 		grids.append(grid)
-	for piece in get_tree().get_nodes_in_group("PlayerPieces"):
-		player_pieces.append(piece)
 	_intro()
 	yield(get_tree().create_timer(5.0), "timeout")
 	#Stub for turn Timer, unfinished
@@ -214,7 +224,6 @@ func nextTurn():
 		currentTurn = true
 	for piece in player_pieces:
 		piece.turnToggle()
-	turnProcessing = true
 	turnCount = turnCount + 1
 	getTurnLabel.text = str(turnCount)
 	if currentTurn:
@@ -261,15 +270,10 @@ func _intro():
 	else:
 		P2Name = ConfigController.getLocalPlayerOneName()
 		P1Name = Server.otherPlayer
-	var orange_pieces = Array()
 	var player1 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/red/PlayerName")
 	player1.text = P1Name
 	var player2 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/blue/PlayerName2")
 	player2.text = P2Name
-	for piece in get_tree().get_nodes_in_group("OrangePieces"):
-		orange_pieces.append(piece)
 	var intro = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/AnimationPlayer")
 	intro.play("rotation")
 	yield(get_tree().create_timer(5.0), "timeout")
-	for piece in orange_pieces:
-		piece.turnToggle()
