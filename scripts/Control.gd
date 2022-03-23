@@ -11,4 +11,5 @@ func _on_Settings_pressed():
 
 
 func _on_Button_pressed():
+	AudioManager.unpauseMusic()
 	visible = false

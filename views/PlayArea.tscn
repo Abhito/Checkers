@@ -586,7 +586,6 @@ volume_db = -22.0
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
@@ -605,7 +604,6 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]
