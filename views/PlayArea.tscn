@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/P1Checker.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/P2Checker.tscn" type="PackedScene" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://images/intro_images/versusblue1.png" type="Texture" id=26]
 [ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://sounds/versus.mp3" type="AudioStream" id=28]
+[ext_resource path="res://views/ArtificialIntelligence.gd" type="Script" id=29]
 [ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
 
 [sub_resource type="SpriteFrames" id=4]
@@ -926,6 +927,9 @@ environment = SubResource( 2 )
 
 [node name="AudioManager" type="Node" parent="."]
 script = ExtResource( 11 )
+
+[node name="ArtificialIntelligence" type="Node" parent="."]
+script = ExtResource( 29 )
 
 [connection signal="pressed" from="Rotation/Camera/Pause/Menu" to="Rotation/Camera/Pause" method="_on_Menu_pressed"]
 [connection signal="pressed" from="Rotation/Camera/Pause/Settings" to="Rotation/Camera/Pause" method="_on_Settings_pressed"]
