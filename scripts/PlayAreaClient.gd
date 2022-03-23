@@ -26,6 +26,9 @@ var turnCount = 1
 var oldCount = 1
 var cameraFOV = ConfigController.cameraFOV
 
+var P1Name
+var P2Name
+var myturn = Server.myTurn
 
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
@@ -252,11 +255,17 @@ func _on_Timer_timeout():
 	var oldcount = turnCount
 	
 func _intro():
+	if(myturn):
+		P1Name = ConfigController.getLocalPlayerOneName()
+		P2Name = Server.otherPlayer
+	else:
+		P2Name = ConfigController.getLocalPlayerOneName()
+		P1Name = Server.otherPlayer
 	var orange_pieces = Array()
 	var player1 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/red/PlayerName")
-	player1.text = ConfigController.getLocalPlayerOneName()
+	player1.text = P1Name
 	var player2 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/blue/PlayerName2")
-	player2.text = ConfigController.getLocalPlayerTwoName()
+	player2.text = P2Name
 	for piece in get_tree().get_nodes_in_group("OrangePieces"):
 		orange_pieces.append(piece)
 	var intro = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/AnimationPlayer")
