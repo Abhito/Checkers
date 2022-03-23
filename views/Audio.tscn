@@ -1,0 +1,50 @@
+[gd_scene format=2]
+
+[node name="Audio" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioContainer" type="CenterContainer" parent="."]
+anchor_right = 0.999
+anchor_bottom = 0.914
+margin_top = 3.0
+margin_right = 0.0239258
+margin_bottom = 0.215973
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioOptions" type="VBoxContainer" parent="AudioContainer"]
+margin_left = 465.0
+margin_top = 214.0
+margin_right = 556.0
+margin_bottom = 308.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="AudioContainer/AudioOptions"]
+margin_right = 91.0
+margin_bottom = 14.0
+text = "Music Volume"
+
+[node name="Music_Slider" type="HSlider" parent="AudioContainer/AudioOptions"]
+margin_top = 24.0
+margin_right = 91.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLabel" type="Label" parent="AudioContainer/AudioOptions"]
+margin_top = 50.0
+margin_right = 91.0
+margin_bottom = 64.0
+
+[node name="MusicButton" type="OptionButton" parent="AudioContainer/AudioOptions"]
+margin_top = 74.0
+margin_right = 91.0
+margin_bottom = 94.0
+toggle_mode = false

@@ -28,7 +28,7 @@
 [ext_resource path="res://images/intro_images/versusblue1.png" type="Texture" id=26]
 [ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://sounds/versus.mp3" type="AudioStream" id=28]
-[ext_resource path="res://views/ArtificialIntelligence.gd" type="Script" id=29]
+[ext_resource path="res://scripts/ArtificialIntelligence.gd" type="Script" id=29]
 [ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
 
 [sub_resource type="SpriteFrames" id=4]
@@ -586,6 +586,7 @@ volume_db = -22.0
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
@@ -604,6 +605,7 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]

@@ -6,7 +6,7 @@ onready var local_player_one_name setget setLocalPlayerOneName, getLocalPlayerOn
 onready var local_player_two_name setget setLocalPlayerTwoName, getLocalPlayerTwoName
 onready var game_mode setget setGameMode, getGameMode
 onready var display_mode setget setDisplayMode, getDisplayMode
-
+onready var music_selection setget setMusic, getMusic
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +19,7 @@ func _ready():
 	local_player_two_name = config.get_value("Settings", "local_player_two_name")
 	game_mode = config.get_value("Settings", "game_mode")
 	display_mode = config.get_value("Settings", "display_mode")
-	
+	music_selection = config.get_value("Settings", "music_selection")
 	print(local_player_one_name)
 	print(local_player_two_name)
 	#print(cameraFOV)
@@ -35,7 +35,9 @@ func updateSettings():
 	updateconfig.set_value("Settings", "local_player_two_name", local_player_two_name)
 	updateconfig.set_value("Settings", "game_mode", game_mode)
 	updateconfig.set_value("Settings", "display_mode", display_mode)
+	updateconfig.set_value("Settings", "music_selection", music_selection)
 	updateconfig.save("res://userconfig.cfg")
+	print(music_selection)
 	#Alternatively can just change this scruipts properties from another function like Controls in the form of ConfigController.cameraFov = 40
 
 #Run if you want to quickly add new catagories/defaults to the cfg, or reset to default values
@@ -46,6 +48,7 @@ func resetConfig():
 	config.set_value("Settings", "local_player_two_name", "Player 2")
 	config.set_value("Settings", "game_mode", "American checkers / English draughts")
 	config.set_value("Settings", "display_mode", "Windowed")
+	config.set_value("Settings", "music_selection", "BraveHeart")
 	config.save("res://userconfig.cfg")
 
 #Should probably be made a global attribute getter
@@ -94,4 +97,13 @@ func getDisplayMode():
 # Display Mode Setter
 func setDisplayMode(value):
 	display_mode = value
+	updateSettings()
+
+# Music Selection Getter
+func getMusic():
+	return music_selection
+
+# Music Selection Setter
+func setMusic(value):
+	music_selection = value
 	updateSettings()

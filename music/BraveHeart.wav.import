@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BraveHeart.wav-cef8113bece2a49636ab2ec8aa60fef2.sample"
+
+[deps]
+
+source_file="res://music/BraveHeart.wav"
+dest_files=[ "res://.import/BraveHeart.wav-cef8113bece2a49636ab2ec8aa60fef2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

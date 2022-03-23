@@ -140,6 +140,8 @@ func _ready():
 		player_pieces.append(piece)
 	_intro()
 	yield(get_tree().create_timer(5.0), "timeout")
+	var musicPath = "res://music/" + ConfigController.music_selection + ".wav"
+	AudioManager.playMusic(musicPath)
 	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
