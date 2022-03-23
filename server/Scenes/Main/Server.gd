@@ -40,3 +40,7 @@ remote func playerName(name, requester):
 func _Start_Game():
 	rpc_id(player1_id, "StartGame")
 	rpc_id(player2_id, "StartGame")
+	
+remote func nextTurn():
+	rpc_id(player1_id, "ReturnTurn", true)
+	rpc_id(player2_id, "ReturnTurn", true)

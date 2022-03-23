@@ -6,6 +6,7 @@ var port = 1909
 
 var myTurn
 var otherPlayer
+var changeTurn
 
 func ready():
 	pass
@@ -35,3 +36,9 @@ remote func Myturn(turn, player2):
 	
 remote func StartGame():
 	get_tree().change_scene("res://views/PlayAreaClient.tscn")
+	
+func sendNextTurn():
+	rpc_id(1, "nextTurn")
+	
+remote func ReturnTurn(turn):
+	changeTurn = turn

@@ -183,7 +183,7 @@ func _unhandled_input(event):
 					if held_object.get_X() >= 6:
 						held_object.make_King()
 				held_object = null
-				nextTurn()
+				Server.sendNextTurn()
 #	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 #		nextTurn()
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
@@ -256,11 +256,15 @@ func _process(delta):
 		if rotationAmount > PI:
 			rotationAmount = 0
 			turnProcessing = false
+			
+	if(Server.changeTurn):
+		nextTurn()
+		Server.changeTurn = false
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
 	if getTimer._count == 0:
-		nextTurn()
+		Server.sendNextTurn()
 	var oldcount = turnCount
 	
 func _intro():
