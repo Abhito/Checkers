@@ -19,4 +19,5 @@ func _OnConnectionFailed():
 	
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
+	get_tree().change_scene("res://views/PlayAreaClient.tscn")
 	
