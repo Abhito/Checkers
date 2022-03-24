@@ -4,12 +4,30 @@ var network = NetworkedMultiplayerENet.new()
 var ip = "127.0.0.1"
 var port = 1909
 
+var connected = false
 var myTurn
 var otherPlayer
+var otherPlayer_id
 var changeTurn
 
 func ready():
 	pass
+	
+func CreateLobby(requester):
+	print("Creating lobby")
+	rpc_id(1, "_Create_Lobby", ConfigController.getLocalPlayerOneName(), requester)
+	
+remote func ReturnLobbyID(lobby_id, requester):
+	print(lobby_id)
+	instance_from_id(requester)._show_Lobby_ID(lobby_id)
+	
+func JoinLobby(lobby_id, requester):
+	print("Joining Lobby")
+	rpc_id(1, "_Join_Lobby", ConfigController.getLocalPlayerOneName(), int(lobby_id), requester)
+	
+remote func LobbyFailed(requester):
+	print("Lobby failed")
+	instance_from_id(requester)._lobby_failed()
 	
 func ConnectToServer():
 	network.create_client(ip, port)
@@ -18,20 +36,17 @@ func ConnectToServer():
 	network.connect("connection_failed", self, "_OnConnectionFailed")
 	network.connect("connection_succeeded", self, "_OnConnectionSucceeded")
 	
+	
 func _OnConnectionFailed():
 	print("Failed to connect")
-	get_tree().network_peer = null
 	
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
-	_myName()
 	
-func _myName():
-	rpc_id(1, "playerName", ConfigController.getLocalPlayerOneName(), get_instance_id())
-	
-remote func Myturn(turn, player2):
+remote func PreConfigure(turn, player2, player2_id):
 	myTurn = turn
 	otherPlayer = player2
+	otherPlayer_id = player2_id
 	print("My turn is " + str(myTurn) + " and opponent is " + otherPlayer)
 	
 remote func StartGame():
@@ -42,3 +57,7 @@ func sendNextTurn():
 	
 remote func ReturnTurn(turn):
 	changeTurn = turn
+	
+func disconnectClient():
+	rpc_id(1, "_Disconnect_Me")
+	network = NetworkedMultiplayerENet.new()

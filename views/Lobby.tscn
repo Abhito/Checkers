@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/Lobby.gd" type="Script" id=1]
 
-[node name="Control" type="Control"]
+[node name="Lobby" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -18,29 +18,51 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 483.0
-margin_top = 267.0
-margin_right = 541.0
-margin_bottom = 333.0
+margin_left = 410.0
+margin_top = 250.0
+margin_right = 614.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 100, 100 )
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 58.0
-margin_bottom = 14.0
+margin_right = 204.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
 text = "Lobby"
 
 [node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 58.0
-margin_bottom = 42.0
+margin_top = 24.0
+margin_right = 204.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 46.0
-margin_right = 58.0
-margin_bottom = 66.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 204.0
+margin_bottom = 72.0
+
+[node name="Create_Lobby" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 20 )
+text = "Create Lobby"
+
+[node name="Lobby_ID" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 20 )
+
+[node name="Back_Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 204.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 20 )
 text = "Back"
 
 [connection signal="text_entered" from="CenterContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back_Button" to="." method="_on_Back_Button_pressed"]
