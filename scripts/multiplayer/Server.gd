@@ -39,6 +39,8 @@ func ConnectToServer():
 	
 func _OnConnectionFailed():
 	print("Failed to connect")
+	get_tree().change_scene("res://views/Menu.tscn")
+	
 	
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
@@ -55,9 +57,19 @@ remote func StartGame():
 func sendNextTurn():
 	rpc_id(1, "nextTurn")
 	
-remote func ReturnTurn(turn):
+remotesync func ReturnTurn(turn):
 	changeTurn = turn
 	
 func disconnectClient():
 	rpc_id(1, "_Disconnect_Me")
 	network = NetworkedMultiplayerENet.new()
+
+func sendEndGame():
+	rpc_id(1, "endGame")
+	network = NetworkedMultiplayerENet.new()
+	
+remote func endMyGame():
+	print("Ending my game")
+	disconnectClient()
+	get_tree().change_scene("res://views/Menu.tscn")
+	

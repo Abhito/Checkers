@@ -18,7 +18,7 @@ config/icon="res://images/menu_images/icon.png"
 
 AudioManager="*res://scripts/AudioManager.gd"
 ConfigController="*res://scripts/ConfigController.gd"
-Server="*res://scripts/Server.gd"
+Server="*res://scripts/multiplayer/Server.gd"
 
 [display]
 
