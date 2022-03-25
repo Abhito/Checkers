@@ -1,8 +1,8 @@
 extends Control
 
-onready var getlabel = $CenterContainer/VBoxContainer/HBoxContainer/Lobby_ID
-onready var getbutton =  $CenterContainer/VBoxContainer/HBoxContainer/Create_Lobby
-onready var line = $CenterContainer/VBoxContainer/LineEdit
+onready var getlabel = $CenterContainer/VBoxContainer/CreateLobby/Lobby_ID
+onready var getbutton =  $CenterContainer/VBoxContainer/CreateLobby/Create_Lobby
+onready var line = $CenterContainer/VBoxContainer/Enter/LineEdit
 
 #NOTE: Lobby could use visual improvements
 
@@ -33,3 +33,7 @@ func _on_Back_Button_pressed():
 #Create a Server
 func _on_Create_Lobby_pressed():
 	Server.CreateLobby(get_instance_id())
+
+#Enter the lobby
+func _on_Enter_Button_pressed():
+	Server.JoinLobby(line.text, get_instance_id())
