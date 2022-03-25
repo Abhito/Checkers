@@ -161,6 +161,7 @@ func _ready():
 	getTimerLabel.text = str(30)
 	P1removed = 0
 	P2removed = 0
+	getAI.initAI(grids)
 	
 func _on_pickable_clicked(object):
 	if !held_object:
@@ -219,9 +220,9 @@ func grid_find(loc):
 	return returnGrid
 
 func nextTurn():
-	getAI.initAI(grids)
 	getAI.printGrid()
 	getAI.generateValidMoves()
+	getAI.determineBestMove()
 	if currentTurn:
 		currentTurn = false
 	else:

@@ -2,7 +2,7 @@ extends Node
 
 var pieceMatrix = Array(Array())
 var validMoves = Array()
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass # Replace with function body.
 
@@ -12,7 +12,7 @@ func initAI(gridArray):
 	var toggle = true
 	var rowArray = Array()
 	for grid in gridArray:
-		print(grid)
+		#print(grid)
 		if toggle:
 			rowArray.append(null)
 		rowArray.append(grid)
@@ -28,7 +28,7 @@ func initAI(gridArray):
 			else:
 				toggle = true
 	print("Array Initialized")
-	print(pieceMatrix)
+	#print(pieceMatrix)
 
 func generateValidMoves():
 	var i = 0
@@ -39,22 +39,39 @@ func generateValidMoves():
 				pass
 			elif grid.checkerPresent != null:
 				if grid.checkerColor == false:
-					print("Blue Piece at Row: " + str(i) + " Column: " + str(j))
+					#print("Blue Piece at Row: " + str(i) + " Column: " + str(j))
 					if pieceMatrix[i-1][j-1].checkerPresent == null:
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-1][j-1])
 						validMoves.append(classInstance)
+					elif (j + 1) < 8 and pieceMatrix[i-1][j+1].checkerPresent == null:
+						var classInstance = ValidMove.new()
+						classInstance.addMove(grid)
+						classInstance.addMove(pieceMatrix[i-1][j+1])
+						validMoves.append(classInstance)
+					elif pieceMatrix[i-1][j-1].checkerColor == true and pieceMatrix[i-2][j-2].checkerPresent == null:
+						print("Jumpable Piece")
+					elif (j + 2) < 8 and pieceMatrix[i-1][j+1].checkerColor == true and pieceMatrix[i-2][j+2].checkerPresent == null:
+						print("Jumpable Piece")
 					else:
 						pass
 			j = j + 1
 		j = 0
 		i = i + 1
-	print("Valid Moves Quantity: " + str(validMoves.size()))
-	#print("Final Valid Move: " + str(validMoves[11].moveList))
+	#print("Valid Moves Quantity: " + str(validMoves.size()))
+	#print("First Valid Move: " + str(validMoves[0].moveList))
+	#print("Second Valid Move: " + str(validMoves[1].moveList))
 
 func determineBestMove():
-	pass
+	#At the end of calculating valid moves, should clear the list of valid moves.
+	clearValidMoves()
+
+func clearValidMoves():
+	#Clears the valid moves array and frees up the space.
+	for move in validMoves:
+		move.free()
+	validMoves.clear()
 
 func movePiece(startGrid, endGrid):
 	pass
