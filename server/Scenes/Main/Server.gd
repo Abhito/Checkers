@@ -30,7 +30,7 @@ func _Peer_Disconnected(player_id):
 	print("User " + str(player_id) + " Disconnected")
 
 remote func _Create_Lobby(name, requester):
-	print("Creating lobby for " + name)
+	print("Creating lobby for " + str(name))
 	var lobby_id = createRandomID()
 	var player_id = get_tree().get_rpc_sender_id()
 	#add new lobby to the dictionary
@@ -39,7 +39,7 @@ remote func _Create_Lobby(name, requester):
 	rpc_id(player_id,"ReturnLobbyID", lobby_id, requester)
 	
 remote func _Join_Lobby(name, lobby_id, requester):
-	print("Trying to connect " + name + " to a lobby")
+	print("Trying to connect " + str(name) + " to a lobby")
 	if lobbies.has(lobby_id):
 		var lobby = lobbies.get(lobby_id)
 		var player1 = lobby[1]
