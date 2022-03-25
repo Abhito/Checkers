@@ -26,10 +26,12 @@ var turnCount = 1
 var oldCount = 1
 var cameraFOV = ConfigController.cameraFOV
 
+#Variables used for online
 var P1Name
 var P2Name
 var myturn = Server.myTurn
 
+#STUB: needs multi capture support
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
 	
@@ -133,7 +135,9 @@ func kingValidMove(held_object):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#This connects only the pieces on the players side, we don't want them to control the opposing side
 	if(myturn):
+		#If Orange side
 		for node in get_tree().get_nodes_in_group("OrangePieces"):
 			node.connect("clicked", self, "_on_pickable_clicked")
 		for piece in get_tree().get_nodes_in_group("OrangePieces"):
@@ -141,6 +145,7 @@ func _ready():
 		for piece in player_pieces:
 			piece.turnToggle()
 	else:
+		#If Blue Side
 		for node in get_tree().get_nodes_in_group("BluePieces"):
 			node.connect("clicked", self, "_on_pickable_clicked")
 		for piece in get_tree().get_nodes_in_group("BluePieces"):
@@ -151,7 +156,6 @@ func _ready():
 		grids.append(grid)
 	_intro()
 	yield(get_tree().create_timer(5.0), "timeout")
-	#Stub for turn Timer, unfinished
 	if(turnTimer):
 		getTimer.start()
 	P1Destroy = (($ChessBoard/P1Holder).get_global_transform().origin + Vector3(0,1,0))
@@ -183,15 +187,17 @@ func _unhandled_input(event):
 				else:
 					if held_object.get_X() >= 6:
 						held_object.make_King()
+						
+				#We save the nodepath for the moved piece and its position
 				var object_path = held_object.get_path()
 				print(object_path)
 				Server.sendNextTurn(object_path, drop_position)
 				held_object = null
-#	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
-#		nextTurn()
+				
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
 		get_node("Rotation/Camera/Pause").visible = true
-		
+
+#This function handles moving the enemy's piece on your board
 func _move_enemy_piece(object_path, object_cord):
 	held_object = get_tree().get_root().get_node(object_path)
 	print(object_path)
@@ -203,7 +209,7 @@ func _move_enemy_piece(object_path, object_cord):
 	else:
 		if held_object.get_X() >= 6:
 			held_object.make_King()
-	held_object = null	
+	held_object = null
 
 #TaboutHandeling
 func _notification(isfocus):
@@ -249,6 +255,7 @@ func nextTurn():
 	if turnTimer:
 		getTimer.reset()
 	
+#STUB: destroy needs multiplayer support
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
@@ -272,11 +279,11 @@ func _process(delta):
 		if rotationAmount > PI:
 			rotationAmount = 0
 			turnProcessing = false
-			
+	#If the Server wants to change turns then toggle turn
 	if(Server.changeTurn):
 		nextTurn()
 		Server.changeTurn = false
-		
+	#If the Server recieved a checker piece that has moved and needs to be updated locally
 	if(Server.other_object_path != null):
 		_move_enemy_piece(Server.other_object_path, Server.object_position)
 		Server.other_object_path = null
@@ -284,10 +291,12 @@ func _process(delta):
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
 	if getTimer._count == 0:
+		#We use null parameters because we are ending the turn without moving a piece
 		Server.sendNextTurn(null, null)
 	var oldcount = turnCount
 	
 func _intro():
+	#Setup versus display. LocalPlayerName for each player
 	if(myturn):
 		P1Name = ConfigController.getLocalPlayerOneName()
 		P2Name = Server.otherPlayer

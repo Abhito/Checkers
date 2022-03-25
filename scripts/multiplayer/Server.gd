@@ -1,10 +1,9 @@
 extends Node
 
 var network = NetworkedMultiplayerENet.new()
-var ip = "127.0.0.1"
+var ip = "127.0.0.1" #Change this value once Server app is running on AWS
 var port = 1909
 
-var connected = false
 var myTurn
 var otherPlayer
 var otherPlayer_id
@@ -15,22 +14,28 @@ var object_position
 func ready():
 	pass
 	
+#CreateLobby tells the server to create the lobby. 
+#@param requester is the reference to Lobby.gd
 func CreateLobby(requester):
 	print("Creating lobby")
 	rpc_id(1, "_Create_Lobby", ConfigController.getLocalPlayerOneName(), requester)
-	
+
+#Returns the LobbyID and calls function to show it
 remote func ReturnLobbyID(lobby_id, requester):
 	print(lobby_id)
 	instance_from_id(requester)._show_Lobby_ID(lobby_id)
-	
+
+#Function to join a lobby using a user given code
 func JoinLobby(lobby_id, requester):
 	print("Joining Lobby")
 	rpc_id(1, "_Join_Lobby", ConfigController.getLocalPlayerOneName(), int(lobby_id), requester)
-	
+
+#Server sends this function to let the client know that no lobby exists with the given code
 remote func LobbyFailed(requester):
 	print("Lobby failed")
 	instance_from_id(requester)._lobby_failed()
-	
+
+#Main function, starts up the connection
 func ConnectToServer():
 	network.create_client(ip, port)
 	get_tree().set_network_peer(network)
@@ -38,15 +43,16 @@ func ConnectToServer():
 	network.connect("connection_failed", self, "_OnConnectionFailed")
 	network.connect("connection_succeeded", self, "_OnConnectionSucceeded")
 	
-	
+#If connection failed, send user back to main menu. Kind of slow
 func _OnConnectionFailed():
 	print("Failed to connect")
 	get_tree().change_scene("res://views/Menu.tscn")
 	
-	
+#Just prints that connection was succesful
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
-	
+
+#Once both players have entered a lobby, the Server sends their info to the other
 remote func PreConfigure(turn, player2, player2_id):
 	myTurn = turn
 	otherPlayer = player2
@@ -64,15 +70,18 @@ remote func ReturnTurn(turn, object_path, drop_cord):
 	if(object_path != null):
 		other_object_path = object_path
 		object_position = drop_cord
-	
+
+#Called when client wants to diconnect
 func disconnectClient():
 	rpc_id(1, "_Disconnect_Me")
 	network = NetworkedMultiplayerENet.new()
 
+#Called when client wants to end game
 func sendEndGame():
 	rpc_id(1, "endGame")
 	network = NetworkedMultiplayerENet.new()
 	
+#Server can forcefully end a game
 remote func endMyGame():
 	print("Ending my game")
 	disconnectClient()

@@ -1,10 +1,15 @@
 extends Node
 
+#Manages the Server
+
 var network = NetworkedMultiplayerENet.new()
+#These values can be changed depending on where the Server is running
 var port = 1909
 var max_players = 20
 
+#lobbies stores lobby codes and corresponding lobby creator's info
 var lobbies = {}
+#pairs are players in a lobby together
 var pairs = {}
 
 func _ready():
@@ -23,12 +28,14 @@ func _Peer_Connected(player_id):
 	
 func _Peer_Disconnected(player_id):
 	print("User " + str(player_id) + " Disconnected")
-	
+
 remote func _Create_Lobby(name, requester):
 	print("Creating lobby for " + name)
 	var lobby_id = createRandomID()
 	var player_id = get_tree().get_rpc_sender_id()
+	#add new lobby to the dictionary
 	lobbies[lobby_id] = [player_id, name]
+	#send lobby id to requester
 	rpc_id(player_id,"ReturnLobbyID", lobby_id, requester)
 	
 remote func _Join_Lobby(name, lobby_id, requester):
@@ -44,7 +51,7 @@ remote func _Join_Lobby(name, lobby_id, requester):
 		rpc_id(get_tree().get_rpc_sender_id(),"PreConfigure", false, player1, player1_id)
 		pairs[get_tree().get_rpc_sender_id()] = player1_id
 		
-		lobbies.erase(lobby_id)
+		lobbies.erase(lobby_id) #Delete record of lobby once both players are connected
 		_Start_Game(player1_id, get_tree().get_rpc_sender_id())
 	else:
 		rpc_id(get_tree().get_rpc_sender_id(),"LobbyFailed", requester)
@@ -53,6 +60,7 @@ func createRandomID():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	var random_id = random.randi_range(1000,9999)
+	#check if lobby already exists
 	if random_id in lobbies:
 		return createRandomID()
 	else:
@@ -73,7 +81,8 @@ remote func nextTurn(object_path, drop_cord):
 		rpc_id(otherPlayer, "ReturnTurn", true, null, null)
 	else:
 		rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord)
-	
+
+#End game for both players and delete pairs
 remote func endGame():
 	print("A User is ending the Game")
 	var otherPlayer = pairs.get(get_tree().get_rpc_sender_id())

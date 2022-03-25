@@ -1,10 +1,10 @@
 extends Control
 
-
+#This version of Pause is used for disconnecting Botg Clients from the Server
 
 func _on_Menu_pressed():
 	get_tree().change_scene("res://views/Menu.tscn")
-	Server.sendEndGame()
+	Server.sendEndGame() #Let the Server know that the game ended
 
 
 func _on_Settings_pressed():
