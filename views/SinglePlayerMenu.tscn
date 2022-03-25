@@ -62,3 +62,4 @@ custom_styles/normal = ExtResource( 4 )
 text = "Play vs AI"
 
 [connection signal="pressed" from="VBoxContainer/LocalButton" to="." method="_on_LocalButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/AIButton" to="." method="_on_AIButton_pressed"]

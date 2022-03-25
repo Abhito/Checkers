@@ -63,6 +63,15 @@ func generateValidMoves():
 	#print("First Valid Move: " + str(validMoves[0].moveList))
 	#print("Second Valid Move: " + str(validMoves[1].moveList))
 
+#Potentially implementable recursive function to determine if a second jump can take place.
+func anotherJump():
+	pass
+
+#Potentially implementable helper function to determine if the piece can currently be jumped on turn resolve.
+func isJumpable(moveInstance, xCord, Ycord):
+	pass
+
+#Where Value Comparison System should reside
 func determineBestMove():
 	#At the end of calculating valid moves, should clear the list of valid moves.
 	clearValidMoves()
