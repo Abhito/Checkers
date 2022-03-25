@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Object",
+"class": "ValidMove",
+"language": "GDScript",
+"path": "res://scripts/ValidMove.gd"
+} ]
+_global_script_class_icons={
+"ValidMove": ""
+}
+
 [application]
 
 config/name="CheckersMenu"

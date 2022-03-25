@@ -1,6 +1,7 @@
 extends Node
 
 var pieceMatrix = Array(Array())
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,10 +21,14 @@ func initAI(gridArray):
 	print("Array Initialized")
 	print(pieceMatrix)
 
-func determineMoves():
+func generateValidMoves():
+	var classInstance = ValidMove.new()
 	#Iterate though 
 	pass
-	
+
+func determineBestMove():
+	pass
+
 func movePiece(startGrid, endGrid):
 	pass
 
