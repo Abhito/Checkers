@@ -1,7 +1,7 @@
 extends Node
 
 var pieceMatrix = Array(Array())
-
+var validMoves = Array()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -40,11 +40,18 @@ func generateValidMoves():
 			elif grid.checkerPresent != null:
 				if grid.checkerColor == false:
 					print("Blue Piece at Row: " + str(i) + " Column: " + str(j))
-					var classInstance = ValidMove.new()
-					classInstance.addMove(grid)
+					if pieceMatrix[i-1][j-1].checkerPresent == null:
+						var classInstance = ValidMove.new()
+						classInstance.addMove(grid)
+						classInstance.addMove(pieceMatrix[i-1][j-1])
+						validMoves.append(classInstance)
+					else:
+						pass
 			j = j + 1
 		j = 0
 		i = i + 1
+	print("Valid Moves Quantity: " + str(validMoves.size()))
+	#print("Final Valid Move: " + str(validMoves[11].moveList))
 
 func determineBestMove():
 	pass
