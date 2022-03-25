@@ -9,6 +9,8 @@ var myTurn
 var otherPlayer
 var otherPlayer_id
 var changeTurn
+var other_object_path = null
+var object_position
 
 func ready():
 	pass
@@ -54,11 +56,14 @@ remote func PreConfigure(turn, player2, player2_id):
 remote func StartGame():
 	get_tree().change_scene("res://views/PlayAreaClient.tscn")
 	
-func sendNextTurn():
-	rpc_id(1, "nextTurn")
+func sendNextTurn(piece_path, drop_cord):
+	rpc_id(1, "nextTurn", piece_path, drop_cord)
 	
-remotesync func ReturnTurn(turn):
+remote func ReturnTurn(turn, object_path, drop_cord):
 	changeTurn = turn
+	if(object_path != null):
+		other_object_path = object_path
+		object_position = drop_cord
 	
 func disconnectClient():
 	rpc_id(1, "_Disconnect_Me")

@@ -175,19 +175,35 @@ func _unhandled_input(event):
 				held_object = null
 			else:
 				AudioManager.play("res://sounds/CheckerPlace.mp3")
-				held_object.drop(find_closest(held_object).get_global_transform().origin)
+				var drop_position = find_closest(held_object).get_global_transform().origin
+				held_object.drop(drop_position)
 				if held_object.get_Color():
 					if held_object.get_X() <= -6:
 						held_object.make_King()
 				else:
 					if held_object.get_X() >= 6:
 						held_object.make_King()
+				var object_path = held_object.get_path()
+				print(object_path)
+				Server.sendNextTurn(object_path, drop_position)
 				held_object = null
-				Server.sendNextTurn()
 #	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 #		nextTurn()
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
 		get_node("Rotation/Camera/Pause").visible = true
+		
+func _move_enemy_piece(object_path, object_cord):
+	held_object = get_tree().get_root().get_node(object_path)
+	print(object_path)
+	AudioManager.play("res://sounds/CheckerPlace.mp3")
+	held_object.drop_Online(object_cord)
+	if held_object.get_Color():
+		if held_object.get_X() <= -6:
+			held_object.make_King()
+	else:
+		if held_object.get_X() >= 6:
+			held_object.make_King()
+	held_object = null	
 
 #TaboutHandeling
 func _notification(isfocus):
@@ -260,11 +276,15 @@ func _process(delta):
 	if(Server.changeTurn):
 		nextTurn()
 		Server.changeTurn = false
+		
+	if(Server.other_object_path != null):
+		_move_enemy_piece(Server.other_object_path, Server.object_position)
+		Server.other_object_path = null
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
 	if getTimer._count == 0:
-		Server.sendNextTurn()
+		Server.sendNextTurn(null, null)
 	var oldcount = turnCount
 	
 func _intro():
