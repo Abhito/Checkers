@@ -221,6 +221,7 @@ func grid_find(loc):
 func nextTurn():
 	getAI.initAI(grids)
 	getAI.printGrid()
+	getAI.generateValidMoves()
 	if currentTurn:
 		currentTurn = false
 	else:
