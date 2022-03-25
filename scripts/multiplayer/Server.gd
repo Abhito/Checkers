@@ -10,6 +10,7 @@ var otherPlayer_id
 var changeTurn
 var other_object_path = null
 var object_position
+var piece_destroyed_path = null
 
 func ready():
 	pass
@@ -63,13 +64,15 @@ remote func StartGame():
 	get_tree().change_scene("res://views/PlayAreaClient.tscn")
 	
 func sendNextTurn(piece_path, drop_cord):
-	rpc_id(1, "nextTurn", piece_path, drop_cord)
+	rpc_id(1, "nextTurn", piece_path, drop_cord, piece_destroyed_path)
 	
-remote func ReturnTurn(turn, object_path, drop_cord):
+remote func ReturnTurn(turn, object_path, drop_cord, destroyed_path):
 	changeTurn = turn
 	if(object_path != null):
 		other_object_path = object_path
 		object_position = drop_cord
+		if(destroyed_path != null):
+			piece_destroyed_path = destroyed_path
 
 #Called when client wants to diconnect
 func disconnectClient():
@@ -86,4 +89,3 @@ remote func endMyGame():
 	print("Ending my game")
 	disconnectClient()
 	get_tree().change_scene("res://views/Menu.tscn")
-	

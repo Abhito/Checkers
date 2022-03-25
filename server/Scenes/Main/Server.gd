@@ -74,13 +74,16 @@ remote func _Disconnect_Me():
 	var player_id = get_tree().get_rpc_sender_id()
 	network.disconnect_peer(player_id)
 	
-remote func nextTurn(object_path, drop_cord):
+remote func nextTurn(object_path, drop_cord, object_destroyed_path):
 	var otherPlayer = pairs.get(get_tree().get_rpc_sender_id())
-	rpc_id(get_tree().get_rpc_sender_id(), "ReturnTurn", true, null, null)
+	rpc_id(get_tree().get_rpc_sender_id(), "ReturnTurn", true, null, null, null)
 	if(object_path == null):
 		rpc_id(otherPlayer, "ReturnTurn", true, null, null)
 	else:
-		rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord)
+		if(object_destroyed_path == null):
+			rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord, null)
+		else:
+			rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord, object_destroyed_path)
 
 #End game for both players and delete pairs
 remote func endGame():

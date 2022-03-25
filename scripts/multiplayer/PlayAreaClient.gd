@@ -259,13 +259,16 @@ func nextTurn():
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
+	Server.piece_destroyed_path = playerpiece.get_path()
 	if color:
+		#If piece was destroyed by orange
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
+		#if piece was destroyed by blue
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
@@ -287,6 +290,10 @@ func _process(delta):
 	if(Server.other_object_path != null):
 		_move_enemy_piece(Server.other_object_path, Server.object_position)
 		Server.other_object_path = null
+		if(Server.piece_destroyed_path != null):
+			var destroyed_piece =  get_tree().get_root().get_node(Server.piece_destroyed_path)
+			destroy(destroyed_piece, !myturn)
+			Server.piece_destroyed_path = null
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
