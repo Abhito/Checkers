@@ -18,51 +18,66 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 410.0
-margin_top = 250.0
-margin_right = 614.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 100, 100 )
+margin_left = 387.0
+margin_top = 200.0
+margin_right = 636.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 100, 200 )
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 204.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+[node name="Lobby Text" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 249.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 26 )
 text = "Lobby"
+align = 1
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 204.0
-margin_bottom = 48.0
+[node name="Enter" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 249.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 34 )
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/Enter"]
+margin_right = 200.0
+margin_bottom = 34.0
 rect_min_size = Vector2( 200, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 52.0
-margin_right = 204.0
-margin_bottom = 72.0
+[node name="Enter_Button" type="Button" parent="CenterContainer/VBoxContainer/Enter"]
+margin_left = 204.0
+margin_right = 249.0
+margin_bottom = 34.0
+text = "Enter"
 
-[node name="Create_Lobby" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="CreateLobby" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 249.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="Create_Lobby" type="Button" parent="CenterContainer/VBoxContainer/CreateLobby"]
 margin_right = 100.0
-margin_bottom = 20.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 100, 20 )
 text = "Create Lobby"
 
-[node name="Lobby_ID" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="Lobby_ID" type="Label" parent="CenterContainer/VBoxContainer/CreateLobby"]
 margin_left = 104.0
+margin_top = 14.0
 margin_right = 204.0
-margin_bottom = 20.0
+margin_bottom = 34.0
 rect_min_size = Vector2( 100, 20 )
 
 [node name="Back_Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 76.0
-margin_right = 204.0
-margin_bottom = 96.0
+margin_top = 120.0
+margin_right = 249.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 0, 20 )
 text = "Back"
 
-[connection signal="text_entered" from="CenterContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
+[connection signal="text_entered" from="CenterContainer/VBoxContainer/Enter/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Enter/Enter_Button" to="." method="_on_Enter_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreateLobby/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back_Button" to="." method="_on_Back_Button_pressed"]
