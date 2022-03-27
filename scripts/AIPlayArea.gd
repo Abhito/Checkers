@@ -59,8 +59,6 @@ func validMove(held_object):
 		else:
 			print("this move is valid")
 			return true
-	
-	#blue piece
 	else:
 		#wrong direction case
 		if currentPos[0] > held_object.get_X() || currentPos[2] == held_object.get_Y():
@@ -87,7 +85,6 @@ func validMove(held_object):
 			
 			
 func kingValidMove(held_object):
-	
 	if held_object.get_Color() == true:
 		#wrong direction case
 		if currentPos[2] == held_object.get_Y():
@@ -161,6 +158,7 @@ func _ready():
 	getTimerLabel.text = str(30)
 	P1removed = 0
 	P2removed = 0
+	getAI.initAI(grids)
 	
 func _on_pickable_clicked(object):
 	if !held_object:
@@ -220,12 +218,10 @@ func grid_find(loc):
 
 func nextTurn():
 	if currentTurn:
+		print("Player turn started")
 		currentTurn = false
 	else:
 		currentTurn = true
-	for piece in player_pieces:
-		piece.turnToggle()
-	turnProcessing = true
 	turnCount = turnCount + 1
 	getTurnLabel.text = str(turnCount)
 	if currentTurn:
@@ -234,7 +230,16 @@ func nextTurn():
 		getPieceLabel.text = str(P1removed)
 	if turnTimer:
 		getTimer.reset()
-	
+	if currentTurn == false:
+		AIturn()
+
+func AIturn():
+	print("AI turn started")
+	getAI.printGrid()
+	getAI.generateValidMoves()
+	getAI.determineBestMove()
+	nextTurn()
+
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
@@ -264,7 +269,7 @@ func _on_Timer_timeout():
 	if getTimer._count == 0:
 		nextTurn()
 	var oldcount = turnCount
-	
+
 func _intro():
 	var orange_pieces = Array()
 	var player1 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/red/PlayerName")
@@ -278,5 +283,3 @@ func _intro():
 	yield(get_tree().create_timer(5.0), "timeout")
 	for piece in orange_pieces:
 		piece.turnToggle()
-	
-

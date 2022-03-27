@@ -585,6 +585,7 @@ volume_db = -22.0
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
@@ -603,6 +604,7 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]
@@ -629,6 +631,7 @@ anims/RESET = SubResource( 9 )
 anims/rotation = SubResource( 10 )
 
 [node name="ChessBoard" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11766, 1.14456, -2.88794 )
 
 [node name="Grid" type="Spatial" parent="ChessBoard"]
 
