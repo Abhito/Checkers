@@ -471,7 +471,7 @@ text = "Return"
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -156.0
+margin_left = -152.0
 margin_right = -1.0
 margin_bottom = 206.0
 __meta__ = {
@@ -538,7 +538,7 @@ __meta__ = {
 [node name="PPU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 112.0
 margin_top = 59.0
-margin_right = 131.0
+margin_right = 136.0
 margin_bottom = 77.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 30 )
@@ -565,7 +565,7 @@ script = ExtResource( 14 )
 [node name="RTU" type="RichTextLabel" parent="Rotation/Camera/GameInformation/Timer"]
 margin_left = 980.0
 margin_top = 79.0
-margin_right = 1002.0
+margin_right = 1008.0
 margin_bottom = 98.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 30 )
@@ -585,7 +585,6 @@ volume_db = -22.0
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
@@ -604,7 +603,6 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]

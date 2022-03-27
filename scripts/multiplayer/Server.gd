@@ -89,3 +89,7 @@ remote func endMyGame():
 	print("Ending my game")
 	disconnectClient()
 	get_tree().change_scene("res://views/Menu.tscn")
+	
+func win():
+	get_tree().change_scene("res://views/Menu.tscn")
+	sendEndGame()

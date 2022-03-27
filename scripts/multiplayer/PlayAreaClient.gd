@@ -3,7 +3,7 @@ extends Spatial
 onready var getCam = $Rotation/Camera
 onready var getTimer = $Rotation/Camera/GameInformation/Timer
 onready var getTimerLabel = $Rotation/Camera/GameInformation/Timer/RTU
-onready var getTurnLabel = $Rotation/Camera/GameInformation/TCU
+onready var getTurnLabel = $Rotation/Camera/GameInformation/TCL
 onready var getPieceLabel = $Rotation/Camera/GameInformation/PPU
 var P1removed
 var P2removed
@@ -51,7 +51,6 @@ func validMove(held_object):
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == false:
 				destroy(inbetween.checkerPresent, true)
-				P2removed = P2removed + 1
 				print("Blue piece in between")
 				return true
 			print("this move is invalid because it went too far")
@@ -70,13 +69,12 @@ func validMove(held_object):
 			print("This move is too far")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
-			print("this move is invalid because it went too far")
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == true:
 				destroy(inbetween.checkerPresent, false)
-				P1removed = P1removed + 1
 				print("Orange piece in between")
 				return true
+			print("this move is invalid because it went too far")
 			return false
 		else:
 			print("this move is valid")
@@ -151,6 +149,7 @@ func _ready():
 		for piece in get_tree().get_nodes_in_group("BluePieces"):
 			player_pieces.append(piece)
 		turnProcessing = true
+		getTurnLabel.text = "Enemy Turn"
 			
 	for grid in get_tree().get_nodes_in_group("ValidGrid"):
 		grids.append(grid)
@@ -160,7 +159,6 @@ func _ready():
 		getTimer.start()
 	P1Destroy = (($ChessBoard/P1Holder).get_global_transform().origin + Vector3(0,1,0))
 	P2Destroy = (($ChessBoard/P2Holder).get_global_transform().origin + Vector3(0,1,0))
-	getTurnLabel.text = str(turnCount)
 	getPieceLabel.text = str(0)
 	getTimerLabel.text = str(30)
 	P1removed = 0
@@ -178,21 +176,27 @@ func _unhandled_input(event):
 				held_object.drop(currentPos)
 				held_object = null
 			else:
-				AudioManager.play("res://sounds/CheckerPlace.mp3")
-				var drop_position = find_closest(held_object).get_global_transform().origin
-				held_object.drop(drop_position)
-				if held_object.get_Color():
-					if held_object.get_X() <= -6:
-						held_object.make_King()
+				var dest = find_closest(held_object).get_global_transform().origin
+				if((dest - currentPos).length() < 1):
+					print("Can't move to same spot")
+					held_object.drop(currentPos)
+					held_object = null
 				else:
-					if held_object.get_X() >= 6:
-						held_object.make_King()
+					AudioManager.play("res://sounds/CheckerPlace.mp3")
+					var drop_position = find_closest(held_object).get_global_transform().origin
+					held_object.drop(drop_position)
+					if held_object.get_Color():
+						if held_object.get_X() <= -6:
+							held_object.make_King()
+					else:
+						if held_object.get_X() >= 6:
+							held_object.make_King()
 						
 				#We save the nodepath for the moved piece and its position
-				var object_path = held_object.get_path()
-				print(object_path)
-				Server.sendNextTurn(object_path, drop_position)
-				held_object = null
+					var object_path = held_object.get_path()
+					print(object_path)
+					Server.sendNextTurn(object_path, drop_position)
+					held_object = null
 				
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
 		get_node("Rotation/Camera/Pause").visible = true
@@ -247,11 +251,7 @@ func nextTurn():
 	for piece in player_pieces:
 		piece.turnToggle()
 	turnCount = turnCount + 1
-	getTurnLabel.text = str(turnCount)
-	if currentTurn:
-		getPieceLabel.text = str(P2removed)
-	else:
-		getPieceLabel.text = str(P1removed)
+	getTurnLabel.text = "Enemy Turn"
 	if turnTimer:
 		getTimer.reset()
 	
@@ -262,6 +262,7 @@ func destroy(playerpiece, color):
 	Server.piece_destroyed_path = playerpiece.get_path()
 	if color:
 		#If piece was destroyed by orange
+		P2removed = P2removed + 1
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
@@ -269,6 +270,7 @@ func destroy(playerpiece, color):
 		playerpiece.interactable = false
 	else:
 		#if piece was destroyed by blue
+		P1removed = P1removed + 1
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
@@ -294,6 +296,17 @@ func _process(delta):
 			var destroyed_piece =  get_tree().get_root().get_node(Server.piece_destroyed_path)
 			destroy(destroyed_piece, !myturn)
 			Server.piece_destroyed_path = null
+			
+	if currentTurn == myturn && currentTurn:
+		getTurnLabel.text = "Your Turn"
+		getPieceLabel.text = str(P2removed)
+		if(P2removed >= 12):
+			Server.win()
+	elif currentTurn == myturn && !currentTurn:
+		getTurnLabel.text = "Your Turn"
+		getPieceLabel.text = str(P1removed)
+		if(P1removed >= 12):
+			Server.win()
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():
