@@ -50,7 +50,6 @@ func validMove(held_object):
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == false:
 				destroy(inbetween.checkerPresent, true)
-				P2removed = P2removed + 1
 				print("Blue piece in between")
 				return true
 			print("this move is invalid because it went too far")
@@ -72,11 +71,9 @@ func validMove(held_object):
 			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
-			print("this move is invalid because it went too far")
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == true:
 				destroy(inbetween.checkerPresent, false)
-				P1removed = P1removed + 1
 				print("Orange piece in between")
 				return true
 			AudioManager.playSound("res://sounds/InvalidMove.wav")
@@ -180,10 +177,16 @@ func _unhandled_input(event):
 					if held_object.get_X() <= -6:
 						held_object.make_King()
 				else:
-					if held_object.get_X() >= 6:
-						held_object.make_King()
-				held_object = null
-				nextTurn()
+					AudioManager.play("res://sounds/CheckerPlace.mp3")
+					held_object.drop(dest)
+					if held_object.get_Color():
+						if held_object.get_X() <= -6:
+							held_object.make_King()
+					else:
+						if held_object.get_X() >= 6:
+							held_object.make_King()
+					held_object = null
+					nextTurn()
 #	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 #		nextTurn()
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
@@ -239,12 +242,14 @@ func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
 	if color:
+		P2removed = P2removed + 1
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
+		P1removed = P1removed + 1
 		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)

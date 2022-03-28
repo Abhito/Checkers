@@ -1,19 +1,25 @@
 extends Control
 
-onready var getlabel = $CenterContainer/VBoxContainer/HBoxContainer/Lobby_ID
-onready var getbutton =  $CenterContainer/VBoxContainer/HBoxContainer/Create_Lobby
-onready var line = $CenterContainer/VBoxContainer/LineEdit
+onready var getlabel = $CenterContainer/VBoxContainer/VBoxContainer/CreateLobby/Lobby_ID
+onready var getbutton =  $CenterContainer/VBoxContainer/VBoxContainer/CreateLobby/Create_Lobby
+onready var line = $CenterContainer/VBoxContainer/VBoxContainer2/Enter/LineEdit
+onready var connecting = $Connecting
 
 #NOTE: Lobby could use visual improvements
 
 #Connect to Server once you enter Lobby screen
 func _ready():
 	Server.ConnectToServer()
+	
+func _process(delta):
+	if(Server.connected):
+		connecting.visible = false
 
 #Show generated lobby code to user
 func _show_Lobby_ID(lobby_id):
 	getlabel.text = str(lobby_id)
 	getbutton.disabled = true
+	line.editable = false
 
 #Let the User know that the code doesn't work
 #Can be made to look nicer
@@ -33,3 +39,7 @@ func _on_Back_Button_pressed():
 #Create a Server
 func _on_Create_Lobby_pressed():
 	Server.CreateLobby(get_instance_id())
+
+#Enter the lobby
+func _on_Enter_Button_pressed():
+	Server.JoinLobby(line.text, get_instance_id())

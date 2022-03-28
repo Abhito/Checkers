@@ -1,8 +1,10 @@
 extends Node
 
 var network = NetworkedMultiplayerENet.new()
-var ip = "127.0.0.1" #Change this value once Server app is running on AWS
-var port = 1909
+#var ip = "127.0.0.1" 
+#Change this value once Server app is running on AWS
+var ip = "54.173.65.208"
+var port = 35516
 
 var myTurn
 var otherPlayer
@@ -10,6 +12,8 @@ var otherPlayer_id
 var changeTurn
 var other_object_path = null
 var object_position
+var piece_destroyed_path = null
+var connected = false
 
 func ready():
 	pass
@@ -51,6 +55,7 @@ func _OnConnectionFailed():
 #Just prints that connection was succesful
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
+	connected = true
 
 #Once both players have entered a lobby, the Server sends their info to the other
 remote func PreConfigure(turn, player2, player2_id):
@@ -63,20 +68,24 @@ remote func StartGame():
 	get_tree().change_scene("res://views/PlayAreaClient.tscn")
 	
 func sendNextTurn(piece_path, drop_cord):
-	rpc_id(1, "nextTurn", piece_path, drop_cord)
+	rpc_id(1, "nextTurn", piece_path, drop_cord, piece_destroyed_path)
 	
-remote func ReturnTurn(turn, object_path, drop_cord):
+remote func ReturnTurn(turn, object_path, drop_cord, destroyed_path):
 	changeTurn = turn
 	if(object_path != null):
 		other_object_path = object_path
 		object_position = drop_cord
+		if(destroyed_path != null):
+			piece_destroyed_path = destroyed_path
 
 #Called when client wants to diconnect
+#disconnectClient is used when player backs out of lobby
 func disconnectClient():
 	rpc_id(1, "_Disconnect_Me")
 	network = NetworkedMultiplayerENet.new()
 
 #Called when client wants to end game
+#sendEndGame is used when player backs out during a game
 func sendEndGame():
 	rpc_id(1, "endGame")
 	network = NetworkedMultiplayerENet.new()
@@ -87,3 +96,6 @@ remote func endMyGame():
 	disconnectClient()
 	get_tree().change_scene("res://views/Menu.tscn")
 	
+func win():
+	get_tree().change_scene("res://views/Menu.tscn")
+	sendEndGame()
