@@ -1,9 +1,9 @@
 extends Node
 
 var network = NetworkedMultiplayerENet.new()
-var ip = "127.0.0.1" 
+#var ip = "127.0.0.1" 
 #Change this value once Server app is running on AWS
-#var ip = "100.4.187.18"
+var ip = "54.173.65.208"
 var port = 35516
 
 var myTurn
