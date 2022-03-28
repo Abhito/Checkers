@@ -3,12 +3,17 @@ extends Control
 onready var getlabel = $CenterContainer/VBoxContainer/CreateLobby/Lobby_ID
 onready var getbutton =  $CenterContainer/VBoxContainer/CreateLobby/Create_Lobby
 onready var line = $CenterContainer/VBoxContainer/Enter/LineEdit
+onready var connecting = $Connecting
 
 #NOTE: Lobby could use visual improvements
 
 #Connect to Server once you enter Lobby screen
 func _ready():
 	Server.ConnectToServer()
+	
+func _process(delta):
+	if(Server.connected):
+		connecting.visible = false
 
 #Show generated lobby code to user
 func _show_Lobby_ID(lobby_id):

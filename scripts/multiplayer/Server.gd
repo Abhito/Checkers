@@ -13,6 +13,7 @@ var changeTurn
 var other_object_path = null
 var object_position
 var piece_destroyed_path = null
+var connected = false
 
 func ready():
 	pass
@@ -54,6 +55,7 @@ func _OnConnectionFailed():
 #Just prints that connection was succesful
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
+	connected = true
 
 #Once both players have entered a lobby, the Server sends their info to the other
 remote func PreConfigure(turn, player2, player2_id):
@@ -77,11 +79,13 @@ remote func ReturnTurn(turn, object_path, drop_cord, destroyed_path):
 			piece_destroyed_path = destroyed_path
 
 #Called when client wants to diconnect
+#disconnectClient is used when player backs out of lobby
 func disconnectClient():
 	rpc_id(1, "_Disconnect_Me")
 	network = NetworkedMultiplayerENet.new()
 
 #Called when client wants to end game
+#sendEndGame is used when player backs out during a game
 func sendEndGame():
 	rpc_id(1, "endGame")
 	network = NetworkedMultiplayerENet.new()
