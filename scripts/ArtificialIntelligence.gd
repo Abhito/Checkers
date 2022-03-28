@@ -40,28 +40,37 @@ func generateValidMoves():
 			elif grid.checkerPresent != null:
 				if grid.checkerColor == false:
 					#print("Blue Piece at Row: " + str(i) + " Column: " + str(j))
-					if pieceMatrix[i-1][j-1].checkerPresent == null:
+					if (j - 1) >= 0 and pieceMatrix[i-1][j-1].checkerPresent == null:
+						print("Location: " + str(i) + ", " + str(j) + " Normal Move Left")
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-1][j-1])
 						validMoves.append(classInstance)
-					elif (j + 1) < 8 and pieceMatrix[i-1][j+1].checkerPresent == null:
+					elif (j - 2) >= 0 and pieceMatrix[i-1][j-1].checkerPresent != null and pieceMatrix[i-1][j-1].checkerColor == true and pieceMatrix[i-2][j-2].checkerPresent == null:
+						print("First Check")
+						print("Current Row: " + str(i) + " Column: " + str(j))
+						print("Jumpable Row: " + str(i - 2) + " Column: " + str(j -2 ))
+					if (j + 1) < 8 and pieceMatrix[i-1][j+1].checkerPresent == null:
+						print("Location: " + str(i) + ", " + str(j) + " Normal Move Right")
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-1][j+1])
 						validMoves.append(classInstance)
-					elif pieceMatrix[i-1][j-1].checkerColor == true and pieceMatrix[i-2][j-2].checkerPresent == null:
-						print("Jumpable Piece")
-					elif (j + 2) < 8 and pieceMatrix[i-1][j+1].checkerColor == true and pieceMatrix[i-2][j+2].checkerPresent == null:
-						print("Jumpable Piece")
+					elif (j + 2) < 8 and pieceMatrix[i-1][j+1].checkerPresent != null and pieceMatrix[i-1][j+1].checkerColor == true and pieceMatrix[i-2][j+2].checkerPresent == null:
+						print("Second Check")
+						print("Current Row: " + str(i) + " Column: " + str(j))
+						print("Jumpable Row: " + str(i - 2) + " Column: " + str(j + 2 ))
 					else:
 						pass
 			j = j + 1
 		j = 0
 		i = i + 1
-	#print("Valid Moves Quantity: " + str(validMoves.size()))
+	print("Valid Moves Quantity: " + str(validMoves.size()))
 	#print("First Valid Move: " + str(validMoves[0].moveList))
 	#print("Second Valid Move: " + str(validMoves[1].moveList))
+
+func updateMatrix():
+	pass
 
 #Potentially implementable recursive function to determine if a second jump can take place.
 func anotherJump():

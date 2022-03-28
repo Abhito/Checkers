@@ -235,6 +235,7 @@ func nextTurn():
 
 func AIturn():
 	print("AI turn started")
+	#getAI.updateGrids()
 	getAI.printGrid()
 	getAI.generateValidMoves()
 	getAI.determineBestMove()

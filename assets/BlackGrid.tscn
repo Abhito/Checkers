@@ -35,10 +35,10 @@ skeleton = NodePath("../..")
 material/0 = null
 
 [node name="Area" type="Area" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -4.7765e-08, -0.400683 )
+transform = Transform( 4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, 0.00397378, -0.00111405, -2.36109 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody/Area"]
-transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, -0.150196, 1.13394e-08 )
+transform = Transform( 0.1, 0, 0, 0, 0.01, 0, 0, 0, 0.1, 0, -0.54963, 7.15372e-08 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
