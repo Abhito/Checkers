@@ -171,13 +171,13 @@ func _unhandled_input(event):
 				held_object.drop(currentPos)
 				held_object = null
 			else:
-				AudioManager.playSound("res://sounds/CheckerPlace.mp3")
-				held_object.drop(find_closest(held_object).get_global_transform().origin)
-				if held_object.get_Color():
-					if held_object.get_X() <= -6:
-						held_object.make_King()
+				var dest = find_closest(held_object).get_global_transform().origin
+				if((dest - currentPos).length() < 1):
+					print("Can't move to same spot")
+					held_object.drop(currentPos)
+					held_object = null
 				else:
-					AudioManager.play("res://sounds/CheckerPlace.mp3")
+					AudioManager.playSound("res://sounds/CheckerPlace.mp3")
 					held_object.drop(dest)
 					if held_object.get_Color():
 						if held_object.get_X() <= -6:
