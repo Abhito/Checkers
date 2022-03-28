@@ -18,10 +18,12 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[sub_resource type="BoxShape" id=3]
-
 [sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( -1.03255, -1.03255, -0.0755801, -1.03255, -1.03255, 0.0755796, -1.03255, 1.03255, -0.0755801, 1.03255, -1.03255, -0.0755801, 1.03255, -1.03255, 0.0755796, -1.03255, 1.03255, 0.0755796, 1.03255, 1.03255, -0.0755801, 1.03255, 1.03255, 0.0755796 )
+
+[sub_resource type="BoxShape" id=3]
+margin = 0.001
+extents = Vector3( 1, 5, 1 )
 
 [node name="BlackGrid" type="Spatial"]
 script = ExtResource( 2 )
@@ -34,15 +36,17 @@ mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="Area" type="Area" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -4.7765e-08, -0.400683 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody/Area"]
-transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, -0.150196, 1.13394e-08 )
-shape = SubResource( 3 )
-
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 2 )
+
+[node name="Area" type="Area" parent="StaticBody"]
+transform = Transform( 8, 0, 0, 0, -1.74846e-07, 8, 0, -4, -3.49691e-07, 0.0103686, -0.00171833, -2.68297 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody/Area"]
+transform = Transform( 0.1, 0, 0, 0, 0.01, 0, 0, 0, 0.1, 0, -0.623032, 7.70087e-08 )
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="StaticBody/Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="StaticBody/Area" to="." method="_on_Area_body_exited"]
