@@ -2,6 +2,7 @@ extends Node
 
 var pieceMatrix = Array(Array())
 var validMoves = Array()
+var chosenMove
 
 func _ready():
 	pass # Replace with function body.
@@ -103,7 +104,24 @@ func isJumpable(xCord, yCord):
 
 #Where Value Comparison System should reside
 func determineBestMove():
+	var biggestMove = 0
+	var oneTrueMove = ValidMove.new()
+	if(validMoves.size() == 0):
+		print("No moves left. You lose")
+		get_tree().quit()
+	elif validMoves.size() > 0:
+		for validMove in validMoves:
+			if biggestMove < validMove.moveList.size():
+				biggestMove = validMove.moveList.size()
+				oneTrueMove = validMove
+			elif biggestMove == validMove.moveList.size():
+				if oneTrueMove.jumped == false and validMove.jumped == true:
+					oneTrueMove = validMove
+				elif oneTrueMove.jumped == true and validMove.jumped == true:
+					if oneTrueMove.jumpable == true and validMove.jumpable == false:
+						oneTrueMove = validMove
 	#At the end of calculating valid moves, should clear the list of valid moves.
+	chosenMove = validMoves.pop_at(validMoves.find(oneTrueMove))
 	clearValidMoves()
 
 func clearValidMoves():
@@ -112,8 +130,12 @@ func clearValidMoves():
 		move.free()
 	validMoves.clear()
 
-func movePiece(startGrid, endGrid):
-	pass
+func movePiece():
+	var pieceToMove = chosenMove.moveList[0].checkerPresent
+	for move in chosenMove.moveList:
+		pieceToMove.pickup()
+		pieceToMove.drop(move.get_global_transform().origin + Vector3(0,1,0))
+		yield(get_tree().create_timer(0.1), "timeout")
 
 #Helper Function to visualize whats in the matrix
 func printGrid():

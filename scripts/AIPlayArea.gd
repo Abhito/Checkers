@@ -240,7 +240,7 @@ func AIturn():
 	getAI.printGrid()
 	getAI.generateValidMoves()
 	getAI.determineBestMove()
-	#getAI.movePiece()
+	getAI.movePiece()
 	nextTurn()
 
 func destroy(playerpiece, color):
