@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Object",
+"class": "ValidMove",
+"language": "GDScript",
+"path": "res://scripts/ValidMove.gd"
+} ]
+_global_script_class_icons={
+"ValidMove": ""
+}
+
 [application]
 
 config/name="CheckersMenu"
@@ -34,4 +44,3 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/filters/msaa=1
-environment/default_environment="res://default_env.tres"

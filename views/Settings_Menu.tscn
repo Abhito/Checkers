@@ -157,30 +157,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 24.0
 
-[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Audio"]
-anchor_right = 1.0
-margin_top = 10.0
-margin_bottom = 337.0
+[node name="AudioContainer" type="CenterContainer" parent="TabContainer/Audio"]
+anchor_right = 0.999
+anchor_bottom = 0.914
+margin_top = 3.0
+margin_right = 0.0239258
+margin_bottom = 0.215973
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/CenterContainer3"]
-margin_left = 466.0
-margin_top = 143.0
-margin_right = 557.0
-margin_bottom = 183.0
+[node name="AudioOptions" type="VBoxContainer" parent="TabContainer/Audio/AudioContainer"]
+margin_left = 465.0
+margin_top = 159.0
+margin_right = 556.0
+margin_bottom = 253.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="TabContainer/Audio/CenterContainer3/VBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Audio/AudioContainer/AudioOptions"]
 margin_right = 91.0
 margin_bottom = 14.0
 text = "Music Volume"
 
-[node name="Music_Slider" type="HSlider" parent="TabContainer/Audio/CenterContainer3/VBoxContainer"]
+[node name="Music_Slider" type="HSlider" parent="TabContainer/Audio/AudioContainer/AudioOptions"]
 margin_top = 24.0
 margin_right = 91.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLabel" type="Label" parent="TabContainer/Audio/AudioContainer/AudioOptions"]
+margin_top = 50.0
+margin_right = 91.0
+margin_bottom = 64.0
+
+[node name="MusicButton" type="OptionButton" parent="TabContainer/Audio/AudioContainer/AudioOptions"]
+margin_top = 74.0
+margin_right = 91.0
+margin_bottom = 94.0
+toggle_mode = false
 
 [node name="Account" type="Tabs" parent="TabContainer"]
 visible = false
@@ -277,7 +293,8 @@ __meta__ = {
 }
 
 [connection signal="item_selected" from="TabContainer/Video/CenterContainer2/VBoxContainer/Display_Mode_Options_Dropdown" to="." method="_on_Display_Mode_Options_Dropdown_item_selected"]
-[connection signal="value_changed" from="TabContainer/Audio/CenterContainer3/VBoxContainer/Music_Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/AudioContainer/AudioOptions/Music_Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="item_selected" from="TabContainer/Audio/AudioContainer/AudioOptions/MusicButton" to="." method="_on_MusicButton_item_selected"]
 [connection signal="value_changed" from="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value/HSlider" to="TabContainer/Customization/VBoxContainer/VScrollBar/Label/Value" method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="ApplySettings" to="." method="_on_Button_pressed"]

@@ -4,12 +4,13 @@ export (NodePath) var add_game_options_main_game_mode_options_dropdown_path
 export (NodePath) var add_game_options_video_display_mode_options_dropdown_path
 export (NodePath) var add_game_options_main_local_player_one_name_path
 export (NodePath) var add_game_options_main_local_player_two_name_path
+export (NodePath) var add_game_options_audio_music_selection_dropdown_path
 
 onready var add_game_options_main_game_mode_options_dropdown = get_node(add_game_options_main_game_mode_options_dropdown_path)
 onready var add_game_options_video_display_mode_options_dropdown = get_node(add_game_options_video_display_mode_options_dropdown_path)
 onready var add_game_options_main_local_player_one_name = get_node(add_game_options_main_local_player_one_name_path)
 onready var add_game_options_main_local_player_two_name = get_node(add_game_options_main_local_player_two_name_path)
-
+onready var add_game_options_audio_music_selection_dropdown = get_node("TabContainer/Audio/AudioContainer/AudioOptions/MusicButton")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +19,7 @@ func _ready():
 	add_game_options_video_display_mode_options_dropdown()
 	add_game_options_main_local_player_one_name()
 	add_game_options_main_local_player_two_name()
-
+	add_game_options_audio_music_selection_dropdown()
 # Add Game Mode Options
 func add_game_options_main_game_mode_options_dropdown():
 	add_game_options_main_game_mode_options_dropdown.add_item("American checkers / English draughts")
@@ -29,7 +30,6 @@ func add_game_options_video_display_mode_options_dropdown():
 	add_game_options_video_display_mode_options_dropdown.add_item("Fullscreen")
 	if ConfigController.getDisplayMode() == "Fullscreen":
 		add_game_options_video_display_mode_options_dropdown.select(1)
-	
 	else:
 		add_game_options_video_display_mode_options_dropdown.select(0)
 	
@@ -42,6 +42,11 @@ func add_game_options_main_local_player_one_name():
 func add_game_options_main_local_player_two_name():
 	var localPlayerTwoName = ConfigController.getLocalPlayerTwoName()
 	add_game_options_main_local_player_two_name.set_text(localPlayerTwoName)
+
+#Add music options
+func add_game_options_audio_music_selection_dropdown():
+	add_game_options_audio_music_selection_dropdown.add_item("Brave Heart")
+	add_game_options_audio_music_selection_dropdown.add_item("First Contact")
 
 # Quick return to menu button
 func _on_Return_pressed():
@@ -67,3 +72,13 @@ func _on_Display_Mode_Options_Dropdown_item_selected(index):
 func _on_Music_Slider_value_changed(value):
 	#AudioServer.set_bus_volume_db(0, vol)
 	pass # Replace with function body.
+
+
+func _on_MusicButton_item_selected(index):
+	if index == 0:
+		ConfigController.setMusic("BraveHeart")
+	elif index == 1:
+		ConfigController.setMusic("FirstContact")
+	#Default
+	else:
+		ConfigController.setMusic("BraveHeart")
