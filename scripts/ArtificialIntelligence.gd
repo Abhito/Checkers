@@ -58,7 +58,7 @@ func generateValidMoves():
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-2][j-2])
 						classInstance.jumpOccured()
-						destroy(i - 1, j - 1)
+						classInstance.setDestroy(i - 1, j - 1)
 						if isJumpable(i-2, j-2):
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
@@ -78,7 +78,7 @@ func generateValidMoves():
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-2][j+2])
 						classInstance.jumpOccured()
-						destroy(i - 1, j + 1)
+						classInstance.setDestroy(i - 1, j + 1)
 						if isJumpable(i-2, j+2):
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
@@ -88,6 +88,7 @@ func generateValidMoves():
 	print("Valid Moves Quantity: " + str(validMoves.size()))
 	#print("First Valid Move: " + str(validMoves[0].moveList))
 	#print("Second Valid Move: " + str(validMoves[1].moveList))
+
 func destroy(xCord, yCord):
 	var playerpiece = pieceMatrix[xCord][yCord].checkerPresent
 	playerpiece.MODE_RIGID
@@ -116,7 +117,7 @@ func isJumpable(xCord, yCord):
 func determineBestMove():
 	var biggestMove = 0
 	var oneTrueMove = ValidMove.new()
-	if(validMoves.size() == 0):
+	if validMoves.size() == 0:
 		print("No moves left. You lose")
 		get_tree().quit()
 	elif validMoves.size() > 0:
@@ -132,6 +133,10 @@ func determineBestMove():
 						oneTrueMove = validMove
 	#At the end of calculating valid moves, should clear the list of valid moves.
 	chosenMove = validMoves.pop_at(validMoves.find(oneTrueMove))
+	if chosenMove.jumped == true:
+		destroy(chosenMove.destroyXCord, chosenMove.destroyYCord)
+	else:
+		pass
 	clearValidMoves()
 
 func clearValidMoves():
