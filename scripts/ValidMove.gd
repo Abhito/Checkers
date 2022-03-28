@@ -5,6 +5,8 @@ var moveList = Array()
 var destroyList = Array()
 var jumpable
 var jumped
+var destroyXCord 
+var destroyYCord
 
 func _init():
 	jumped = false
@@ -20,3 +22,7 @@ func jumpOccured():
 
 func endJumpable():
 	jumpable = true
+
+func setDestroy(xCord, yCord):
+	destroyXCord = xCord
+	destroyYCord = yCord
