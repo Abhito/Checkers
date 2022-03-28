@@ -236,9 +236,11 @@ func nextTurn():
 func AIturn():
 	print("AI turn started")
 	#getAI.updateGrids()
+	yield(get_tree().create_timer(0.25), "timeout")
 	getAI.printGrid()
 	getAI.generateValidMoves()
 	getAI.determineBestMove()
+	#getAI.movePiece()
 	nextTurn()
 
 func destroy(playerpiece, color):

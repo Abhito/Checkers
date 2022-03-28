@@ -41,7 +41,7 @@ func generateValidMoves():
 				if grid.checkerColor == false:
 					#print("Blue Piece at Row: " + str(i) + " Column: " + str(j))
 					if (j - 1) >= 0 and pieceMatrix[i-1][j-1].checkerPresent == null:
-						print("Location: " + str(i) + ", " + str(j) + " Normal Move Left")
+						#print("Location: " + str(i) + ", " + str(j) + " Normal Move Left")
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-1][j-1])
@@ -49,9 +49,9 @@ func generateValidMoves():
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
 					elif (j - 2) >= 0 and pieceMatrix[i-1][j-1].checkerPresent != null and pieceMatrix[i-1][j-1].checkerColor == true and pieceMatrix[i-2][j-2].checkerPresent == null:
-						print("First Check")
-						print("Current Row: " + str(i) + " Column: " + str(j))
-						print("Jumpable Row: " + str(i - 2) + " Column: " + str(j -2 ))
+						#print("First Check")
+						#print("Current Row: " + str(i) + " Column: " + str(j))
+						#print("Jumpable Row: " + str(i - 2) + " Column: " + str(j -2 ))
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-2][j-2])
@@ -60,7 +60,7 @@ func generateValidMoves():
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
 					if (j + 1) < 8 and pieceMatrix[i-1][j+1].checkerPresent == null:
-						print("Location: " + str(i) + ", " + str(j) + " Normal Move Right")
+						#print("Location: " + str(i) + ", " + str(j) + " Normal Move Right")
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-1][j+1])
@@ -68,9 +68,9 @@ func generateValidMoves():
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
 					elif (j + 2) < 8 and pieceMatrix[i-1][j+1].checkerPresent != null and pieceMatrix[i-1][j+1].checkerColor == true and pieceMatrix[i-2][j+2].checkerPresent == null:
-						print("Second Check")
-						print("Current Row: " + str(i) + " Column: " + str(j))
-						print("Jumpable Row: " + str(i - 2) + " Column: " + str(j + 2 ))
+						#print("Second Check")
+						#print("Current Row: " + str(i) + " Column: " + str(j))
+						#print("Jumpable Row: " + str(i - 2) + " Column: " + str(j + 2 ))
 						var classInstance = ValidMove.new()
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-2][j+2])
@@ -95,10 +95,8 @@ func anotherJump():
 #Potentially implementable helper function to determine if the piece can currently be jumped on turn resolve.
 func isJumpable(xCord, yCord):
 	if (yCord + 1) < 8 and (xCord + 1) < 8 and pieceMatrix[xCord-1][yCord+1].checkerPresent != null and pieceMatrix[xCord-1][yCord+1].checkerColor == true and pieceMatrix[xCord+1][yCord-1].checkerPresent == null:
-		print("Result Jumpable")
 		return true
 	elif (yCord + 1) < 8 and (xCord + 1) < 8 and pieceMatrix[xCord-1][yCord-1].checkerPresent != null and pieceMatrix[xCord-1][yCord-1].checkerColor == true and pieceMatrix[xCord+1][yCord+1].checkerPresent == null:
-		print("Result Jumpable")
 		return true
 	else:
 		return false
