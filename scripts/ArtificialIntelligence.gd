@@ -3,9 +3,10 @@ extends Node
 var pieceMatrix = Array(Array())
 var validMoves = Array()
 var chosenMove
+var P1Destroy
 
 func _ready():
-	pass # Replace with function body.
+	P1Destroy = get_node("../ChessBoard/P1Holder").get_global_transform().origin + Vector3(0,1,0)
 
 func initAI(gridArray):
 	var i = 0
@@ -57,6 +58,7 @@ func generateValidMoves():
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-2][j-2])
 						classInstance.jumpOccured()
+						destroy(i - 1, j - 1)
 						if isJumpable(i-2, j-2):
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
@@ -76,6 +78,7 @@ func generateValidMoves():
 						classInstance.addMove(grid)
 						classInstance.addMove(pieceMatrix[i-2][j+2])
 						classInstance.jumpOccured()
+						destroy(i - 1, j + 1)
 						if isJumpable(i-2, j+2):
 							classInstance.endJumpable()
 						validMoves.append(classInstance)
@@ -85,7 +88,14 @@ func generateValidMoves():
 	print("Valid Moves Quantity: " + str(validMoves.size()))
 	#print("First Valid Move: " + str(validMoves[0].moveList))
 	#print("Second Valid Move: " + str(validMoves[1].moveList))
-
+func destroy(xCord, yCord):
+	var playerpiece = pieceMatrix[xCord][yCord].checkerPresent
+	playerpiece.MODE_RIGID
+	playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
+	playerpiece.global_transform.origin = Vector3(P1Destroy)
+	P1Destroy = P1Destroy + Vector3(0, 1, 0)
+	playerpiece.interactable = false
+	
 func updateMatrix():
 	pass
 
