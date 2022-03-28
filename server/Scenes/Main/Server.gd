@@ -4,7 +4,7 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 #These values can be changed depending on where the Server is running
-var port = 1909
+var port = 35516
 var max_players = 20
 
 #lobbies stores lobby codes and corresponding lobby creator's info
