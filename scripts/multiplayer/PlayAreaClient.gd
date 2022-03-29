@@ -202,6 +202,7 @@ func _unhandled_input(event):
 					held_object = null
 				
 	if event is InputEventKey and event.scancode == KEY_ESCAPE and not event.pressed:
+		AudioManager.pauseMusic()
 		get_node("Rotation/Camera/Pause").visible = true
 
 #This function handles moving the enemy's piece on your board
