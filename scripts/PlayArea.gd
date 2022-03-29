@@ -161,6 +161,7 @@ func _ready():
 	getTimerLabel.text = str(30)
 	P1removed = 0
 	P2removed = 0
+	AudioManager.playMusic("res://music/BraveHeart.wav")
 	
 func _on_pickable_clicked(object):
 	if !held_object:

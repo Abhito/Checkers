@@ -631,7 +631,6 @@ anims/RESET = SubResource( 9 )
 anims/rotation = SubResource( 10 )
 
 [node name="ChessBoard" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11766, 1.14456, -2.88794 )
 
 [node name="Grid" type="Spatial" parent="ChessBoard"]
 
