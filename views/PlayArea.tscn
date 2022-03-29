@@ -471,7 +471,7 @@ text = "Return"
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -156.0
+margin_left = -152.0
 margin_right = -1.0
 margin_bottom = 206.0
 __meta__ = {
@@ -538,7 +538,7 @@ __meta__ = {
 [node name="PPU" type="RichTextLabel" parent="Rotation/Camera/GameInformation"]
 margin_left = 112.0
 margin_top = 59.0
-margin_right = 131.0
+margin_right = 136.0
 margin_bottom = 77.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 30 )
@@ -565,7 +565,7 @@ script = ExtResource( 14 )
 [node name="RTU" type="RichTextLabel" parent="Rotation/Camera/GameInformation/Timer"]
 margin_left = 980.0
 margin_top = 79.0
-margin_right = 1002.0
+margin_right = 1008.0
 margin_bottom = 98.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 30 )

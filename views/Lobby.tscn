@@ -1,11 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/multiplayer/Lobby.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/Settings_Menu_Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://images/menu_images/checkerboard-onlineplay.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+font_data = ExtResource( 2 )
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.2
+margin_top = 20.0
+margin_bottom = -5.0
+custom_colors/default_color = Color( 0.478431, 0.188235, 0.482353, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Online Play Lobby[/center]"
+text = "Online Play Lobby"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Connecting" type="Label" parent="."]
+margin_left = 776.0
+margin_top = 552.0
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_fonts/font = SubResource( 1 )
+text = "Connecting..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,51 +58,87 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 410.0
-margin_top = 250.0
-margin_right = 614.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 100, 100 )
+margin_left = 392.0
+margin_top = 173.0
+margin_right = 631.0
+margin_bottom = 427.0
+rect_min_size = Vector2( 100, 200 )
+custom_constants/separation = 52
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 204.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
-text = "Lobby"
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 239.0
+margin_bottom = 58.0
+custom_constants/separation = 10
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 239.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Enter friend's Lobby Code:"
+
+[node name="Enter" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer2"]
 margin_top = 24.0
-margin_right = 204.0
-margin_bottom = 48.0
+margin_right = 239.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 34 )
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/VBoxContainer2/Enter"]
+margin_right = 200.0
+margin_bottom = 34.0
 rect_min_size = Vector2( 200, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 52.0
-margin_right = 204.0
-margin_bottom = 72.0
+[node name="Enter_Button" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer2/Enter"]
+margin_left = 204.0
+margin_right = 239.0
+margin_bottom = 34.0
+text = "Join"
 
-[node name="Create_Lobby" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 110.0
+margin_right = 239.0
+margin_bottom = 182.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+margin_right = 239.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Create a lobby:"
+
+[node name="CreateLobby" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 239.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="Create_Lobby" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer/CreateLobby"]
 margin_right = 100.0
-margin_bottom = 20.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 100, 20 )
 text = "Create Lobby"
 
-[node name="Lobby_ID" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="Lobby_ID" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/CreateLobby"]
 margin_left = 104.0
+margin_top = 14.0
 margin_right = 204.0
-margin_bottom = 20.0
+margin_bottom = 34.0
 rect_min_size = Vector2( 100, 20 )
 
 [node name="Back_Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 76.0
-margin_right = 204.0
-margin_bottom = 96.0
+margin_top = 234.0
+margin_right = 239.0
+margin_bottom = 254.0
 rect_min_size = Vector2( 0, 20 )
 text = "Back"
 
-[connection signal="text_entered" from="CenterContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
+[connection signal="text_entered" from="CenterContainer/VBoxContainer/VBoxContainer2/Enter/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer2/Enter/Enter_Button" to="." method="_on_Enter_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/CreateLobby/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back_Button" to="." method="_on_Back_Button_pressed"]

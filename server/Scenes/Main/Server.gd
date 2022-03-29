@@ -4,7 +4,7 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 #These values can be changed depending on where the Server is running
-var port = 1909
+var port = 35516
 var max_players = 20
 
 #lobbies stores lobby codes and corresponding lobby creator's info
@@ -28,6 +28,12 @@ func _Peer_Connected(player_id):
 	
 func _Peer_Disconnected(player_id):
 	print("User " + str(player_id) + " Disconnected")
+	#If player force closes their game during a match
+	if pairs.has(player_id):
+		var otherplayer_id = pairs.get(player_id)
+		rpc_id(otherplayer_id, "endMyGame")
+		pairs.erase(otherplayer_id)
+		pairs.erase(player_id)
 
 remote func _Create_Lobby(name, requester):
 	print("Creating lobby for " + str(name))
@@ -41,6 +47,7 @@ remote func _Create_Lobby(name, requester):
 remote func _Join_Lobby(name, lobby_id, requester):
 	print("Trying to connect " + str(name) + " to a lobby")
 	if lobbies.has(lobby_id):
+		print("Lobby Found")
 		var lobby = lobbies.get(lobby_id)
 		var player1 = lobby[1]
 		var player1_id = lobby[0]
@@ -54,6 +61,7 @@ remote func _Join_Lobby(name, lobby_id, requester):
 		lobbies.erase(lobby_id) #Delete record of lobby once both players are connected
 		_Start_Game(player1_id, get_tree().get_rpc_sender_id())
 	else:
+		print("Lobby Not Found")
 		rpc_id(get_tree().get_rpc_sender_id(),"LobbyFailed", requester)
 	
 func createRandomID():
@@ -67,6 +75,7 @@ func createRandomID():
 		return random_id
 		
 func _Start_Game(player1_id, player2_id):
+	print("Match Started")
 	rpc_id(player1_id, "StartGame")
 	rpc_id(player2_id, "StartGame")
 	
@@ -74,13 +83,16 @@ remote func _Disconnect_Me():
 	var player_id = get_tree().get_rpc_sender_id()
 	network.disconnect_peer(player_id)
 	
-remote func nextTurn(object_path, drop_cord):
+remote func nextTurn(object_path, drop_cord, object_destroyed_path):
 	var otherPlayer = pairs.get(get_tree().get_rpc_sender_id())
-	rpc_id(get_tree().get_rpc_sender_id(), "ReturnTurn", true, null, null)
+	rpc_id(get_tree().get_rpc_sender_id(), "ReturnTurn", true, null, null, null)
 	if(object_path == null):
 		rpc_id(otherPlayer, "ReturnTurn", true, null, null)
 	else:
-		rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord)
+		if(object_destroyed_path == null):
+			rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord, null)
+		else:
+			rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord, object_destroyed_path)
 
 #End game for both players and delete pairs
 remote func endGame():
@@ -90,3 +102,11 @@ remote func endGame():
 	network.disconnect_peer(get_tree().get_rpc_sender_id())
 	rpc_id(otherPlayer, "endMyGame")
 	pairs.erase(otherPlayer)
+	
+func lobbyTimer(lobby_id):
+	yield(get_tree().create_timer(300.0), "timeout")
+	if lobbies.has(lobby_id):
+		var player_info = lobbies.get(lobby_id)
+		var player_id = player_info[0]
+		lobbies.erase(lobby_id)
+		rpc_id(player_id, "endMyGame")

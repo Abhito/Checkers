@@ -57,6 +57,7 @@ func drop_Online(destination):
 	mode = RigidBody.MODE_RIGID
 	apply_central_impulse(impulse)
 	global_transform.origin = Vector3(destination) + Vector3(0, 1, 0)
+	xCord = global_transform.origin[0]
 
 func turnToggle():
 	if turnState == true:
