@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/multiplayer/Lobby.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/Settings_Menu_Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://images/menu_images/checkerboard-onlineplay.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -12,6 +13,14 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
