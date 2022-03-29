@@ -40,11 +40,9 @@ func validMove(held_object):
 		#wrong direction case
 		if currentPos[0] < held_object.get_X() || currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you went in the wrong direction")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif currentPos[0] + (-held_object.get_X()) >= 4.5 || currentPos[2] - held_object.get_Y() >= 4.5 || (-currentPos[2]) + held_object.get_Y() >=4.5:
 			print("This move is too far")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif currentPos[0] + (-held_object.get_X()) >= 3.0:
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
@@ -53,7 +51,6 @@ func validMove(held_object):
 				print("Blue piece in between")
 				return true
 			print("this move is invalid because it went too far")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		else:
 			print("this move is valid")
@@ -64,11 +61,9 @@ func validMove(held_object):
 		#wrong direction case
 		if currentPos[0] > held_object.get_X() || currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you went in the wrong direction")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 4.5 || currentPos[2] - held_object.get_Y() >= 4.5 || (-currentPos[2]) + held_object.get_Y() >=4.5:
 			print("This move is too far")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif (-currentPos[0]) + held_object.get_X() >= 3.0:
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
@@ -76,7 +71,6 @@ func validMove(held_object):
 				destroy(inbetween.checkerPresent, false)
 				print("Orange piece in between")
 				return true
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			print("this move is invalid because it went too far")
 			return false
 		else:
@@ -90,14 +84,12 @@ func kingValidMove(held_object):
 		#wrong direction case
 		if currentPos[2] == held_object.get_Y():
 			print("this move is invalid because you didn't move foward")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif ((currentPos[0] + (-held_object.get_X()) >= 4.5) || 
 			((-currentPos[0]) + held_object.get_X() >= 4.5) || 
 			currentPos[2] - held_object.get_Y() >= 4.5 || 
 			(-currentPos[2]) + held_object.get_Y() >=4.5):
 			print("This move is too far")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		elif (currentPos[0] + (-held_object.get_X()) >= 3.0) || ((-currentPos[0]) + held_object.get_X() >= 3.0):
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
@@ -106,7 +98,6 @@ func kingValidMove(held_object):
 				print("Blue piece in between")
 				return true
 			print("this move is invalid because it went too far")
-			AudioManager.playSound("res://sounds/InvalidMove.wav")
 			return false
 		else:
 			print("this move is valid")
@@ -125,12 +116,12 @@ func kingValidMove(held_object):
 			print("This move is too far")
 			return false
 		elif ((-currentPos[0]) + held_object.get_X() >= 3.0) || (currentPos[0] + (-held_object.get_X()) >= 3.0):
-			print("this move is invalid because it went too far")
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == true:
 				destroy(inbetween.checkerPresent, false)
 				print("Orange piece in between")
 				return true
+			print("this move is invalid because it went too far")
 			return false
 		else:
 			print("this move is valid")
@@ -170,6 +161,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
 			if !validMove(held_object):
+				AudioManager.playSound("res://sounds/InvalidMove.wav")
 				held_object.drop(currentPos)
 				held_object = null
 			else:
@@ -177,6 +169,7 @@ func _unhandled_input(event):
 				var compare = dest - currentPos
 				if(compare.length() < 1):
 					print("Can't move to same spot")
+					AudioManager.playSound("res://sounds/InvalidMove.wav")
 					held_object.drop(currentPos)
 					held_object = null
 				else:

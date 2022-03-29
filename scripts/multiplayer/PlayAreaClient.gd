@@ -163,6 +163,7 @@ func _ready():
 	getTimerLabel.text = str(30)
 	P1removed = 0
 	P2removed = 0
+	AudioManager.playMusic("res://music/BraveHeart.wav")
 	
 func _on_pickable_clicked(object):
 	if !held_object:
@@ -173,12 +174,14 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if held_object and !event.pressed:
 			if !validMove(held_object):
+				AudioManager.playSound("res://sounds/InvalidMove.wav")
 				held_object.drop(currentPos)
 				held_object = null
 			else:
 				var dest = find_closest(held_object).get_global_transform().origin
 				if((dest - currentPos).length() < 1):
 					print("Can't move to same spot")
+					AudioManager.playSound("res://sounds/InvalidMove.wav")
 					held_object.drop(currentPos)
 					held_object = null
 				else:

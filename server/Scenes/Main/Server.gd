@@ -86,9 +86,11 @@ remote func _Disconnect_Me():
 remote func nextTurn(object_path, drop_cord, object_destroyed_path):
 	var otherPlayer = pairs.get(get_tree().get_rpc_sender_id())
 	rpc_id(get_tree().get_rpc_sender_id(), "ReturnTurn", true, null, null, null)
+	#If no piece was moved, Happens if a player times out
 	if(object_path == null):
-		rpc_id(otherPlayer, "ReturnTurn", true, null, null)
+		rpc_id(otherPlayer, "ReturnTurn", true, null, null, null)
 	else:
+		#If piece was not destroyed
 		if(object_destroyed_path == null):
 			rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord, null)
 		else:

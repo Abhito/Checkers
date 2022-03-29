@@ -41,6 +41,7 @@ remote func LobbyFailed(requester):
 
 #Main function, starts up the connection
 func ConnectToServer():
+	connected = false
 	network.create_client(ip, port)
 	get_tree().set_network_peer(network)
 	

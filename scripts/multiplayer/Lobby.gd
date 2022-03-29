@@ -14,11 +14,14 @@ func _ready():
 func _process(delta):
 	if(Server.connected):
 		connecting.visible = false
+	else:
+		connecting.visible = true
 
 #Show generated lobby code to user
 func _show_Lobby_ID(lobby_id):
 	getlabel.text = str(lobby_id)
 	getbutton.disabled = true
+	line.editable = false
 
 #Let the User know that the code doesn't work
 #Can be made to look nicer
