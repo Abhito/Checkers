@@ -1,8 +1,8 @@
 extends Control
 
-onready var getlabel = $CenterContainer/VBoxContainer/CreateLobby/Lobby_ID
-onready var getbutton =  $CenterContainer/VBoxContainer/CreateLobby/Create_Lobby
-onready var line = $CenterContainer/VBoxContainer/Enter/LineEdit
+onready var getlabel = $CenterContainer/VBoxContainer/VBoxContainer/CreateLobby/Lobby_ID
+onready var getbutton =  $CenterContainer/VBoxContainer/VBoxContainer/CreateLobby/Create_Lobby
+onready var line = $CenterContainer/VBoxContainer/VBoxContainer2/Enter/LineEdit
 onready var connecting = $Connecting
 
 #NOTE: Lobby could use visual improvements
