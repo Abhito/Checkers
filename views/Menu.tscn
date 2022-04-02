@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/MenuFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://images/menu_images/activity-ga38aa5a6c_1920.jpg" type="Texture" id=4]
 [ext_resource path="res://scripts/RegisterPanel.gd" type="Script" id=5]
+[ext_resource path="res://scripts/LoginPanel.gd" type="Script" id=6]
 
 [sub_resource type="Theme" id=5]
 
@@ -159,6 +160,7 @@ margin_top = 348.0
 margin_right = 583.992
 margin_bottom = 594.0
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
