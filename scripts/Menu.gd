@@ -32,13 +32,10 @@ func _on_AccountButton_pressed():
 	MenuAnimationPlayer.play("growLogin")
 
 func _on_RegisterButton_pressed():
-	$AccountPanel.visible = false
-	$LoginPanel.visible = false
-	$RegisterPanel.visible = true
+	MenuAnimationPlayer.play("growRegister")
 
 func _on_LoginToProfile_pressed():
 	MenuAnimationPlayer.play("shrinkLogin")
 
 func _on_RegisterToProfile_pressed():
-	$AccountPanel.visible = true
-	$RegisterPanel.visible = false
+	MenuAnimationPlayer.play("shrinkRegister")
