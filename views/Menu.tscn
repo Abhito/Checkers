@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/MenuFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://images/menu_images/activity-ga38aa5a6c_1920.jpg" type="Texture" id=4]
+[ext_resource path="res://scripts/RegisterPanel.gd" type="Script" id=5]
 
 [sub_resource type="Theme" id=5]
 
@@ -243,6 +244,7 @@ margin_top = 430.0
 margin_right = 1011.0
 margin_bottom = 594.0
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 5 )
 
 [node name="RegisterToProfile" type="Button" parent="RegisterPanel"]
 margin_left = 209.0
@@ -323,6 +325,8 @@ margin_top = 101.0
 margin_right = 227.0
 margin_bottom = 119.0
 
+[node name="RegisterRequestHandler" type="HTTPRequest" parent="RegisterPanel"]
+
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="_on_Solo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
@@ -331,3 +335,5 @@ margin_bottom = 119.0
 [connection signal="pressed" from="LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
 [connection signal="pressed" from="LoginPanel/LoginToProfile" to="." method="_on_LoginToProfile_pressed"]
 [connection signal="pressed" from="RegisterPanel/RegisterToProfile" to="." method="_on_RegisterToProfile_pressed"]
+[connection signal="pressed" from="RegisterPanel/RegisterAccountButton" to="RegisterPanel" method="_on_RegisterAccountButton_pressed"]
+[connection signal="request_completed" from="RegisterPanel/RegisterRequestHandler" to="RegisterPanel" method="_on_RegisterRequestHandler_request_completed"]
