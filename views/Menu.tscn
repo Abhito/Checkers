@@ -460,8 +460,8 @@ anchor_left = 0.99
 anchor_top = 0.99
 anchor_right = 0.99
 anchor_bottom = 0.99
-margin_left = -300.0
-margin_top = -300.0
+margin_left = -200.0
+margin_top = -75.0
 margin_right = -0.496033
 margin_bottom = -0.00012207
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
@@ -525,7 +525,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HTTPRequestHandler" type="HTTPRequest" parent="LoginPanel"]
+[node name="LoginRequestHandler" type="HTTPRequest" parent="LoginPanel"]
 
 [node name="PasswordEntry" type="TextEdit" parent="LoginPanel"]
 margin_left = 93.24
@@ -778,7 +778,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="AccountPanel/AccountButton" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
-[connection signal="request_completed" from="LoginPanel/HTTPRequestHandler" to="LoginPanel" method="_on_HTTPRequestHandler_request_completed"]
+[connection signal="request_completed" from="LoginPanel/LoginRequestHandler" to="LoginPanel" method="_on_LoginRequestHandler_request_completed"]
 [connection signal="pressed" from="LoginPanel/LoginButton" to="LoginPanel" method="_on_LoginButton_pressed"]
 [connection signal="pressed" from="LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
 [connection signal="pressed" from="LoginPanel/LoginToProfile" to="." method="_on_LoginToProfile_pressed"]
