@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/FriendEntry.gd" type="Script" id=1]
+[ext_resource path="res://images/profile_images/whiteCircle.svg" type="Texture" id=2]
+[ext_resource path="res://images/profile_images/default.jpg" type="Texture" id=3]
+[ext_resource path="res://fonts/UsernameFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://images/profile_images/statusOnline.svg" type="Texture" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 2
+
+[node name="FriendEntry" type="Control"]
+anchor_right = 0.701
+anchor_bottom = 0.5
+margin_right = -467.824
+margin_bottom = -217.0
+rect_min_size = Vector2( 250, 100 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.002
+anchor_top = 0.011
+anchor_right = 0.002
+anchor_bottom = 0.011
+margin_left = -0.5
+margin_top = -1.1
+margin_right = 250.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 250, 95 )
+color = Color( 0.466667, 0.439216, 0.439216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfilePicture" type="CenterContainer" parent="."]
+margin_top = -7.0
+margin_right = 100.0
+margin_bottom = 93.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="ProfilePicture"]
+position = Vector2( 51, 55 )
+scale = Vector2( 0.175, 0.175 )
+texture = ExtResource( 2 )
+mode = 2
+
+[node name="ProfileImage" type="TextureRect" parent="ProfilePicture"]
+material = SubResource( 1 )
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="RichTextLabel" parent="."]
+margin_left = 103.0
+margin_top = 10.0
+margin_right = 222.0
+margin_bottom = 31.0
+custom_fonts/normal_font = ExtResource( 4 )
+text = "<Username>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InviteToGame" type="Button" parent="."]
+margin_left = 106.0
+margin_top = 37.0
+margin_right = 214.0
+margin_bottom = 57.0
+text = "Invite to Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="View Profile" type="Button" parent="."]
+margin_left = 105.0
+margin_top = 65.0
+margin_right = 215.0
+margin_bottom = 85.0
+text = "View Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="TextureRect" parent="."]
+margin_left = 12.0
+margin_top = 70.0
+margin_right = 32.0
+margin_bottom = 90.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
