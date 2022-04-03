@@ -46,3 +46,18 @@ func _on_exitFriendsButton_pressed():
 
 func _on_FriendsButton_pressed():
 	MenuAnimationPlayer.play("profileToFriends")
+
+func _on_FriendRequests_pressed():
+	$UserPanels/FriendsPanel.visible = false
+	$UserPanels/FriendsRequestsPanel.visible = true
+
+func _on_exitFriendRequestButton_pressed():
+	$UserPanels/FriendsRequestsPanel.visible = false
+	$UserPanels/FriendsPanel.visible = true
+
+func _on_ProfileButton_pressed():
+	MenuAnimationPlayer.play("profileToDetailedProfile")
+
+
+func _on_ReturnToProfile_pressed():
+	MenuAnimationPlayer.play("detailedProfileToProfile")
