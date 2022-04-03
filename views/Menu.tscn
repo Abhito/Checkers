@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://images/profile_images/refresh.svg" type="Texture" id=11]
 [ext_resource path="res://images/profile_images/nothing.svg" type="Texture" id=12]
 [ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
+[ext_resource path="res://views/FriendsPanel.gd" type="Script" id=14]
 
 [sub_resource type="Theme" id=5]
 
@@ -1202,6 +1203,7 @@ __meta__ = {
 }
 
 [node name="AccountPanel" type="ColorRect" parent="UserPanels"]
+visible = false
 anchor_left = 0.99
 anchor_top = 0.99
 anchor_right = 0.99
@@ -1592,6 +1594,9 @@ margin_top = 80.0
 margin_right = 31.0
 margin_bottom = 100.0
 texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FriendsPanel" type="ColorRect" parent="UserPanels"]
 visible = false
@@ -1603,25 +1608,32 @@ margin_left = -285.176
 margin_top = -460.0
 margin_right = -0.176025
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VScrollBar" type="VScrollBar" parent="UserPanels/FriendsPanel"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -274.0
-margin_top = -432.0
-margin_right = -9.99997
-margin_bottom = -34.0
+[node name="FriendScroll" type="ScrollContainer" parent="UserPanels/FriendsPanel"]
+anchor_left = 0.033
+anchor_top = 0.065
+anchor_right = 0.033
+anchor_bottom = 0.065
+margin_left = -0.0499992
+margin_top = 0.0999985
+margin_right = 264.595
+margin_bottom = 395.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="UserPanels/FriendsPanel/VScrollBar"]
-margin_left = 56.0
-margin_top = 31.0
-margin_right = 96.0
-margin_bottom = 71.0
+[node name="FriendContainer" type="VBoxContainer" parent="UserPanels/FriendsPanel/FriendScroll"]
+margin_right = 264.645
+margin_bottom = 395.0
+rect_min_size = Vector2( 264, 395 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="exitFriendsButton" type="Button" parent="UserPanels/FriendsPanel"]
 anchor_left = 1.0
@@ -1633,6 +1645,9 @@ margin_top = -456.0
 margin_right = -5.0
 margin_bottom = -436.0
 text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FriendsTitle" type="RichTextLabel" parent="UserPanels/FriendsPanel"]
 anchor_left = 1.0
@@ -1729,6 +1744,7 @@ margin_bottom = 23.0
 texture_normal = ExtResource( 11 )
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
+visible = false
 anchor_left = 1.006
 anchor_top = 1.0
 anchor_right = 1.006

@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Object",
+"class": "AccountData",
+"language": "GDScript",
+"path": "res://scripts/AccountData.gd"
+}, {
+"base": "Object",
 "class": "ValidMove",
 "language": "GDScript",
 "path": "res://scripts/ValidMove.gd"
 } ]
 _global_script_class_icons={
+"AccountData": "",
 "ValidMove": ""
 }
 
