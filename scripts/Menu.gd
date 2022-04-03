@@ -58,6 +58,5 @@ func _on_exitFriendRequestButton_pressed():
 func _on_ProfileButton_pressed():
 	MenuAnimationPlayer.play("profileToDetailedProfile")
 
-
 func _on_ReturnToProfile_pressed():
 	MenuAnimationPlayer.play("detailedProfileToProfile")

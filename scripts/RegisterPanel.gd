@@ -40,6 +40,12 @@ func _on_RegisterAccountButton_pressed():
 			print("There is already an account registered to this username")
 		elif alreadyaccount == false:
 			$RegisterRequestHandler.request("https://oh339unq37.execute-api.us-east-1.amazonaws.com/alpha/registration?user=" + username + "&pass=" + password + "&email=" + email, headers, false, HTTPClient.METHOD_PUT)
+			print("Account Creation Successful")
+			var loginText = get_node("../LoginPanel/LoginErrorText")
+			loginText.visible = true
+			loginText.text = "Account Successfully Created"
+			loginText.add_color_override("font_color", Color(0.2, 0.75, 0.2, 1))
+			get_node("../../MenuAnimator/AnimationPlayer").play("registerToLogin")
 	else:
 		print("Invalid Input")
 		
