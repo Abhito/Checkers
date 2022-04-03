@@ -15,3 +15,15 @@ func add_status():
 	$StatusButton.add_icon_item(onlineStatus, "")
 	$StatusButton.add_icon_item(awayStatus, "")
 	$StatusButton.add_icon_item(offlineStatus, "")
+
+func _on_EditDescriptionButton_pressed():
+	get_node("ProfileDescription").visible = false
+	get_node("EditDescriptionButton").visible = false
+	get_node("ProfileDescriptionEdit").visible = true
+	get_node("SaveDescriptionButton").visible = true
+
+func _on_SaveDescriptionButton_pressed():
+	get_node("ProfileDescriptionEdit").visible = false
+	get_node("SaveDescriptionButton").visible = false
+	get_node("ProfileDescription").visible = true
+	get_node("EditDescriptionButton").visible = true

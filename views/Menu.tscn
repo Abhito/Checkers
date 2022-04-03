@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://images/profile_images/nothing.svg" type="Texture" id=12]
 [ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
 [ext_resource path="res://views/FriendsPanel.gd" type="Script" id=14]
+[ext_resource path="res://views/FriendsRequestsPanel.gd" type="Script" id=15]
 
 [sub_resource type="Theme" id=5]
 
@@ -1715,6 +1716,13 @@ margin_right = 273.0
 margin_bottom = 453.0
 text = "Friend Requests"
 
+[node name="RefreshButton" type="TextureButton" parent="UserPanels/FriendsPanel"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 23.0
+texture_normal = ExtResource( 11 )
+
 [node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
 visible = false
 anchor_left = 1.008
@@ -1725,25 +1733,32 @@ margin_left = -285.176
 margin_top = -460.0
 margin_right = -0.176025
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VScrollBar" type="VScrollBar" parent="UserPanels/FriendsRequestsPanel"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -274.0
-margin_top = -432.0
-margin_right = -9.99997
-margin_bottom = -42.0
+[node name="FriendRequestScroll" type="ScrollContainer" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 0.033
+anchor_top = 0.065
+anchor_right = 0.033
+anchor_bottom = 0.065
+margin_left = -0.0500183
+margin_top = 0.0999985
+margin_right = 264.595
+margin_bottom = 395.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="UserPanels/FriendsRequestsPanel/VScrollBar"]
-margin_left = 56.0
-margin_top = 31.0
-margin_right = 96.0
-margin_bottom = 71.0
+[node name="FriendRequestContainer" type="VBoxContainer" parent="UserPanels/FriendsRequestsPanel/FriendRequestScroll"]
+margin_right = 264.645
+margin_bottom = 395.0
+rect_min_size = Vector2( 264, 395 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="exitFriendRequestButton" type="Button" parent="UserPanels/FriendsRequestsPanel"]
 anchor_left = 1.0
@@ -1784,12 +1799,15 @@ margin_right = 274.0
 margin_bottom = 450.0
 text = "Add Friend"
 
-[node name="TextureButton" type="TextureButton" parent="UserPanels/FriendsRequestsPanel"]
+[node name="RefreshButton" type="TextureButton" parent="UserPanels/FriendsRequestsPanel"]
 margin_left = 7.0
 margin_top = 3.0
 margin_right = 27.0
 margin_bottom = 23.0
 texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
 visible = false
@@ -1886,10 +1904,41 @@ __meta__ = {
 }
 
 [node name="ProfileDescription" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
-margin_left = 18.0
-margin_top = 178.0
-margin_right = 570.0
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 565.0
 margin_bottom = 295.0
+
+[node name="ProfileDescriptionEdit" type="TextEdit" parent="UserPanels/DetailedProfilePanel"]
+visible = false
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 565.0
+margin_bottom = 295.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 442.118
+margin_top = 301.0
+margin_right = 563.118
+margin_bottom = 321.0
+text = "Edit Description"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
+visible = false
+margin_left = 512.0
+margin_top = 301.0
+margin_right = 563.0
+margin_bottom = 321.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StatsDescriptionLabel" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 30.0
@@ -1898,13 +1947,6 @@ margin_right = 144.0
 margin_bottom = 354.0
 custom_fonts/normal_font = ExtResource( 9 )
 text = "User Stats:"
-
-[node name="EditDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
-margin_left = 448.0
-margin_top = 302.0
-margin_right = 569.0
-margin_bottom = 322.0
-text = "Edit Description"
 
 [node name="MenuAnimator" type="Node2D" parent="."]
 position = Vector2( 777, 430 )
@@ -1940,3 +1982,5 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/ReturnToProfile" to="." method="_on_ReturnToProfile_pressed"]
+[connection signal="pressed" from="UserPanels/DetailedProfilePanel/EditDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_EditDescriptionButton_pressed"]
+[connection signal="pressed" from="UserPanels/DetailedProfilePanel/SaveDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_SaveDescriptionButton_pressed"]
