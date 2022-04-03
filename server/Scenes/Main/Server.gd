@@ -52,14 +52,21 @@ remote func _Join_Lobby(name, lobby_id, requester):
 		var player1 = lobby[1]
 		var player1_id = lobby[0]
 		
-		rpc_id(player1_id,"PreConfigure", true, name, get_tree().get_rpc_sender_id())
-		pairs[player1_id] = get_tree().get_rpc_sender_id()
+		if player1_id in get_tree().get_network_connected_peers():
 		
-		rpc_id(get_tree().get_rpc_sender_id(),"PreConfigure", false, player1, player1_id)
-		pairs[get_tree().get_rpc_sender_id()] = player1_id
+			rpc_id(player1_id,"PreConfigure", true, name, get_tree().get_rpc_sender_id())
+			pairs[player1_id] = get_tree().get_rpc_sender_id()
 		
-		lobbies.erase(lobby_id) #Delete record of lobby once both players are connected
-		_Start_Game(player1_id, get_tree().get_rpc_sender_id())
+			rpc_id(get_tree().get_rpc_sender_id(),"PreConfigure", false, player1, player1_id)
+			pairs[get_tree().get_rpc_sender_id()] = player1_id
+		
+			lobbies.erase(lobby_id) #Delete record of lobby once both players are connected
+			_Start_Game(player1_id, get_tree().get_rpc_sender_id())
+			
+		else:
+			print("Lobby creator has disconnected. Erasing Lobby")
+			lobbies.erase(lobby_id)
+			rpc_id(get_tree().get_rpc_sender_id(),"LobbyFailed", requester)
 	else:
 		print("Lobby Not Found")
 		rpc_id(get_tree().get_rpc_sender_id(),"LobbyFailed", requester)

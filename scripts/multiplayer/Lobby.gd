@@ -4,7 +4,7 @@ onready var getlabel = $VBoxContainer/CreateLobby/Lobby_ID
 onready var getbutton =  $VBoxContainer/CreateLobby/Create_Lobby
 onready var line = $VBoxContainer/JoinGame/JoinLobby/LineEdit
 onready var connecting = $Connecting
-onready var lobbyList = $VBoxContainer/JoinGame/LobbyList
+onready var lobbyList = $VBoxContainer/JoinGame/PublicLobby/LobbyList
 
 var private = false
 var lobbies
@@ -79,3 +79,6 @@ func _on_LobbyList_item_activated(index):
 	var text = lobby.split(" ", true, 1)
 	var lobby_code = text[0]
 	Server.JoinLobby(lobby_code, get_instance_id())
+
+func _on_refresh_pressed():
+	Server.getLobbies()

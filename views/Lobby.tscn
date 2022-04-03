@@ -133,15 +133,30 @@ text = "Open Lobbies"
 align = 1
 autowrap = true
 
-[node name="LobbyList" type="ItemList" parent="VBoxContainer/JoinGame"]
+[node name="PublicLobby" type="HBoxContainer" parent="VBoxContainer/JoinGame"]
 margin_top = 59.0
 margin_right = 368.0
 margin_bottom = 259.0
-rect_min_size = Vector2( 0, 200 )
+
+[node name="LobbyList" type="ItemList" parent="VBoxContainer/JoinGame/PublicLobby"]
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 300, 200 )
 allow_reselect = true
 max_columns = 10
 same_column_width = true
 fixed_column_width = 368
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/JoinGame/PublicLobby"]
+margin_left = 304.0
+margin_right = 364.0
+margin_bottom = 200.0
+
+[node name="refresh" type="Button" parent="VBoxContainer/JoinGame/PublicLobby/VBoxContainer"]
+margin_right = 60.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Refresh"
 
 [node name="Back_Button" type="Button" parent="VBoxContainer"]
 margin_top = 387.0
@@ -153,5 +168,6 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/CreateLobby/IsPrivate" to="." method="_on_IsPrivate_pressed"]
 [connection signal="text_entered" from="VBoxContainer/JoinGame/JoinLobby/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/JoinGame/JoinLobby/Enter_Button" to="." method="_on_Enter_Button_pressed"]
-[connection signal="item_activated" from="VBoxContainer/JoinGame/LobbyList" to="." method="_on_LobbyList_item_activated"]
+[connection signal="item_activated" from="VBoxContainer/JoinGame/PublicLobby/LobbyList" to="." method="_on_LobbyList_item_activated"]
+[connection signal="pressed" from="VBoxContainer/JoinGame/PublicLobby/VBoxContainer/refresh" to="." method="_on_refresh_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back_Button" to="." method="_on_Back_Button_pressed"]
