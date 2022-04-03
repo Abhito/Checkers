@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://images/menu_images/activity-ga38aa5a6c_1920.jpg" type="Texture" id=4]
 [ext_resource path="res://scripts/RegisterPanel.gd" type="Script" id=5]
 [ext_resource path="res://scripts/LoginPanel.gd" type="Script" id=6]
+[ext_resource path="res://images/whiteCircle.svg" type="Texture" id=7]
+[ext_resource path="res://images/default.jpg" type="Texture" id=8]
+[ext_resource path="res://fonts/UsernameFont.tres" type="DynamicFont" id=9]
 
 [sub_resource type="Theme" id=5]
 
@@ -17,11 +20,14 @@
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
+[sub_resource type="CanvasItemMaterial" id=10]
+light_mode = 2
+
 [sub_resource type="Animation" id=6]
 resource_name = "growLogin"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../AccountPanel:margin_left")
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -33,7 +39,7 @@ tracks/0/keys = {
 "values": [ -200.0, -300 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../AccountPanel:margin_top")
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -45,7 +51,7 @@ tracks/1/keys = {
 "values": [ -75.0, -250 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../AccountPanel/AccountButton:visible")
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -57,7 +63,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../AccountPanel/ProfileName:visible")
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -69,7 +75,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../AccountPanel/Username:visible")
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -81,7 +87,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../AccountPanel:visible")
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -93,7 +99,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../LoginPanel:visible")
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -109,7 +115,7 @@ tracks/6/keys = {
 resource_name = "growRegister"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../AccountPanel:margin_left")
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -121,7 +127,7 @@ tracks/0/keys = {
 "values": [ -300, -350 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../AccountPanel/AccountButton:visible")
+tracks/1/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -133,7 +139,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../AccountPanel/ProfileName:visible")
+tracks/2/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -145,7 +151,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../AccountPanel/Username:visible")
+tracks/3/path = NodePath("../UserPanels/AccountPanel/Username:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -157,7 +163,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../AccountPanel:visible")
+tracks/4/path = NodePath("../UserPanels/AccountPanel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -169,7 +175,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../RegisterPanel:visible")
+tracks/5/path = NodePath("../UserPanels/RegisterPanel:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -181,7 +187,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../LoginPanel:visible")
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -193,11 +199,11 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "shrinkLogin"
+[sub_resource type="Animation" id=11]
+resource_name = "loginToProfile"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../AccountPanel:margin_left")
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -206,10 +212,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -300, -200 ]
+"values": [ -300, -280 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../AccountPanel:margin_top")
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -218,10 +224,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -250, -75 ]
+"values": [ -250, -110 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../AccountPanel/AccountButton:visible")
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -233,7 +239,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../AccountPanel/ProfileName:visible")
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -245,7 +251,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../AccountPanel/Username:visible")
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -257,7 +263,107 @@ tracks/4/keys = {
 "values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../AccountPanel:visible")
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "reset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -200.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -75.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel/Username:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -269,7 +375,119 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../LoginPanel:visible")
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/RegisterPanel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "shrinkLogin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -300, -200 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -250, -75 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -285,7 +503,7 @@ tracks/6/keys = {
 resource_name = "shrinkRegister"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../AccountPanel:margin_left")
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -297,7 +515,7 @@ tracks/0/keys = {
 "values": [ -350, -200 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../AccountPanel:margin_top")
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -309,7 +527,7 @@ tracks/1/keys = {
 "values": [ -250, -75 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../AccountPanel/AccountButton:visible")
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -321,7 +539,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../AccountPanel/ProfileName:visible")
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -333,7 +551,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../AccountPanel/Username:visible")
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -345,7 +563,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../AccountPanel:visible")
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -357,7 +575,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../RegisterPanel:visible")
+tracks/6/path = NodePath("../UserPanels/RegisterPanel:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -379,10 +597,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -203.0
-margin_top = -376.0
-margin_right = 1717.0
-margin_bottom = 900.0
+margin_left = -217.0
+margin_top = -398.0
+margin_right = 1703.0
+margin_bottom = 878.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -455,21 +673,33 @@ text = "Exit"
 flat = true
 align = 0
 
-[node name="AccountPanel" type="ColorRect" parent="."]
+[node name="UserPanels" type="Control" parent="."]
 anchor_left = 0.99
 anchor_top = 0.99
 anchor_right = 0.99
 anchor_bottom = 0.99
-margin_left = -200.0
-margin_top = -75.0
-margin_right = -0.496033
-margin_bottom = -0.00012207
+margin_left = -1016.76
+margin_top = -595.0
+margin_right = 0.23999
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AccountPanel" type="ColorRect" parent="UserPanels"]
+anchor_left = 0.99
+anchor_top = 0.99
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_left = -300.0
+margin_top = -250.0
+margin_right = 9.92999
+margin_bottom = 5.94989
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AccountButton" type="Button" parent="AccountPanel"]
+[node name="AccountButton" type="Button" parent="UserPanels/AccountPanel"]
 anchor_left = 0.663
 anchor_top = 0.711
 anchor_right = 0.935
@@ -483,7 +713,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProfileName" type="RichTextLabel" parent="AccountPanel"]
+[node name="ProfileName" type="RichTextLabel" parent="UserPanels/AccountPanel"]
 anchor_left = 0.236
 anchor_top = 0.443
 anchor_right = 0.543
@@ -495,51 +725,51 @@ margin_bottom = -9.888
 tab_size = 1
 text = "Profile:"
 
-[node name="Username" type="RichTextLabel" parent="AccountPanel"]
+[node name="Username" type="RichTextLabel" parent="UserPanels/AccountPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -129.264
-margin_top = -55.9999
-margin_right = 0.736023
-margin_bottom = -39.9999
+margin_left = -131.76
+margin_top = -59.9999
+margin_right = -1.75995
+margin_bottom = -43.9999
 text = "Not Logged In"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoginPanel" type="ColorRect" parent="."]
+[node name="LoginPanel" type="ColorRect" parent="UserPanels"]
 visible = false
 anchor_left = 0.99
 anchor_top = 0.99
 anchor_right = 0.99
 anchor_bottom = 0.99
-margin_left = -300.0
-margin_top = -250.0
-margin_right = 0.311951
-margin_bottom = -6.10352e-05
+margin_left = -290.07
+margin_top = -244.05
+margin_right = 10.2419
+margin_bottom = 5.94995
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoginRequestHandler" type="HTTPRequest" parent="LoginPanel"]
+[node name="LoginRequestHandler" type="HTTPRequest" parent="UserPanels/LoginPanel"]
 
-[node name="PasswordEntry" type="TextEdit" parent="LoginPanel"]
+[node name="PasswordEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
 margin_left = 93.24
 margin_top = 77.9999
 margin_right = 288.24
 margin_bottom = 102.0
 
-[node name="UsernameEntry" type="TextEdit" parent="LoginPanel"]
+[node name="UsernameEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
 margin_left = 93.24
 margin_top = 44.9999
 margin_right = 287.24
 margin_bottom = 68.9999
 
-[node name="PasswordLabel" type="RichTextLabel" parent="LoginPanel"]
+[node name="PasswordLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 12.24
 margin_top = 82.9999
 margin_right = 100.24
@@ -550,7 +780,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UsernameLabel" type="RichTextLabel" parent="LoginPanel"]
+[node name="UsernameLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 10.24
 margin_top = 48.9999
 margin_right = 98.24
@@ -561,7 +791,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NoAccountLabel" type="RichTextLabel" parent="LoginPanel"]
+[node name="NoAccountLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 64.24
 margin_top = 191.0
 margin_right = 230.24
@@ -571,35 +801,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LoginButton" type="Button" parent="LoginPanel"]
+[node name="LoginButton" type="Button" parent="UserPanels/LoginPanel"]
 margin_left = 98.24
 margin_top = 146.0
 margin_right = 187.24
 margin_bottom = 172.0
 text = "Login"
 
-[node name="RegisterButton" type="Button" parent="LoginPanel"]
+[node name="RegisterButton" type="Button" parent="UserPanels/LoginPanel"]
 margin_left = 100.24
 margin_top = 212.0
 margin_right = 189.24
 margin_bottom = 238.0
 text = "Register"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LoginPanel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 13.24
 margin_top = 19.9999
 margin_right = 283.24
 margin_bottom = 37.9999
 text = "Enter Username and Password to Login."
 
-[node name="LoginToProfile" type="Button" parent="LoginPanel"]
+[node name="LoginToProfile" type="Button" parent="UserPanels/LoginPanel"]
 margin_left = 272.24
 margin_top = 4.99994
 margin_right = 292.24
 margin_bottom = 24.9999
 text = "X"
 
-[node name="LogErrorText" type="RichTextLabel" parent="LoginPanel"]
+[node name="LogErrorText" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 58.24
 margin_top = 117.0
 margin_right = 236.24
@@ -607,23 +837,23 @@ margin_bottom = 138.0
 custom_colors/default_color = Color( 0.992157, 0.262745, 0.262745, 1 )
 text = "<Error Text Shows up Here>"
 
-[node name="RegisterPanel" type="ColorRect" parent="."]
+[node name="RegisterPanel" type="ColorRect" parent="UserPanels"]
 visible = false
 anchor_left = 0.99
 anchor_top = 0.99
 anchor_right = 0.99
 anchor_bottom = 0.99
-margin_left = -350.0
-margin_top = -250.0
-margin_right = 0.23999
-margin_bottom = -6.10352e-05
+margin_left = -340.07
+margin_top = -244.05
+margin_right = 10.17
+margin_bottom = 5.94995
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RegErrorText" type="RichTextLabel" parent="RegisterPanel"]
+[node name="RegErrorText" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -640,7 +870,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RegisterToProfile" type="Button" parent="RegisterPanel"]
+[node name="RegisterToProfile" type="Button" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -654,7 +884,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RegisterTitle" type="RichTextLabel" parent="RegisterPanel"]
+[node name="RegisterTitle" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -668,7 +898,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UsernameLabel" type="RichTextLabel" parent="RegisterPanel"]
+[node name="UsernameLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -679,7 +909,7 @@ margin_right = -223.24
 margin_bottom = -184.0
 text = "Enter Username:"
 
-[node name="EmailLabel" type="RichTextLabel" parent="RegisterPanel"]
+[node name="EmailLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -690,7 +920,7 @@ margin_right = -223.24
 margin_bottom = -79.0
 text = "Enter Email:"
 
-[node name="EPasswordLabel" type="RichTextLabel" parent="RegisterPanel"]
+[node name="EPasswordLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -701,7 +931,7 @@ margin_right = -223.24
 margin_bottom = -149.0
 text = "Enter Password:"
 
-[node name="CPasswordLabel" type="RichTextLabel" parent="RegisterPanel"]
+[node name="CPasswordLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -712,7 +942,7 @@ margin_right = -213.24
 margin_bottom = -114.0
 text = "Confirm Password:"
 
-[node name="RegisterAccountButton" type="Button" parent="RegisterPanel"]
+[node name="RegisterAccountButton" type="Button" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -723,7 +953,7 @@ margin_right = -75.0
 margin_bottom = -20.0
 text = "Register new Account"
 
-[node name="UsernameEntry" type="TextEdit" parent="RegisterPanel"]
+[node name="UsernameEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 140.0
@@ -731,7 +961,7 @@ margin_top = 45.0
 margin_right = -5.0
 margin_bottom = -185.0
 
-[node name="EPasswordEntry" type="TextEdit" parent="RegisterPanel"]
+[node name="EPasswordEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -741,7 +971,7 @@ margin_top = -170.0
 margin_right = -5.23999
 margin_bottom = -150.0
 
-[node name="CPasswordEntry" type="TextEdit" parent="RegisterPanel"]
+[node name="CPasswordEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -751,7 +981,7 @@ margin_top = -135.0
 margin_right = -5.23999
 margin_bottom = -115.0
 
-[node name="EmailEntry" type="TextEdit" parent="RegisterPanel"]
+[node name="EmailEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -761,7 +991,77 @@ margin_top = -100.0
 margin_right = -5.23999
 margin_bottom = -80.0
 
-[node name="RegisterRequestHandler" type="HTTPRequest" parent="RegisterPanel"]
+[node name="RegisterRequestHandler" type="HTTPRequest" parent="UserPanels/RegisterPanel"]
+
+[node name="ProfilePanel" type="ColorRect" parent="UserPanels"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -110.0
+margin_right = -6.10352e-05
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfilePicture" type="CenterContainer" parent="UserPanels/ProfilePanel"]
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="UserPanels/ProfilePanel/ProfilePicture"]
+position = Vector2( 51, 55 )
+scale = Vector2( 0.175, 0.175 )
+texture = ExtResource( 7 )
+mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UserPanels/ProfilePanel/ProfilePicture"]
+material = SubResource( 10 )
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 8 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileButton" type="Button" parent="UserPanels/ProfilePanel"]
+anchor_left = -0.032
+anchor_top = -0.054
+anchor_right = -0.032
+anchor_bottom = -0.048
+margin_left = 100.0
+margin_top = 90.94
+margin_right = 188.96
+margin_bottom = 110.28
+text = "Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendsButton" type="Button" parent="UserPanels/ProfilePanel"]
+margin_left = 190.0
+margin_top = 85.0
+margin_right = 275.0
+margin_bottom = 105.0
+text = "Friends"
+
+[node name="Username" type="RichTextLabel" parent="UserPanels/ProfilePanel"]
+margin_left = 104.0
+margin_top = 17.0
+margin_right = 279.0
+margin_bottom = 39.0
+custom_fonts/normal_font = ExtResource( 9 )
+text = "<Username Here>"
+scroll_active = false
 
 [node name="MenuAnimator" type="Node2D" parent="."]
 position = Vector2( 777, 430 )
@@ -769,6 +1069,8 @@ position = Vector2( 777, 430 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuAnimator"]
 anims/growLogin = SubResource( 6 )
 anims/growRegister = SubResource( 8 )
+anims/loginToProfile = SubResource( 11 )
+anims/reset = SubResource( 12 )
 anims/shrinkLogin = SubResource( 7 )
 anims/shrinkRegister = SubResource( 9 )
 
@@ -776,12 +1078,12 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="AccountPanel/AccountButton" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
-[connection signal="request_completed" from="LoginPanel/LoginRequestHandler" to="LoginPanel" method="_on_LoginRequestHandler_request_completed"]
-[connection signal="pressed" from="LoginPanel/LoginButton" to="LoginPanel" method="_on_LoginButton_pressed"]
-[connection signal="pressed" from="LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
-[connection signal="pressed" from="LoginPanel/LoginToProfile" to="." method="_on_LoginToProfile_pressed"]
-[connection signal="pressed" from="RegisterPanel/RegisterToProfile" to="." method="_on_RegisterToProfile_pressed"]
-[connection signal="pressed" from="RegisterPanel/RegisterAccountButton" to="RegisterPanel" method="_on_RegisterAccountButton_pressed"]
-[connection signal="request_completed" from="RegisterPanel/RegisterRequestHandler" to="RegisterPanel" method="_on_RegisterRequestHandler_request_completed"]
+[connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
+[connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_Button_pressed"]
+[connection signal="request_completed" from="UserPanels/LoginPanel/LoginRequestHandler" to="UserPanels/LoginPanel" method="_on_LoginRequestHandler_request_completed"]
+[connection signal="pressed" from="UserPanels/LoginPanel/LoginButton" to="UserPanels/LoginPanel" method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="UserPanels/LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="pressed" from="UserPanels/LoginPanel/LoginToProfile" to="." method="_on_LoginToProfile_pressed"]
+[connection signal="pressed" from="UserPanels/RegisterPanel/RegisterToProfile" to="." method="_on_RegisterToProfile_pressed"]
+[connection signal="pressed" from="UserPanels/RegisterPanel/RegisterAccountButton" to="UserPanels/RegisterPanel" method="_on_RegisterAccountButton_pressed"]
+[connection signal="request_completed" from="UserPanels/RegisterPanel/RegisterRequestHandler" to="UserPanels/RegisterPanel" method="_on_RegisterRequestHandler_request_completed"]

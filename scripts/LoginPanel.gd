@@ -5,12 +5,14 @@ var password
 var tempHold
 var discoveredEmail
 var discoveredProfile
+var MenuAnimationPlayer
 signal verified
 
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	tempHold = false
+	MenuAnimationPlayer = get_node("../../MenuAnimator/AnimationPlayer")
 
 func _on_LoginButton_pressed():
 	username = $UsernameEntry.text
@@ -35,7 +37,9 @@ func _on_LoginRequestHandler_request_completed(result, response_code, headers, b
 		print("Dictionary Found")
 		print(json.result)
 		discoveredEmail = json.result.Items[0].email.S
-		discoveredProfile = json.result.Items[0].email.S
+		discoveredProfile = json.result.Items[0].username.S
+		get_node("../ProfilePanel/Username").text = discoveredProfile
+		MenuAnimationPlayer.play("loginToProfile")
 	elif json != null:
 		if json.result == "false":
 			#print("False Found")

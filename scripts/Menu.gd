@@ -9,6 +9,7 @@ var MenuAnimationPlayer
 func _ready():
 	AudioManager.stopMusic()
 	MenuAnimationPlayer = get_tree().get_root().get_node("Menu/MenuAnimator/AnimationPlayer")
+	MenuAnimationPlayer.play("reset")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
