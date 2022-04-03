@@ -1580,7 +1580,6 @@ __meta__ = {
 }
 
 [node name="ProfilePicture" type="CenterContainer" parent="UserPanels/ProfilePanel"]
-visible = false
 margin_right = 100.0
 margin_bottom = 100.0
 size_flags_horizontal = 0

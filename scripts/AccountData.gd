@@ -1,5 +1,4 @@
-extends Object
-class_name AccountData
+extends Node
 
 var username
 var email
@@ -11,9 +10,11 @@ var settings
 var wins
 var losses
 
-func _init():
+func _ready():
 	pass
 
 func updateAll(input):
-	pass
+	username = input.Items[0].username.S
+	email = input.Items[0].email.S
+
 

@@ -31,14 +31,12 @@ func _on_LoginButton_pressed():
 	
 func _on_LoginRequestHandler_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	print(typeof(json.result))
+	#print(typeof(json.result))
 	#print(json.result)
 	if typeof(json.result) == 18:
-		print("Dictionary Found")
-		print(json.result)
-		discoveredEmail = json.result.Items[0].email.S
-		discoveredProfile = json.result.Items[0].username.S
-		get_node("../ProfilePanel/Username").text = discoveredProfile
+		#print("Dictionary Found")
+		AccountData.updateAll(json.result)
+		get_node("../ProfilePanel/Username").text = AccountData.username
 		MenuAnimationPlayer.play("loginToProfile")
 	elif json != null:
 		if json.result == "false":
