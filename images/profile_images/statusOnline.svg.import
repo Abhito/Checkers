@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/statusOffline.svg-86837ff6176306e9a3dd33cc97cc32db.stex"
+path="res://.import/statusOnline.svg-200bdf2421c151a0f7cfd73f63ddc0db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/statusOffline.svg"
-dest_files=[ "res://.import/statusOffline.svg-86837ff6176306e9a3dd33cc97cc32db.stex" ]
+source_file="res://images/profile_images/statusOnline.svg"
+dest_files=[ "res://.import/statusOnline.svg-200bdf2421c151a0f7cfd73f63ddc0db.stex" ]
 
 [params]
 

@@ -6,10 +6,10 @@
 [ext_resource path="res://images/menu_images/activity-ga38aa5a6c_1920.jpg" type="Texture" id=4]
 [ext_resource path="res://scripts/RegisterPanel.gd" type="Script" id=5]
 [ext_resource path="res://scripts/LoginPanel.gd" type="Script" id=6]
-[ext_resource path="res://images/whiteCircle.svg" type="Texture" id=7]
-[ext_resource path="res://images/default.jpg" type="Texture" id=8]
+[ext_resource path="res://images/profile_images/whiteCircle.svg" type="Texture" id=7]
+[ext_resource path="res://images/profile_images/default.jpg" type="Texture" id=8]
 [ext_resource path="res://fonts/UsernameFont.tres" type="DynamicFont" id=9]
-[ext_resource path="res://images/statusOnline.svg" type="Texture" id=10]
+[ext_resource path="res://images/profile_images/statusOnline.svg" type="Texture" id=10]
 
 [sub_resource type="Theme" id=5]
 
@@ -1343,6 +1343,7 @@ margin_bottom = 100.0
 texture = ExtResource( 10 )
 
 [node name="FriendsPanel" type="ColorRect" parent="UserPanels"]
+visible = false
 anchor_left = 1.008
 anchor_top = 1.0
 anchor_right = 1.008
@@ -1392,6 +1393,74 @@ margin_top = -451.0
 margin_right = -101.0
 margin_bottom = -431.0
 text = "Friends List"
+
+[node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
+anchor_left = 1.008
+anchor_top = 1.0
+anchor_right = 1.008
+anchor_bottom = 1.0
+margin_left = -285.176
+margin_top = -460.0
+margin_right = -0.176025
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -274.0
+margin_top = -432.0
+margin_right = -9.99997
+margin_bottom = -42.0
+
+[node name="TextureRect" type="TextureRect" parent="UserPanels/FriendsRequestsPanel/VScrollBar"]
+margin_left = 56.0
+margin_top = 31.0
+margin_right = 96.0
+margin_bottom = 71.0
+
+[node name="exitFriendRequestButton" type="Button" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -456.0
+margin_right = -5.0
+margin_bottom = -436.0
+text = "X"
+
+[node name="FriendRequestTitle" type="RichTextLabel" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -189.0
+margin_top = -453.0
+margin_right = -85.0
+margin_bottom = -438.0
+text = "Friend Requests"
+
+[node name="LineEdit" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -272.0
+margin_top = -33.0
+margin_right = -103.0
+margin_bottom = -9.0
+
+[node name="AddFriendButton" type="Button" parent="UserPanels/FriendsRequestsPanel"]
+margin_left = 188.0
+margin_top = 428.0
+margin_right = 274.0
+margin_bottom = 450.0
+text = "Add Friend"
 
 [node name="MenuAnimator" type="Node2D" parent="."]
 position = Vector2( 777, 430 )

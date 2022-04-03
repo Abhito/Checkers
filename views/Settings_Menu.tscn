@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/CameraValue.gd" type="Script" id=4]
 [ext_resource path="res://images/ui_images/slider/sliderbar.tres" type="StyleBox" id=5]
 
+
 [sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.349727, 0.928962 )
 colors = PoolColorArray( 0.0533447, 0.0571499, 0.296875, 1, 0.235331, 0.0461426, 0.28125, 1, 0.168991, 0.0708008, 0.3125, 1 )

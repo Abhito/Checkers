@@ -31,6 +31,7 @@
 [ext_resource path="res://scripts/ArtificialIntelligence.gd" type="Script" id=29]
 [ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
 
+
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 16 ) ],

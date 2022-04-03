@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Circle.svg-cf499f96a472ce75c71d2e6a79e618cd.stex"
+path="res://.import/statusOffline.svg-3447526586e0c9a4c567c5043c4806d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Circle.svg"
-dest_files=[ "res://.import/Circle.svg-cf499f96a472ce75c71d2e6a79e618cd.stex" ]
+source_file="res://images/profile_images/statusOffline.svg"
+dest_files=[ "res://.import/statusOffline.svg-3447526586e0c9a4c567c5043c4806d1.stex" ]
 
 [params]
 
@@ -27,7 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
-process/invert_color=true
+process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
