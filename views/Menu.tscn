@@ -1,9 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/MenuFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://images/menu_images/activity-ga38aa5a6c_1920.jpg" type="Texture" id=4]
+[ext_resource path="res://scripts/RegisterPanel.gd" type="Script" id=5]
+[ext_resource path="res://scripts/LoginPanel.gd" type="Script" id=6]
+[ext_resource path="res://images/profile_images/whiteCircle.svg" type="Texture" id=7]
+[ext_resource path="res://images/profile_images/default.jpg" type="Texture" id=8]
+[ext_resource path="res://fonts/UsernameFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://images/profile_images/statusOnline.svg" type="Texture" id=10]
+[ext_resource path="res://images/profile_images/refresh.svg" type="Texture" id=11]
+[ext_resource path="res://images/profile_images/nothing.svg" type="Texture" id=12]
+[ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
+[ext_resource path="res://views/FriendsPanel.gd" type="Script" id=14]
+[ext_resource path="res://views/FriendsRequestsPanel.gd" type="Script" id=15]
 
 [sub_resource type="Theme" id=5]
 
@@ -15,6 +26,1145 @@
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
+[sub_resource type="CanvasItemMaterial" id=10]
+light_mode = 2
+
+[sub_resource type="Animation" id=17]
+resource_name = "detailedProfileToProfile"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/ProfilePanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -580, -280 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/ProfilePanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -450, -110 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/ProfilePanel/ProfilePicture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/ProfilePanel/ProfileButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/ProfilePanel/FriendsButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/ProfilePanel/Username:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/ProfilePanel/Status:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../UserPanels/DetailedProfilePanel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "friendsToProfile"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/ProfilePanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -285, -280 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/ProfilePanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -460, -110 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/ProfilePanel/ProfilePicture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/ProfilePanel/ProfileButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/ProfilePanel/FriendsButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/ProfilePanel/Username:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/ProfilePanel/Status:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../UserPanels/FriendsPanel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "growLogin"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -200.0, -300 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -75.0, -250 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "growRegister"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -300, -350 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/RegisterPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "loginToProfile"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -300, -280, -200 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -250, -110, -75 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "profileToDetailedProfile"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/ProfilePanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -280, -580 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/ProfilePanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -110, -450 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/ProfilePanel/ProfilePicture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/ProfilePanel/ProfileButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/ProfilePanel/FriendsButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/ProfilePanel/Username:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/ProfilePanel/Status:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../UserPanels/DetailedProfilePanel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "profileToFriends"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/ProfilePanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -280.0, -285 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/ProfilePanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -110.0, -460 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/ProfilePanel/ProfilePicture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/ProfilePanel/ProfileButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/ProfilePanel/FriendsButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/ProfilePanel/Username:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/ProfilePanel/Status:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../UserPanels/FriendsPanel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "registerToLogin"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -350, -290 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -250, -244 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/RegisterPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "reset"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -200.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -75.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../UserPanels/RegisterPanel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../UserPanels/ProfilePanel:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../UserPanels/ProfilePanel:margin_left")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -280.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../UserPanels/ProfilePanel:margin_top")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -110.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../UserPanels/FriendsPanel:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../UserPanels/FriendsRequestsPanel:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../UserPanels/DetailedProfilePanel:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "shrinkLogin"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -300, -200 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -250, -75 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/LoginPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "shrinkRegister"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../UserPanels/AccountPanel:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -350, -200 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../UserPanels/AccountPanel:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -250, -75 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../UserPanels/AccountPanel/AccountButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../UserPanels/AccountPanel/ProfileName:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../UserPanels/AccountPanel/Username:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../UserPanels/AccountPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../UserPanels/RegisterPanel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,10 +1175,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -203.0
-margin_top = -376.0
-margin_right = 1717.0
-margin_bottom = 900.0
+margin_left = -217.0
+margin_top = -398.0
+margin_right = 1703.0
+margin_bottom = 878.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -101,7 +1251,736 @@ text = "Exit"
 flat = true
 align = 0
 
+[node name="UserPanels" type="Control" parent="."]
+anchor_left = 0.99
+anchor_top = 0.99
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_left = -646.76
+margin_top = -595.0
+margin_right = 0.23999
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AccountPanel" type="ColorRect" parent="UserPanels"]
+anchor_left = 0.99
+anchor_top = 0.99
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_left = -200.0
+margin_top = -75.0
+margin_right = 9.92999
+margin_bottom = 5.94989
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AccountButton" type="Button" parent="UserPanels/AccountPanel"]
+anchor_left = 0.663
+anchor_top = 0.711
+anchor_right = 0.935
+anchor_bottom = 0.911
+margin_left = -64.4733
+margin_top = -12.3249
+margin_right = -64.6013
+margin_bottom = -2.92492
+text = "Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileName" type="RichTextLabel" parent="UserPanels/AccountPanel"]
+anchor_left = 0.236
+anchor_top = 0.443
+anchor_right = 0.543
+anchor_bottom = 0.696
+margin_left = -26.964
+margin_top = -14.479
+margin_right = -27.057
+margin_bottom = -9.888
+tab_size = 1
+text = "Profile:"
+
+[node name="Username" type="RichTextLabel" parent="UserPanels/AccountPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -131.76
+margin_top = -59.9999
+margin_right = -1.75995
+margin_bottom = -43.9999
+text = "Not Logged In"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginPanel" type="ColorRect" parent="UserPanels"]
+visible = false
+anchor_left = 0.99
+anchor_top = 0.99
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_left = -290.07
+margin_top = -244.05
+margin_right = 10.2419
+margin_bottom = 5.94995
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginRequestHandler" type="HTTPRequest" parent="UserPanels/LoginPanel"]
+
+[node name="PasswordEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
+margin_left = 93.24
+margin_top = 77.9999
+margin_right = 288.24
+margin_bottom = 102.0
+
+[node name="UsernameEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
+margin_left = 93.24
+margin_top = 44.9999
+margin_right = 287.24
+margin_bottom = 68.9999
+
+[node name="PasswordLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
+margin_left = 12.24
+margin_top = 82.9999
+margin_right = 100.24
+margin_bottom = 99.9999
+rect_pivot_offset = Vector2( 76, -21 )
+text = "Password:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UsernameLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
+margin_left = 10.24
+margin_top = 48.9999
+margin_right = 98.24
+margin_bottom = 65.9999
+rect_pivot_offset = Vector2( 76, -21 )
+text = "Username:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoAccountLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
+margin_left = 64.24
+margin_top = 191.0
+margin_right = 230.24
+margin_bottom = 208.0
+text = "Don't have an account?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoginButton" type="Button" parent="UserPanels/LoginPanel"]
+margin_left = 98.24
+margin_top = 146.0
+margin_right = 187.24
+margin_bottom = 172.0
+text = "Login"
+
+[node name="RegisterButton" type="Button" parent="UserPanels/LoginPanel"]
+margin_left = 100.24
+margin_top = 212.0
+margin_right = 189.24
+margin_bottom = 238.0
+text = "Register"
+
+[node name="LoginTitle" type="RichTextLabel" parent="UserPanels/LoginPanel"]
+margin_left = 13.24
+margin_top = 19.9999
+margin_right = 283.24
+margin_bottom = 37.9999
+text = "Enter Username and Password to Login."
+
+[node name="LoginToProfile" type="Button" parent="UserPanels/LoginPanel"]
+margin_left = 272.24
+margin_top = 4.99994
+margin_right = 292.24
+margin_bottom = 24.9999
+text = "X"
+
+[node name="LoginErrorText" type="Label" parent="UserPanels/LoginPanel"]
+visible = false
+margin_left = 12.54
+margin_top = 116.0
+margin_right = 280.54
+margin_bottom = 135.0
+custom_colors/font_color = Color( 0.921569, 0.109804, 0.109804, 1 )
+text = "<Error Text Here>"
+align = 1
+
+[node name="RegisterPanel" type="ColorRect" parent="UserPanels"]
+visible = false
+anchor_left = 0.99
+anchor_top = 0.99
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_left = -340.07
+margin_top = -244.05
+margin_right = 10.17
+margin_bottom = 5.94995
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RegisterToProfile" type="Button" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -27.0
+margin_top = -243.0
+margin_right = -7.0
+margin_bottom = -223.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RegisterTitle" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -265.0
+margin_top = -233.0
+margin_right = -94.0
+margin_bottom = -216.0
+text = "Register an new Account"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UsernameLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -340.24
+margin_top = -201.0
+margin_right = -223.24
+margin_bottom = -184.0
+text = "Enter Username:"
+
+[node name="EmailLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -340.24
+margin_top = -96.0
+margin_right = -223.24
+margin_bottom = -79.0
+text = "Enter Email:"
+
+[node name="EPasswordLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -340.24
+margin_top = -166.0
+margin_right = -223.24
+margin_bottom = -149.0
+text = "Enter Password:"
+
+[node name="CPasswordLabel" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -340.24
+margin_top = -131.0
+margin_right = -213.24
+margin_bottom = -114.0
+text = "Confirm Password:"
+
+[node name="RegisterAccountButton" type="Button" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -275.0
+margin_top = -40.0
+margin_right = -75.0
+margin_bottom = -20.0
+text = "Register new Account"
+
+[node name="UsernameEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 140.0
+margin_top = 45.0
+margin_right = -5.0
+margin_bottom = -185.0
+
+[node name="EPasswordEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -210.24
+margin_top = -170.0
+margin_right = -5.23999
+margin_bottom = -150.0
+
+[node name="CPasswordEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -210.24
+margin_top = -135.0
+margin_right = -5.23999
+margin_bottom = -115.0
+
+[node name="EmailEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -210.24
+margin_top = -100.0
+margin_right = -5.23999
+margin_bottom = -80.0
+
+[node name="RegisterRequestHandler" type="HTTPRequest" parent="UserPanels/RegisterPanel"]
+
+[node name="RegErrorText" type="Label" parent="UserPanels/RegisterPanel"]
+visible = false
+margin_left = 20.0
+margin_top = 184.0
+margin_right = 332.0
+margin_bottom = 201.0
+custom_colors/font_color = Color( 0.9, 0.1, 0.1, 1 )
+text = "<Error Text Here>"
+align = 1
+
+[node name="ProfilePanel" type="ColorRect" parent="UserPanels"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -280.0
+margin_top = -110.0
+margin_right = -6.10352e-05
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfilePicture" type="CenterContainer" parent="UserPanels/ProfilePanel"]
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="UserPanels/ProfilePanel/ProfilePicture"]
+position = Vector2( 51, 55 )
+scale = Vector2( 0.175, 0.175 )
+texture = ExtResource( 7 )
+mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UserPanels/ProfilePanel/ProfilePicture"]
+material = SubResource( 10 )
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 8 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileButton" type="Button" parent="UserPanels/ProfilePanel"]
+anchor_left = -0.032
+anchor_top = -0.054
+anchor_right = -0.032
+anchor_bottom = -0.048
+margin_left = 100.0
+margin_top = 90.94
+margin_right = 188.96
+margin_bottom = 110.28
+text = "Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendsButton" type="Button" parent="UserPanels/ProfilePanel"]
+margin_left = 190.0
+margin_top = 85.0
+margin_right = 275.0
+margin_bottom = 105.0
+text = "Friends"
+
+[node name="Username" type="RichTextLabel" parent="UserPanels/ProfilePanel"]
+margin_left = 101.0
+margin_top = 15.0
+margin_right = 276.0
+margin_bottom = 37.0
+custom_fonts/normal_font = ExtResource( 9 )
+text = "<Username Here>"
+scroll_active = false
+
+[node name="Status" type="TextureRect" parent="UserPanels/ProfilePanel"]
+margin_left = 11.0
+margin_top = 80.0
+margin_right = 31.0
+margin_bottom = 100.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendsPanel" type="ColorRect" parent="UserPanels"]
+visible = false
+anchor_left = 1.008
+anchor_top = 1.0
+anchor_right = 1.008
+anchor_bottom = 1.0
+margin_left = -285.176
+margin_top = -460.0
+margin_right = -0.176025
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendScroll" type="ScrollContainer" parent="UserPanels/FriendsPanel"]
+anchor_left = 0.033
+anchor_top = 0.065
+anchor_right = 0.033
+anchor_bottom = 0.065
+margin_left = -0.0499992
+margin_top = 0.0999985
+margin_right = 264.595
+margin_bottom = 395.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendContainer" type="VBoxContainer" parent="UserPanels/FriendsPanel/FriendScroll"]
+margin_right = 264.645
+margin_bottom = 395.0
+rect_min_size = Vector2( 264, 395 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitFriendsButton" type="Button" parent="UserPanels/FriendsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -456.0
+margin_right = -5.0
+margin_bottom = -436.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendsTitle" type="RichTextLabel" parent="UserPanels/FriendsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = -451.0
+margin_right = -101.0
+margin_bottom = -431.0
+text = "Friends List"
+
+[node name="FriendRequests" type="Button" parent="UserPanels/FriendsPanel"]
+margin_left = 158.0
+margin_top = 433.0
+margin_right = 273.0
+margin_bottom = 453.0
+text = "Friend Requests"
+
+[node name="RefreshButton" type="TextureButton" parent="UserPanels/FriendsPanel"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 23.0
+texture_normal = ExtResource( 11 )
+
+[node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
+visible = false
+anchor_left = 1.008
+anchor_top = 1.0
+anchor_right = 1.008
+anchor_bottom = 1.0
+margin_left = -285.176
+margin_top = -460.0
+margin_right = -0.176025
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendRequestScroll" type="ScrollContainer" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 0.033
+anchor_top = 0.065
+anchor_right = 0.033
+anchor_bottom = 0.065
+margin_left = -0.0500183
+margin_top = 0.0999985
+margin_right = 264.595
+margin_bottom = 395.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FriendRequestContainer" type="VBoxContainer" parent="UserPanels/FriendsRequestsPanel/FriendRequestScroll"]
+margin_right = 264.645
+margin_bottom = 395.0
+rect_min_size = Vector2( 264, 395 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitFriendRequestButton" type="Button" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -456.0
+margin_right = -5.0
+margin_bottom = -436.0
+text = "X"
+
+[node name="FriendRequestTitle" type="RichTextLabel" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -195.0
+margin_top = -455.0
+margin_right = -91.0
+margin_bottom = -440.0
+text = "Friend Requests"
+
+[node name="LineEdit" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -272.0
+margin_top = -33.0
+margin_right = -103.0
+margin_bottom = -9.0
+
+[node name="AddFriendButton" type="Button" parent="UserPanels/FriendsRequestsPanel"]
+margin_left = 188.0
+margin_top = 428.0
+margin_right = 274.0
+margin_bottom = 450.0
+text = "Add Friend"
+
+[node name="RefreshButton" type="TextureButton" parent="UserPanels/FriendsRequestsPanel"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 23.0
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
+visible = false
+anchor_left = 1.006
+anchor_top = 1.0
+anchor_right = 1.006
+anchor_bottom = 1.0
+margin_left = -580.0
+margin_top = -450.0
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AccountPicture" type="CenterContainer" parent="UserPanels/DetailedProfilePanel"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="UserPanels/DetailedProfilePanel/AccountPicture"]
+position = Vector2( 51, 55 )
+scale = Vector2( 0.175, 0.175 )
+texture = ExtResource( 7 )
+mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UserPanels/DetailedProfilePanel/AccountPicture"]
+material = SubResource( 10 )
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 8 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusButton" type="OptionButton" parent="UserPanels/DetailedProfilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -580.0
+margin_top = -374.0
+margin_right = -537.0
+margin_bottom = -348.0
+custom_icons/arrow = ExtResource( 12 )
+icon = ExtResource( 10 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReturnToProfile" type="Button" parent="UserPanels/DetailedProfilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -447.0
+margin_right = -5.0
+margin_bottom = -427.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserName" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -473.0
+margin_top = -429.0
+margin_right = -354.0
+margin_bottom = -409.0
+custom_fonts/normal_font = ExtResource( 9 )
+text = "<Username>"
+scroll_active = false
+
+[node name="ProfileDescriptionLabel" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 26.0
+margin_top = 152.0
+margin_right = 214.0
+margin_bottom = 176.0
+custom_fonts/normal_font = ExtResource( 9 )
+text = "Profile Description:"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileDescription" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 565.0
+margin_bottom = 295.0
+
+[node name="ProfileDescriptionEdit" type="TextEdit" parent="UserPanels/DetailedProfilePanel"]
+visible = false
+margin_left = 20.0
+margin_top = 180.0
+margin_right = 565.0
+margin_bottom = 295.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 442.118
+margin_top = 301.0
+margin_right = 563.118
+margin_bottom = 321.0
+text = "Edit Description"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
+visible = false
+margin_left = 512.0
+margin_top = 301.0
+margin_right = 563.0
+margin_bottom = 321.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsDescriptionLabel" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 30.0
+margin_top = 329.0
+margin_right = 144.0
+margin_bottom = 354.0
+custom_fonts/normal_font = ExtResource( 9 )
+text = "User Stats:"
+
+[node name="MenuAnimator" type="Node2D" parent="."]
+position = Vector2( 777, 430 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuAnimator"]
+anims/detailedProfileToProfile = SubResource( 17 )
+anims/friendsToProfile = SubResource( 15 )
+anims/growLogin = SubResource( 6 )
+anims/growRegister = SubResource( 8 )
+anims/loginToProfile = SubResource( 11 )
+anims/profileToDetailedProfile = SubResource( 16 )
+anims/profileToFriends = SubResource( 14 )
+anims/registerToLogin = SubResource( 18 )
+anims/reset = SubResource( 12 )
+anims/shrinkLogin = SubResource( 7 )
+anims/shrinkRegister = SubResource( 9 )
+
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="_on_Solo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
+[connection signal="request_completed" from="UserPanels/LoginPanel/LoginRequestHandler" to="UserPanels/LoginPanel" method="_on_LoginRequestHandler_request_completed"]
+[connection signal="pressed" from="UserPanels/LoginPanel/LoginButton" to="UserPanels/LoginPanel" method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="UserPanels/LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="pressed" from="UserPanels/LoginPanel/LoginToProfile" to="." method="_on_LoginToProfile_pressed"]
+[connection signal="pressed" from="UserPanels/RegisterPanel/RegisterToProfile" to="." method="_on_RegisterToProfile_pressed"]
+[connection signal="pressed" from="UserPanels/RegisterPanel/RegisterAccountButton" to="UserPanels/RegisterPanel" method="_on_RegisterAccountButton_pressed"]
+[connection signal="request_completed" from="UserPanels/RegisterPanel/RegisterRequestHandler" to="UserPanels/RegisterPanel" method="_on_RegisterRequestHandler_request_completed"]
+[connection signal="pressed" from="UserPanels/ProfilePanel/ProfileButton" to="." method="_on_ProfileButton_pressed"]
+[connection signal="pressed" from="UserPanels/ProfilePanel/FriendsButton" to="." method="_on_FriendsButton_pressed"]
+[connection signal="pressed" from="UserPanels/FriendsPanel/exitFriendsButton" to="." method="_on_exitFriendsButton_pressed"]
+[connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
+[connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
+[connection signal="pressed" from="UserPanels/DetailedProfilePanel/ReturnToProfile" to="." method="_on_ReturnToProfile_pressed"]
+[connection signal="pressed" from="UserPanels/DetailedProfilePanel/EditDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_EditDescriptionButton_pressed"]
+[connection signal="pressed" from="UserPanels/DetailedProfilePanel/SaveDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_SaveDescriptionButton_pressed"]
