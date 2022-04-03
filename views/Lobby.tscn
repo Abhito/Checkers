@@ -62,9 +62,8 @@ __meta__ = {
 }
 
 [node name="CreateLobby" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 20.0
 margin_right = 368.0
-margin_bottom = 44.0
+margin_bottom = 24.0
 
 [node name="Create_Lobby" type="Button" parent="VBoxContainer/CreateLobby"]
 margin_right = 100.0
@@ -84,6 +83,12 @@ margin_left = 208.0
 margin_right = 280.0
 margin_bottom = 24.0
 text = "Private"
+
+[node name="IsP2P" type="CheckBox" parent="VBoxContainer/CreateLobby"]
+margin_left = 284.0
+margin_right = 336.0
+margin_bottom = 24.0
+text = "P2P"
 
 [node name="JoinGame" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 76.0
@@ -145,6 +150,8 @@ margin_bottom = 407.0
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/CreateLobby/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreateLobby/IsPrivate" to="." method="_on_IsPrivate_pressed"]
 [connection signal="text_entered" from="VBoxContainer/JoinGame/JoinLobby/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/JoinGame/JoinLobby/Enter_Button" to="." method="_on_Enter_Button_pressed"]
+[connection signal="item_activated" from="VBoxContainer/JoinGame/LobbyList" to="." method="_on_LobbyList_item_activated"]
 [connection signal="pressed" from="VBoxContainer/Back_Button" to="." method="_on_Back_Button_pressed"]

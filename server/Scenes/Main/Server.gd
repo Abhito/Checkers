@@ -35,12 +35,12 @@ func _Peer_Disconnected(player_id):
 		pairs.erase(otherplayer_id)
 		pairs.erase(player_id)
 
-remote func _Create_Lobby(name, requester):
+remote func _Create_Lobby(name, requester, isPrivate):
 	print("Creating lobby for " + str(name))
 	var lobby_id = createRandomID()
 	var player_id = get_tree().get_rpc_sender_id()
 	#add new lobby to the dictionary
-	lobbies[lobby_id] = [player_id, name]
+	lobbies[lobby_id] = [player_id, name, isPrivate, lobby_id]
 	#send lobby id to requester
 	rpc_id(player_id,"ReturnLobbyID", lobby_id, requester)
 	
@@ -112,3 +112,6 @@ func lobbyTimer(lobby_id):
 		var player_id = player_info[0]
 		lobbies.erase(lobby_id)
 		rpc_id(player_id, "endMyGame")
+		
+remote func sendLobbies():
+	rpc_id(get_tree().get_rpc_sender_id(), "recieveLobbies", lobbies.values())

@@ -2,8 +2,8 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 #Change which ip is commented depending on which server your using
-#var ip = "127.0.0.1"  #Localhost IP
-var ip = "54.173.65.208" #AWS IP
+var ip = "127.0.0.1"  #Localhost IP
+#var ip = "54.173.65.208" #AWS IP
 #var ip = "100.4.187.18" #Backup IP, Internal use
 var port = 35516
 
@@ -15,15 +15,17 @@ var other_object_path = null
 var object_position
 var piece_destroyed_path = null
 var connected = false
+var lobbies
+var lobbyUpdated = false
 
 func ready():
 	pass
 	
 #CreateLobby tells the server to create the lobby. 
 #@param requester is the reference to Lobby.gd
-func CreateLobby(requester):
+func CreateLobby(requester, isPrivate):
 	print("Creating lobby")
-	rpc_id(1, "_Create_Lobby", ConfigController.getLocalPlayerOneName(), requester)
+	rpc_id(1, "_Create_Lobby", ConfigController.getLocalPlayerOneName(), requester, isPrivate)
 
 #Returns the LobbyID and calls function to show it
 remote func ReturnLobbyID(lobby_id, requester):
@@ -58,6 +60,7 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
 	connected = true
+	getLobbies()
 
 #Once both players have entered a lobby, the Server sends their info to the other
 remote func PreConfigure(turn, player2, player2_id):
@@ -104,3 +107,10 @@ remote func endMyGame():
 func win():
 	get_tree().change_scene("res://views/Menu.tscn")
 	sendEndGame()
+	
+func getLobbies():
+	rpc_id(1, "sendLobbies")
+	
+remote func recieveLobbies(lobbyinfo):
+	lobbies = lobbyinfo
+	lobbyUpdated = true
