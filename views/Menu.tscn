@@ -1417,7 +1417,6 @@ text = "<Error Text Here>"
 align = 1
 
 [node name="RegisterPanel" type="ColorRect" parent="UserPanels"]
-visible = false
 anchor_left = 0.99
 anchor_top = 0.99
 anchor_right = 0.99
@@ -1428,24 +1427,6 @@ margin_right = 10.17
 margin_bottom = 5.94995
 color = Color( 0.184314, 0.156863, 0.156863, 1 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RegErrorText" type="RichTextLabel" parent="UserPanels/RegisterPanel"]
-visible = false
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -231.0
-margin_top = -66.0001
-margin_right = -117.0
-margin_bottom = -47.0001
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/default_color = Color( 0.992157, 0.262745, 0.262745, 1 )
-text = "<Error Text Here>"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1572,6 +1553,16 @@ margin_right = -5.23999
 margin_bottom = -80.0
 
 [node name="RegisterRequestHandler" type="HTTPRequest" parent="UserPanels/RegisterPanel"]
+
+[node name="RegErrorText" type="Label" parent="UserPanels/RegisterPanel"]
+visible = false
+margin_left = 20.0
+margin_top = 184.0
+margin_right = 332.0
+margin_bottom = 201.0
+custom_colors/font_color = Color( 0.9, 0.1, 0.1, 1 )
+text = "<Error Text Here>"
+align = 1
 
 [node name="ProfilePanel" type="ColorRect" parent="UserPanels"]
 visible = false
