@@ -40,3 +40,9 @@ func _on_LoginToProfile_pressed():
 
 func _on_RegisterToProfile_pressed():
 	MenuAnimationPlayer.play("shrinkRegister")
+
+func _on_exitFriendsButton_pressed():
+	MenuAnimationPlayer.play("friendsToProfile")
+
+func _on_FriendsButton_pressed():
+	MenuAnimationPlayer.play("profileToFriends")
