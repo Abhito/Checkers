@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://images/profile_images/default.jpg" type="Texture" id=8]
 [ext_resource path="res://fonts/UsernameFont.tres" type="DynamicFont" id=9]
 [ext_resource path="res://images/profile_images/statusOnline.svg" type="Texture" id=10]
+[ext_resource path="res://images/profile_images/refresh.svg" type="Texture" id=11]
+[ext_resource path="res://images/profile_images/nothing.svg" type="Texture" id=12]
+[ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
 
 [sub_resource type="Theme" id=5]
 
@@ -1395,6 +1398,7 @@ margin_bottom = -431.0
 text = "Friends List"
 
 [node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
+visible = false
 anchor_left = 1.008
 anchor_top = 1.0
 anchor_right = 1.008
@@ -1439,10 +1443,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -189.0
-margin_top = -453.0
-margin_right = -85.0
-margin_bottom = -438.0
+margin_left = -195.0
+margin_top = -455.0
+margin_right = -91.0
+margin_bottom = -440.0
 text = "Friend Requests"
 
 [node name="LineEdit" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
@@ -1461,6 +1465,87 @@ margin_top = 428.0
 margin_right = 274.0
 margin_bottom = 450.0
 text = "Add Friend"
+
+[node name="TextureButton" type="TextureButton" parent="UserPanels/FriendsRequestsPanel"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 23.0
+texture_normal = ExtResource( 11 )
+
+[node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
+anchor_left = 1.006
+anchor_top = 1.0
+anchor_right = 1.006
+anchor_bottom = 1.0
+margin_left = -584.882
+margin_top = -451.0
+margin_right = 1.11798
+color = Color( 0.184314, 0.156863, 0.156863, 1 )
+script = ExtResource( 13 )
+
+[node name="AccountPicture" type="CenterContainer" parent="UserPanels/DetailedProfilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -586.0
+margin_top = -451.0
+margin_right = -486.0
+margin_bottom = -351.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="UserPanels/DetailedProfilePanel/AccountPicture"]
+position = Vector2( 51, 55 )
+scale = Vector2( 0.175, 0.175 )
+texture = ExtResource( 7 )
+mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UserPanels/DetailedProfilePanel/AccountPicture"]
+material = SubResource( 10 )
+margin_right = 100.0
+margin_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 8 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusButton" type="OptionButton" parent="UserPanels/DetailedProfilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -580.0
+margin_top = -374.0
+margin_right = -537.0
+margin_bottom = -348.0
+custom_icons/arrow = ExtResource( 12 )
+icon = ExtResource( 10 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="UserPanels/DetailedProfilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -447.0
+margin_right = -5.0
+margin_bottom = -427.0
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MenuAnimator" type="Node2D" parent="."]
 position = Vector2( 777, 430 )
