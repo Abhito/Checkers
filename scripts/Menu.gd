@@ -26,6 +26,9 @@ func _on_Options_pressed():
 	print("Options Pressed")
 	get_tree().change_scene("res://views/Settings_Menu.tscn")
 
+func _on_HowTo_pressed():
+	get_tree().change_scene("res://views/HowTo_Menu.tscn")
+
 func _on_Exit_pressed():
 	get_tree().quit()
 
