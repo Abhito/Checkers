@@ -1,10 +1,11 @@
 extends Control
 
-onready var getlabel = $VBoxContainer/CreateLobby/Lobby_ID
-onready var getbutton =  $VBoxContainer/CreateLobby/Create_Lobby
-onready var line = $VBoxContainer/JoinGame/JoinLobby/LineEdit
+onready var getlabel = $LobbyFunctions/CreateLobby/Lobby_ID
+onready var getbutton =  $LobbyFunctions/CreateLobby/Create_Lobby
+onready var line = $LobbyFunctions/JoinLobby/LineEdit
 onready var connecting = $Connecting
-onready var lobbyList = $VBoxContainer/JoinGame/PublicLobby/LobbyList
+
+var scene = preload("res://assets/LobbyEntry.tscn")
 
 var private = false
 var lobbies
@@ -62,23 +63,30 @@ func _on_IsPrivate_pressed():
 		private = true
 		
 func showLobbies():
-	lobbyList.clear()
+	var lobby_list = get_node("LobbyFunctions/PublicLobbies/LobbyScroll/Lobbylist")
+	for n in lobby_list.get_children():
+		lobby_list.remove_child(n)
+		n.queue_free()
+		
 	for x in lobbies:
 		var isPrivate = x[2]
 		if(!isPrivate):
+			var lobbyinstance = scene.instance()
 			var player_id = x[0]
 			var player_name = x[1]
-			var lobby_id = x[3]
-			var item = str(lobby_id) + " " + player_name
-			lobbyList.add_item(item, null, true)
+			var lobby_id = str(x[3])
+			lobbyinstance.set_entry(player_name, lobby_id)
+			lobbyinstance.connect("pressed",self, "join_pressed")
+			lobby_list.add_child(lobbyinstance)
 	
+func join_pressed(id):
+	Server.JoinLobby(id, get_instance_id())
 
-
-func _on_LobbyList_item_activated(index):
-	var lobby = lobbyList.get_item_text(index)
-	var text = lobby.split(" ", true, 1)
-	var lobby_code = text[0]
-	Server.JoinLobby(lobby_code, get_instance_id())
+#func _on_LobbyList_item_activated(index):
+	#var lobby = lobbyList.get_item_text(index)
+	#var text = lobby.split(" ", true, 1)
+	#var lobby_code = text[0]
+	#Server.JoinLobby(lobby_code, get_instance_id())
 
 func _on_refresh_pressed():
 	Server.getLobbies()

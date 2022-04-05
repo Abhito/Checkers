@@ -2,8 +2,8 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 #Change which ip is commented depending on which server your using
-#var ip = "127.0.0.1"  #Localhost IP
-var ip = "54.173.65.208" #AWS IP
+var ip = "127.0.0.1"  #Localhost IP
+#var ip = "54.173.65.208" #AWS IP
 #var ip = "100.4.187.18" #Backup IP, Internal use
 var port = 35516
 

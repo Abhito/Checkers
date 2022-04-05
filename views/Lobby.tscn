@@ -25,7 +25,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="LobbyTitle" type="RichTextLabel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.2
 margin_top = 20.0
@@ -50,57 +50,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 328.0
-margin_top = 144.0
-margin_right = 696.0
-margin_bottom = 567.0
-rect_min_size = Vector2( 100, 200 )
-custom_constants/separation = 52
+[node name="LobbyFunctions" type="ColorRect" parent="."]
+margin_left = 256.0
+margin_top = 128.0
+margin_right = 768.0
+margin_bottom = 552.0
+color = Color( 0.537255, 0.356863, 0.737255, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreateLobby" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 368.0
-margin_bottom = 24.0
+[node name="CreateLobby" type="HBoxContainer" parent="LobbyFunctions"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 448.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Create_Lobby" type="Button" parent="VBoxContainer/CreateLobby"]
+[node name="Create_Lobby" type="Button" parent="LobbyFunctions/CreateLobby"]
 margin_right = 100.0
-margin_bottom = 24.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 100, 20 )
 text = "Create Lobby"
 
-[node name="Lobby_ID" type="Label" parent="VBoxContainer/CreateLobby"]
+[node name="Lobby_ID" type="Label" parent="LobbyFunctions/CreateLobby"]
 margin_left = 104.0
-margin_top = 2.0
+margin_top = 5.0
 margin_right = 204.0
-margin_bottom = 22.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 100, 20 )
 
-[node name="IsPrivate" type="CheckBox" parent="VBoxContainer/CreateLobby"]
+[node name="IsPrivate" type="CheckBox" parent="LobbyFunctions/CreateLobby"]
 margin_left = 208.0
 margin_right = 280.0
-margin_bottom = 24.0
+margin_bottom = 31.0
 text = "Private"
 
-[node name="IsP2P" type="CheckBox" parent="VBoxContainer/CreateLobby"]
+[node name="IsP2P" type="CheckBox" parent="LobbyFunctions/CreateLobby"]
 margin_left = 284.0
 margin_right = 336.0
-margin_bottom = 24.0
+margin_bottom = 31.0
 text = "P2P"
 
-[node name="JoinGame" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 76.0
-margin_right = 368.0
-margin_bottom = 335.0
-rect_min_size = Vector2( 0, 200 )
+[node name="JoinLobby" type="HBoxContainer" parent="LobbyFunctions"]
+margin_left = 64.0
+margin_top = 88.0
+margin_right = 432.0
+margin_bottom = 119.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="JoinLobby" type="HBoxContainer" parent="VBoxContainer/JoinGame"]
-margin_right = 368.0
-margin_bottom = 31.0
-
-[node name="InviteLabel" type="Label" parent="VBoxContainer/JoinGame/JoinLobby"]
+[node name="InviteLabel" type="Label" parent="LobbyFunctions/JoinLobby"]
 margin_right = 125.0
 margin_bottom = 31.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -109,7 +112,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Enter friend's Invite
  Code:"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/JoinGame/JoinLobby"]
+[node name="LineEdit" type="LineEdit" parent="LobbyFunctions/JoinLobby"]
 margin_left = 129.0
 margin_right = 329.0
 margin_bottom = 31.0
@@ -118,56 +121,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Enter_Button" type="Button" parent="VBoxContainer/JoinGame/JoinLobby"]
+[node name="Enter_Button" type="Button" parent="LobbyFunctions/JoinLobby"]
 margin_left = 333.0
 margin_right = 368.0
 margin_bottom = 31.0
 text = "Join"
 
-[node name="OpenLobbies" type="Label" parent="VBoxContainer/JoinGame"]
-margin_top = 35.0
-margin_right = 368.0
-margin_bottom = 55.0
+[node name="PublicLobbies" type="ColorRect" parent="LobbyFunctions"]
+margin_left = 64.0
+margin_top = 144.0
+margin_right = 448.0
+margin_bottom = 368.0
+color = Color( 0.423529, 0.105882, 0.482353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenLobbies" type="Label" parent="LobbyFunctions/PublicLobbies"]
+margin_top = 8.0
+margin_right = 384.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 0, 20 )
 text = "Open Lobbies"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PublicLobby" type="HBoxContainer" parent="VBoxContainer/JoinGame"]
-margin_top = 59.0
-margin_right = 368.0
-margin_bottom = 259.0
-
-[node name="LobbyList" type="ItemList" parent="VBoxContainer/JoinGame/PublicLobby"]
-margin_right = 300.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 300, 200 )
-allow_reselect = true
-max_columns = 10
-same_column_width = true
-fixed_column_width = 368
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/JoinGame/PublicLobby"]
-margin_left = 304.0
-margin_right = 364.0
-margin_bottom = 200.0
-
-[node name="refresh" type="Button" parent="VBoxContainer/JoinGame/PublicLobby/VBoxContainer"]
-margin_right = 60.0
-margin_bottom = 40.0
+[node name="refresh" type="Button" parent="LobbyFunctions/PublicLobbies"]
+margin_left = 320.0
+margin_top = 176.0
+margin_right = 380.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 0, 40 )
 text = "Refresh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Back_Button" type="Button" parent="VBoxContainer"]
-margin_top = 387.0
-margin_right = 368.0
-margin_bottom = 407.0
+[node name="LobbyScroll" type="ScrollContainer" parent="LobbyFunctions/PublicLobbies"]
+margin_left = 8.0
+margin_top = 28.0
+margin_right = 308.0
+margin_bottom = 216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lobbylist" type="VBoxContainer" parent="LobbyFunctions/PublicLobbies/LobbyScroll"]
+margin_right = 300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+
+[node name="Back_Button" type="Button" parent="."]
+margin_left = 320.0
+margin_top = 520.0
+margin_right = 704.0
+margin_bottom = 544.0
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/CreateLobby/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreateLobby/IsPrivate" to="." method="_on_IsPrivate_pressed"]
-[connection signal="text_entered" from="VBoxContainer/JoinGame/JoinLobby/LineEdit" to="." method="_on_LineEdit_text_entered"]
-[connection signal="pressed" from="VBoxContainer/JoinGame/JoinLobby/Enter_Button" to="." method="_on_Enter_Button_pressed"]
-[connection signal="item_activated" from="VBoxContainer/JoinGame/PublicLobby/LobbyList" to="." method="_on_LobbyList_item_activated"]
-[connection signal="pressed" from="VBoxContainer/JoinGame/PublicLobby/VBoxContainer/refresh" to="." method="_on_refresh_pressed"]
-[connection signal="pressed" from="VBoxContainer/Back_Button" to="." method="_on_Back_Button_pressed"]
+[connection signal="pressed" from="LobbyFunctions/CreateLobby/Create_Lobby" to="." method="_on_Create_Lobby_pressed"]
+[connection signal="pressed" from="LobbyFunctions/CreateLobby/IsPrivate" to="." method="_on_IsPrivate_pressed"]
+[connection signal="text_entered" from="LobbyFunctions/JoinLobby/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="LobbyFunctions/JoinLobby/Enter_Button" to="." method="_on_Enter_Button_pressed"]
+[connection signal="pressed" from="LobbyFunctions/PublicLobbies/refresh" to="." method="_on_refresh_pressed"]
+[connection signal="pressed" from="Back_Button" to="." method="_on_Back_Button_pressed"]
