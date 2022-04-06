@@ -14,6 +14,9 @@ var lobbies
 
 #Connect to Server once you enter Lobby screen
 func _ready():
+	var animation = get_node("AnimationPlayer").get_animation("Connect")
+	animation.set_loop(true)
+	get_node("AnimationPlayer").play("Connect")
 	Server.ConnectToServer()
 	
 func _process(delta):
