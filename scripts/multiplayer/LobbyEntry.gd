@@ -4,7 +4,7 @@ signal pressed
 var lobby_id
 
 func set_entry(username, id):
-	var nametag = get_node("name")
+	var nametag = get_node("Panel/HBoxContainer/name")
 	nametag.text = username
 	lobby_id = id
 
