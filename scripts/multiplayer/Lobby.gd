@@ -3,12 +3,15 @@ extends Control
 onready var getlabel = $LobbyFunctions/CreateLobby/Lobby_ID
 onready var getbutton =  $LobbyFunctions/CreateLobby/Create_Lobby
 onready var line = $LobbyFunctions/JoinLobby/LineEdit
+onready var joinbutton = $LobbyFunctions/JoinLobby/Enter_Button
 onready var connecting = $Connecting
+onready var refreshbutton = $LobbyFunctions/PublicLobbies/refresh
 
 var scene = preload("res://assets/LobbyEntry.tscn")
 
 var private = false
 var lobbies
+var connection = true
 
 #NOTE: Lobby could use visual improvements
 
@@ -22,18 +25,26 @@ func _ready():
 func _process(delta):
 	if(Server.connected):
 		connecting.visible = false
+		if(connection):
+			deactivate(false)
+			connection = false
 	else:
 		connecting.visible = true
 	if(Server.lobbyUpdated):
 		Server.lobbyUpdated = false
 		lobbies = Server.lobbies
 		showLobbies()
+		
+func deactivate(mode):
+	getbutton.disabled = mode
+	joinbutton.disabled = mode
+	refreshbutton.disabled = mode
 
 #Show generated lobby code to user
 func _show_Lobby_ID(lobby_id):
+	get_node("AnimationPlayer").play("RESET")
 	getlabel.text = str(lobby_id)
-	getbutton.disabled = true
-	line.editable = false
+	deactivate(true)
 
 #Let the User know that the code doesn't work
 #Can be made to look nicer
@@ -52,7 +63,11 @@ func _on_Back_Button_pressed():
 
 #Create a Server
 func _on_Create_Lobby_pressed():
+	var animation = get_node("AnimationPlayer").get_animation("Wait")
+	animation.set_loop(true)
+	get_node("AnimationPlayer").play("Wait")
 	Server.CreateLobby(get_instance_id(), private)
+	
 
 #Enter the lobby
 func _on_Enter_Button_pressed():
