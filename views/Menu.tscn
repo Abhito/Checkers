@@ -1724,11 +1724,13 @@ margin_top = 3.0
 margin_right = 27.0
 margin_bottom = 23.0
 texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FriendHandler" type="HTTPRequest" parent="UserPanels/FriendsPanel"]
 
 [node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
-visible = false
 anchor_left = 1.008
 anchor_top = 1.0
 anchor_right = 1.008
@@ -1774,6 +1776,9 @@ margin_top = -456.0
 margin_right = -5.0
 margin_bottom = -436.0
 text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FriendRequestTitle" type="RichTextLabel" parent="UserPanels/FriendsRequestsPanel"]
 anchor_left = 1.0
@@ -1786,7 +1791,7 @@ margin_right = -91.0
 margin_bottom = -440.0
 text = "Friend Requests"
 
-[node name="LineEdit" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
+[node name="AddFriendName" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1990,6 +1995,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="UserPanels/FriendsPanel/exitFriendsButton" to="." method="_on_exitFriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
+[connection signal="pressed" from="UserPanels/FriendsRequestsPanel/AddFriendButton" to="UserPanels/FriendsRequestsPanel" method="_on_AddFriendButton_pressed"]
 [connection signal="request_completed" from="UserPanels/FriendsRequestsPanel/FriendRequestHandler" to="UserPanels/FriendsRequestsPanel" method="_on_FriendRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/ReturnToProfile" to="." method="_on_ReturnToProfile_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/EditDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_EditDescriptionButton_pressed"]

@@ -28,4 +28,7 @@ func _on_AcceptFriend_pressed():
 	queue_free()
 	
 func _on_DeclineFriend_pressed():
-	pass # Replace with function body.
+	var headers = ["Content-Type: application/json"]
+	$FriendRequestHTTP.request("https://oh339unq37.execute-api.us-east-1.amazonaws.com/alpha/remove-request?user=" + username + "&friend=" + friendname, headers, false, HTTPClient.METHOD_PUT)
+	yield(self, "interactionComplete")
+	queue_free()

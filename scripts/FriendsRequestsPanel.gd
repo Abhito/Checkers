@@ -1,6 +1,7 @@
 extends ColorRect
 var scene = preload("res://assets/FriendRequest.tscn")
 signal friendRecieved
+signal requestSent
 var friendData
 # Called when the node enters the scene tree for the first time.
 
@@ -37,3 +38,9 @@ func arrayToString(array):
 			send = send + array[i] + ","
 	print(send)
 	return send
+
+func _on_AddFriendButton_pressed():
+	var headers = ["Content-Type: application/json"]
+	$FriendRequestHandler.request("https://oh339unq37.execute-api.us-east-1.amazonaws.com/alpha/request-friend?user=" + AccountData.username + "&friend=" + $AddFriendName.text, headers, false, HTTPClient.METHOD_PUT)
+	yield(self, "requestSent")
+	queue_free()
