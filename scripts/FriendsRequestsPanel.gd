@@ -13,7 +13,7 @@ func _on_LoginPanel_updatedUser():
 	$FriendRequestHandler.request("https://oh339unq37.execute-api.us-east-1.amazonaws.com/alpha/update-friends?friend=" + arrayToString(AccountData.friendRequests), headers, false, HTTPClient.METHOD_GET)
 	yield(self, "friendRecieved")
 	for i in friendData.size():
-		print(i)
+		#print(i)
 		var friendRequestInstance = scene.instance()
 		friendRequestInstance.updateAll(AccountData.username, friendData[i].Items[0])
 		get_node("FriendRequestScroll/FriendRequestContainer").add_child(friendRequestInstance)
@@ -23,7 +23,7 @@ func _on_FriendRequestHandler_request_completed(result, response_code, headers, 
 	var json = JSON.parse(body.get_string_from_utf8())
 	if json == null:
 		print("Null return")
-	print(json.result)
+	#print(json.result)
 	friendData = json.result
 	emit_signal("friendRecieved")
 
@@ -36,7 +36,7 @@ func arrayToString(array):
 			send = send + array[i]
 		else:
 			send = send + array[i] + ","
-	print(send)
+	#print(send)
 	return send
 
 func _on_AddFriendButton_pressed():

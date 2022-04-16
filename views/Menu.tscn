@@ -1994,6 +1994,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="UserPanels/ProfilePanel/FriendsButton" to="." method="_on_FriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/exitFriendsButton" to="." method="_on_exitFriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
+[connection signal="request_completed" from="UserPanels/FriendsPanel/FriendHandler" to="UserPanels/FriendsPanel" method="_on_FriendHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/AddFriendButton" to="UserPanels/FriendsRequestsPanel" method="_on_AddFriendButton_pressed"]
 [connection signal="request_completed" from="UserPanels/FriendsRequestsPanel/FriendRequestHandler" to="UserPanels/FriendsRequestsPanel" method="_on_FriendRequestHandler_request_completed"]
