@@ -13,8 +13,8 @@
 [ext_resource path="res://images/profile_images/refresh.svg" type="Texture" id=11]
 [ext_resource path="res://images/profile_images/nothing.svg" type="Texture" id=12]
 [ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
-[ext_resource path="res://views/FriendsPanel.gd" type="Script" id=14]
-[ext_resource path="res://views/FriendsRequestsPanel.gd" type="Script" id=15]
+[ext_resource path="res://sounds/FriendsPanel.gd" type="Script" id=14]
+[ext_resource path="res://scripts/FriendsRequestsPanel.gd" type="Script" id=15]
 
 [sub_resource type="Theme" id=5]
 
@@ -1175,10 +1175,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -217.0
-margin_top = -398.0
-margin_right = 1703.0
-margin_bottom = 878.0
+margin_left = -210.0
+margin_top = -397.0
+margin_right = 1710.0
+margin_bottom = 879.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1308,10 +1308,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -131.76
-margin_top = -59.9999
-margin_right = -1.75995
-margin_bottom = -43.9999
+margin_left = -133.93
+margin_top = -59.9499
+margin_right = -39.93
+margin_bottom = -42.9499
 text = "Not Logged In"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1340,12 +1340,14 @@ margin_left = 93.24
 margin_top = 77.9999
 margin_right = 288.24
 margin_bottom = 102.0
+text = "password"
 
 [node name="UsernameEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
 margin_left = 93.24
 margin_top = 44.9999
 margin_right = 287.24
 margin_bottom = 68.9999
+text = "testA"
 
 [node name="PasswordLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 12.24
@@ -1723,6 +1725,8 @@ margin_right = 27.0
 margin_bottom = 23.0
 texture_normal = ExtResource( 11 )
 
+[node name="FriendHandler" type="HTTPRequest" parent="UserPanels/FriendsPanel"]
+
 [node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
 visible = false
 anchor_left = 1.008
@@ -1808,6 +1812,8 @@ texture_normal = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FriendRequestHandler" type="HTTPRequest" parent="UserPanels/FriendsRequestsPanel"]
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
 visible = false
@@ -1969,6 +1975,9 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
+[connection signal="updatedUser" from="UserPanels/LoginPanel" to="UserPanels/FriendsPanel" method="_on_LoginPanel_updatedUser"]
+[connection signal="updatedUser" from="UserPanels/LoginPanel" to="UserPanels/FriendsRequestsPanel" method="_on_LoginPanel_updatedUser"]
+[connection signal="verified" from="UserPanels/LoginPanel" to="UserPanels/FriendsRequestsPanel" method="_on_LoginPanel_verified"]
 [connection signal="request_completed" from="UserPanels/LoginPanel/LoginRequestHandler" to="UserPanels/LoginPanel" method="_on_LoginRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/LoginPanel/LoginButton" to="UserPanels/LoginPanel" method="_on_LoginButton_pressed"]
 [connection signal="pressed" from="UserPanels/LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
@@ -1981,6 +1990,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="UserPanels/FriendsPanel/exitFriendsButton" to="." method="_on_exitFriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
+[connection signal="request_completed" from="UserPanels/FriendsRequestsPanel/FriendRequestHandler" to="UserPanels/FriendsRequestsPanel" method="_on_FriendRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/ReturnToProfile" to="." method="_on_ReturnToProfile_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/EditDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_EditDescriptionButton_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/SaveDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_SaveDescriptionButton_pressed"]

@@ -13,3 +13,10 @@ func _ready():
 		get_node("FriendScroll/FriendContainer").add_child(friendInstance)
 
 
+
+
+func _on_LoginPanel_updatedUser():
+	print("Updating Friend Requests")
+	for friend in AccountData.friendsList:
+		var friendInstance = scene.instance()
+		get_node("FriendScroll/FriendContainer").add_child(friendInstance)
