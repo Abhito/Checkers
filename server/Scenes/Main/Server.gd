@@ -35,12 +35,12 @@ func _Peer_Disconnected(player_id):
 		pairs.erase(otherplayer_id)
 		pairs.erase(player_id)
 
-remote func _Create_Lobby(name, requester):
+remote func _Create_Lobby(name, requester, isPrivate):
 	print("Creating lobby for " + str(name))
 	var lobby_id = createRandomID()
 	var player_id = get_tree().get_rpc_sender_id()
 	#add new lobby to the dictionary
-	lobbies[lobby_id] = [player_id, name]
+	lobbies[lobby_id] = [player_id, name, isPrivate, lobby_id]
 	#send lobby id to requester
 	rpc_id(player_id,"ReturnLobbyID", lobby_id, requester)
 	
@@ -52,14 +52,21 @@ remote func _Join_Lobby(name, lobby_id, requester):
 		var player1 = lobby[1]
 		var player1_id = lobby[0]
 		
-		rpc_id(player1_id,"PreConfigure", true, name, get_tree().get_rpc_sender_id())
-		pairs[player1_id] = get_tree().get_rpc_sender_id()
+		if player1_id in get_tree().get_network_connected_peers():
 		
-		rpc_id(get_tree().get_rpc_sender_id(),"PreConfigure", false, player1, player1_id)
-		pairs[get_tree().get_rpc_sender_id()] = player1_id
+			rpc_id(player1_id,"PreConfigure", true, name, get_tree().get_rpc_sender_id())
+			pairs[player1_id] = get_tree().get_rpc_sender_id()
 		
-		lobbies.erase(lobby_id) #Delete record of lobby once both players are connected
-		_Start_Game(player1_id, get_tree().get_rpc_sender_id())
+			rpc_id(get_tree().get_rpc_sender_id(),"PreConfigure", false, player1, player1_id)
+			pairs[get_tree().get_rpc_sender_id()] = player1_id
+		
+			lobbies.erase(lobby_id) #Delete record of lobby once both players are connected
+			_Start_Game(player1_id, get_tree().get_rpc_sender_id())
+			
+		else:
+			print("Lobby creator has disconnected. Erasing Lobby")
+			lobbies.erase(lobby_id)
+			rpc_id(get_tree().get_rpc_sender_id(),"LobbyFailed", requester)
 	else:
 		print("Lobby Not Found")
 		rpc_id(get_tree().get_rpc_sender_id(),"LobbyFailed", requester)
@@ -112,3 +119,6 @@ func lobbyTimer(lobby_id):
 		var player_id = player_info[0]
 		lobbies.erase(lobby_id)
 		rpc_id(player_id, "endMyGame")
+		
+remote func sendLobbies():
+	rpc_id(get_tree().get_rpc_sender_id(), "recieveLobbies", lobbies.values())
