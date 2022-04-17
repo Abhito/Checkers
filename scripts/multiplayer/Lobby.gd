@@ -6,6 +6,7 @@ onready var line = $LobbyFunctions/JoinLobby/LineEdit
 onready var joinbutton = $LobbyFunctions/JoinLobby/Enter_Button
 onready var connecting = $Connecting
 onready var refreshbutton = $LobbyFunctions/PublicLobbies/refresh
+onready var nameLabel = $LobbyFunctions/LoginInfo/Username
 
 var scene = preload("res://assets/LobbyEntry.tscn")
 
@@ -27,6 +28,7 @@ func _process(delta):
 		connecting.visible = false
 		if(connection):
 			deactivate(false)
+			nameLabel.text = Server.localName
 			connection = false
 	else:
 		connecting.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scripts/multiplayer/Lobby.gd" type="Script" id=1]
 [ext_resource path="res://fonts/FFFFORWA.TTF" type="DynamicFontData" id=2]
@@ -188,6 +188,18 @@ border_width_bottom = 5
 border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 10
 
+[sub_resource type="DynamicFont" id=34]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=35]
+size = 20
+outline_size = 1
+outline_color = Color( 0.886275, 0.988235, 0.937255, 1 )
+font_data = ExtResource( 2 )
+
 [sub_resource type="Animation" id=5]
 resource_name = "Connect"
 tracks/0/type = "value"
@@ -347,9 +359,9 @@ __meta__ = {
 
 [node name="CreateLobby" type="HBoxContainer" parent="LobbyFunctions"]
 margin_left = 24.0
-margin_top = 48.0
+margin_top = 87.0
 margin_right = 344.0
-margin_bottom = 88.0
+margin_bottom = 127.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -404,9 +416,9 @@ text = "P2P"
 
 [node name="JoinLobby" type="HBoxContainer" parent="LobbyFunctions"]
 margin_left = 24.0
-margin_top = 144.0
+margin_top = 166.0
 margin_right = 344.0
-margin_bottom = 180.0
+margin_bottom = 214.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -543,6 +555,32 @@ margin_right = 312.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 312, 300 )
 custom_constants/separation = 2
+
+[node name="LoginInfo" type="HBoxContainer" parent="LobbyFunctions"]
+margin_left = 24.0
+margin_top = 30.0
+margin_right = 340.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoggedInLabel" type="Label" parent="LobbyFunctions/LoginInfo"]
+margin_top = 11.0
+margin_right = 103.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.886275, 0.988235, 0.937255, 1 )
+custom_fonts/font = SubResource( 34 )
+text = "Logged In As:"
+
+[node name="Username" type="Label" parent="LobbyFunctions/LoginInfo"]
+margin_left = 107.0
+margin_top = 6.0
+margin_right = 107.0
+margin_bottom = 34.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.886275, 0.988235, 0.937255, 1 )
+custom_fonts/font = SubResource( 35 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Connect = SubResource( 5 )

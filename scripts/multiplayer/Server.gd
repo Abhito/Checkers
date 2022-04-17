@@ -25,7 +25,6 @@ func ready():
 #@param requester is the reference to Lobby.gd
 func CreateLobby(requester, isPrivate):
 	print("Creating lobby")
-	nameSetter()
 	rpc_id(1, "_Create_Lobby", localName, requester, isPrivate)
 
 #Returns the LobbyID and calls function to show it
@@ -36,7 +35,6 @@ remote func ReturnLobbyID(lobby_id, requester):
 #Function to join a lobby using a user given code
 func JoinLobby(lobby_id, requester):
 	print("Joining Lobby")
-	nameSetter()
 	rpc_id(1, "_Join_Lobby", localName, int(lobby_id), requester)
 
 #Server sends this function to let the client know that no lobby exists with the given code
@@ -61,6 +59,7 @@ func _OnConnectionFailed():
 #Just prints that connection was succesful
 func _OnConnectionSucceeded():
 	print("Succesfully connected")
+	nameSetter()
 	connected = true
 	getLobbies()
 
