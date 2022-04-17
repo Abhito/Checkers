@@ -40,6 +40,9 @@ func _on_FileSelection_file_selected(path):
 	if err != OK:
 		print("Failed to open image.")
 	upload_image(image)
+	#testing below to display profile picture
+	#var texture = ImageTexture.new()
+	#texture.create_from_image(image, 0)
 	print("It made it here")
 	
 func upload_image(image):
@@ -55,3 +58,4 @@ func upload_image(image):
 func _on_UploadProfilePicture_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	print(response_code, " ", json.result)
+	
