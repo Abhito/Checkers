@@ -1968,8 +1968,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School Files/CheckersAccount/icsi418y-group7-checkers"
-current_path = "/School Files/CheckersAccount/icsi418y-group7-checkers/"
+current_dir = "/Users/brianheralall/Desktop/icsi418y-group7-checkers"
+current_path = "/Users/brianheralall/Desktop/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
