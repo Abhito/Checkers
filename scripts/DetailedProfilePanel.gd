@@ -44,6 +44,7 @@ func _on_FileSelection_file_selected(path):
 	
 func upload_image(image):
 	image.resize(100, 100, 1)
+	image.compress(1, 2, 1.0)
 	var headers = ["Content-Type: application/json"]
 	#print(image.save_png_to_buffer())
 	var base64 = Marshalls.raw_to_base64(image.save_png_to_buffer())
