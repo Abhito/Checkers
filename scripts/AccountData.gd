@@ -9,6 +9,7 @@ var profilePicture
 var settings
 var wins
 var losses
+var isLoggedIn = false
 
 func _ready():
 	pass
@@ -20,6 +21,7 @@ func updateAll(input):
 	friendRequests = input.Items[0].friendrequests.SS
 	wins = input.Items[0].wins.N
 	losses = input.Items[0].losses.N
+	isLoggedIn = true
 
 func logOut():
 	username = null
@@ -28,3 +30,5 @@ func logOut():
 	friendRequests = null
 	wins = null
 	losses = null
+	isLoggedIn = false
+

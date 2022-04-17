@@ -9,6 +9,7 @@ var port = 35516
 var myTurn
 var otherPlayer
 var otherPlayer_id
+var localName
 var changeTurn
 var other_object_path = null
 var object_position
@@ -24,7 +25,8 @@ func ready():
 #@param requester is the reference to Lobby.gd
 func CreateLobby(requester, isPrivate):
 	print("Creating lobby")
-	rpc_id(1, "_Create_Lobby", ConfigController.getLocalPlayerOneName(), requester, isPrivate)
+	nameSetter()
+	rpc_id(1, "_Create_Lobby", localName, requester, isPrivate)
 
 #Returns the LobbyID and calls function to show it
 remote func ReturnLobbyID(lobby_id, requester):
@@ -34,7 +36,8 @@ remote func ReturnLobbyID(lobby_id, requester):
 #Function to join a lobby using a user given code
 func JoinLobby(lobby_id, requester):
 	print("Joining Lobby")
-	rpc_id(1, "_Join_Lobby", ConfigController.getLocalPlayerOneName(), int(lobby_id), requester)
+	nameSetter()
+	rpc_id(1, "_Join_Lobby", localName, int(lobby_id), requester)
 
 #Server sends this function to let the client know that no lobby exists with the given code
 remote func LobbyFailed(requester):
@@ -113,3 +116,13 @@ func getLobbies():
 remote func recieveLobbies(lobbyinfo):
 	lobbies = lobbyinfo
 	lobbyUpdated = true
+	
+func nameSetter():
+	if(AccountData.isLoggedIn):
+		localName = AccountData.username
+	else:
+		var random = RandomNumberGenerator.new()
+		random.randomize()
+		var random_num = random.randi_range(1000,9999)
+		var random_name = "Guest_" + str(random_num)
+		localName = random_name
