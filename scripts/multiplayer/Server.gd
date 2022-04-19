@@ -90,6 +90,7 @@ remote func ReturnTurn(turn, object_path, drop_cord, destroyed_path):
 func disconnectClient():
 	print("Telling Server to disconnect me")
 	rpc_id(1, "_Disconnect_Me")
+	connected = false
 	network = NetworkedMultiplayerENet.new()
 
 #Called when client wants to end game

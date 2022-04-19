@@ -35,6 +35,8 @@ func _Peer_Disconnected(player_id):
 		rpc_id(otherplayer_id, "endMyGame")
 		pairs.erase(otherplayer_id)
 		pairs.erase(player_id)
+		cleanLobbies(player_id)
+		cleanLobbies(otherplayer_id)
 
 remote func _Create_Lobby(name, requester, isPrivate):
 	print("Creating lobby for " + str(name))
@@ -92,6 +94,16 @@ func _Start_Game(player1_id, player2_id):
 remote func _Disconnect_Me():
 	var player_id = get_tree().get_rpc_sender_id()
 	network.disconnect_peer(player_id)
+	cleanLobbies(player_id)
+	
+func cleanLobbies(player_id):
+	var ids = lobbies.values()
+	for i in ids:
+		if i[0] == player_id:
+			var lobby = i[3]
+			lobbies.erase(lobby)
+			clearFriend(lobby)
+			print("Deleting lobby: " + str(lobby))
 	
 remote func nextTurn(object_path, drop_cord, object_destroyed_path):
 	var otherPlayer = pairs.get(get_tree().get_rpc_sender_id())
