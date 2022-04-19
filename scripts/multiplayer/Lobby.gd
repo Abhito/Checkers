@@ -21,7 +21,8 @@ func _ready():
 	var animation = get_node("AnimationPlayer").get_animation("Connect")
 	animation.set_loop(true)
 	get_node("AnimationPlayer").play("Connect")
-	Server.ConnectToServer()
+	if(Server.connected == false):
+		Server.ConnectToServer()
 	
 func _process(delta):
 	if(Server.connected):

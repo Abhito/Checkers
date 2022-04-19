@@ -40,6 +40,11 @@ func _on_LoginRequestHandler_request_completed(result, response_code, headers, b
 		AccountData.updateAll(json.result)
 		get_node("../ProfilePanel/Username").text = AccountData.username
 		emit_signal("updatedUser")
+		
+		#Connect to multiplayer server
+		AccountData.isLoggedIn = true
+		Server.ConnectToServer()
+		
 		MenuAnimationPlayer.play("loginToProfile")
 	elif json != null:
 		if json.result == "false":

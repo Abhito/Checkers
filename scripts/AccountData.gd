@@ -21,7 +21,6 @@ func updateAll(input):
 	friendRequests = input.Items[0].friendrequests.SS
 	wins = input.Items[0].wins.N
 	losses = input.Items[0].losses.N
-	isLoggedIn = true
 
 func logOut():
 	username = null

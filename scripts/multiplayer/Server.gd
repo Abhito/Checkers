@@ -2,8 +2,8 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 #Change which ip is commented depending on which server your using
-#var ip = "127.0.0.1"  #Localhost IP
-var ip = "54.173.65.208" #AWS IP
+var ip = "127.0.0.1"  #Localhost IP
+#var ip = "54.173.65.208" #AWS IP
 var port = 35516
 
 var myTurn
@@ -54,7 +54,7 @@ func ConnectToServer():
 #If connection failed, send user back to main menu. Kind of slow
 func _OnConnectionFailed():
 	print("Failed to connect")
-	get_tree().change_scene("res://views/Menu.tscn")
+	#get_tree().change_scene("res://views/Menu.tscn")
 	
 #Just prints that connection was succesful
 func _OnConnectionSucceeded():
@@ -125,3 +125,13 @@ func nameSetter():
 		var random_num = random.randi_range(1000,9999)
 		var random_name = "Guest_" + str(random_num)
 		localName = random_name
+
+func friendInvite(friendName, myName, lobby_id):
+	rpc_id(1, "friend_invite", friendName, myName, lobby_id)
+
+func getInvites(requester):
+	rpc_id(1, "sendInvites", requester)
+	
+remote func recieveInvites(requester, inviteInfo):
+	instance_from_id(requester).getInvite(inviteInfo)
+	
