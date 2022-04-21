@@ -1822,7 +1822,6 @@ __meta__ = {
 [node name="FriendRequestHandler" type="HTTPRequest" parent="UserPanels/FriendsRequestsPanel"]
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
-visible = false
 anchor_left = 1.006
 anchor_top = 1.0
 anchor_right = 1.006
@@ -1932,9 +1931,9 @@ __meta__ = {
 }
 
 [node name="EditDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
-margin_left = 442.118
+margin_left = 379.118
 margin_top = 301.0
-margin_right = 563.118
+margin_right = 500.118
 margin_bottom = 321.0
 text = "Edit Description"
 __meta__ = {
@@ -1942,7 +1941,6 @@ __meta__ = {
 }
 
 [node name="SaveDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
-visible = false
 margin_left = 512.0
 margin_top = 301.0
 margin_right = 563.0
@@ -1969,8 +1967,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project"
-current_path = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project/"
+current_dir = "/Users/brianheralall/Desktop/icsi418y-group7-checkers"
+current_path = "/Users/brianheralall/Desktop/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
