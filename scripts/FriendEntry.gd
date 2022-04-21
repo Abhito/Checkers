@@ -6,13 +6,19 @@ var lobbyID
 signal interactionComplete
 
 func _ready():
-	pass # Replace with function body.
+	Server.connect("invite", self, "invited")
 
 func updateAll(currentUser, data):
 	username = currentUser
 	friendname = data.username.S
 	$Username.text = friendname
 	checkForInvite()
+	
+func invited(inviteInfo):
+	print("Invite recieved")
+	if inviteInfo[0] == username && inviteInfo[1] == friendname:
+		$InviteToGame.text = "Join"
+		lobbyID = inviteInfo[2]
 
 
 func _on_InviteToGame_pressed():

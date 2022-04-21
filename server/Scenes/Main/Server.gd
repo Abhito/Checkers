@@ -12,6 +12,8 @@ var lobbies = {}
 var friendlobbies = {}
 #pairs are players in a lobby together
 var pairs = {}
+var users = {}
+var ids = {}
 
 func _ready():
 	StartServer()
@@ -37,6 +39,11 @@ func _Peer_Disconnected(player_id):
 		pairs.erase(player_id)
 		cleanLobbies(player_id)
 		cleanLobbies(otherplayer_id)
+		
+		if ids.has(player_id):
+			var name = ids.get(player_id)
+			ids.erase(player_id)
+			users.erase(name)
 
 remote func _Create_Lobby(name, requester, isPrivate):
 	print("Creating lobby for " + str(name))
@@ -136,11 +143,18 @@ func lobbyTimer(lobby_id):
 		clearFriend(lobby_id)
 		rpc_id(player_id, "endMyGame")
 		
+remote func login(name):
+	print(name + " is online")
+	users[name] = get_tree().get_rpc_sender_id()
+	ids[get_tree().get_rpc_sender_id()] = name
+		
 remote func sendLobbies():
 	rpc_id(get_tree().get_rpc_sender_id(), "recieveLobbies", lobbies.values())
 	
 remote func friend_invite(friendName, username, lobby_id):
 	friendlobbies[lobby_id] = [friendName, username, lobby_id]
+	if users.has(friendName):
+		rpc_id(users.get(friendName), "invited", friendlobbies.get(lobby_id))
 	
 func clearFriend(lobby_id):
 	if friendlobbies.has(lobby_id):
