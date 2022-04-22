@@ -239,20 +239,20 @@ func destroy(playerpiece, color):
 		return
 	if color:
 		P2removed = P2removed + 1
-		playerpiece.MODE_RIGID
+		#playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
 		P1removed = P1removed + 1
-		playerpiece.MODE_RIGID
+		#playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
 		P1Destroy = P1Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 
-func _process(delta):
+func _process(_delta):
 	if turnProcessing == true:
 		rotationAmount = rotationAmount + (PI * 0.02)
 		$Rotation.rotate_y(PI * 0.02)
@@ -264,7 +264,7 @@ func _process(delta):
 func _on_Timer_timeout():
 	if getTimer._count == 0:
 		nextTurn()
-	var oldcount = turnCount
+	var _oldcount = turnCount
 	
 func _intro():
 	var orange_pieces = Array()
