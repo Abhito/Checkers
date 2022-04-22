@@ -1931,9 +1931,9 @@ __meta__ = {
 }
 
 [node name="EditDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
-margin_left = 380.118
+margin_left = 379.118
 margin_top = 301.0
-margin_right = 501.118
+margin_right = 500.118
 margin_bottom = 321.0
 text = "Edit Description"
 __meta__ = {
