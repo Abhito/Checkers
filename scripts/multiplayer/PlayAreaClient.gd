@@ -325,7 +325,7 @@ func _intro():
 		P1Name = Server.localName
 		P2Name = Server.otherPlayer
 	else:
-		P2Name = ConfigController.localName
+		P2Name = Server.localName
 		P1Name = Server.otherPlayer
 	var player1 = get_tree().get_root().get_node("Game/Rotation/Camera/Intro/Versus/red/PlayerName")
 	player1.text = P1Name

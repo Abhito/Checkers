@@ -15,8 +15,11 @@ var other_object_path = null
 var object_position
 var piece_destroyed_path = null
 var connected = false
+
 var lobbies
 var lobbyUpdated = false
+
+signal invite
 
 func ready():
 	pass
@@ -90,6 +93,7 @@ remote func ReturnTurn(turn, object_path, drop_cord, destroyed_path):
 func disconnectClient():
 	print("Telling Server to disconnect me")
 	rpc_id(1, "_Disconnect_Me")
+	connected = false
 	network = NetworkedMultiplayerENet.new()
 
 #Called when client wants to end game
@@ -119,6 +123,7 @@ remote func recieveLobbies(lobbyinfo):
 func nameSetter():
 	if(AccountData.isLoggedIn):
 		localName = AccountData.username
+		nameSender()
 	else:
 		var random = RandomNumberGenerator.new()
 		random.randomize()
@@ -126,11 +131,17 @@ func nameSetter():
 		var random_name = "Guest_" + str(random_num)
 		localName = random_name
 
+func nameSender():
+	rpc_id(1, "login", localName)
+
 func friendInvite(friendName, myName, lobby_id):
 	rpc_id(1, "friend_invite", friendName, myName, lobby_id)
 
 func getInvites(requester):
 	rpc_id(1, "sendInvites", requester)
+	
+remote func invited(inviteInfo):
+	emit_signal("invite", inviteInfo)
 	
 remote func recieveInvites(requester, inviteInfo):
 	instance_from_id(requester).getInvite(inviteInfo)
