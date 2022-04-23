@@ -58,7 +58,7 @@ margin_top = 56.0
 margin_bottom = 74.0
 
 [node name="red" parent="Rotation/Camera/Intro/Versus" index="1"]
-frame = 2
+frame = 0
 
 [node name="blue" parent="Rotation/Camera/Intro/Versus" index="2"]
-frame = 2
+frame = 0

@@ -229,11 +229,19 @@ func nextTurn():
 	getTurnLabel.text = str(turnCount)
 	if currentTurn:
 		getPieceLabel.text = str(P2removed)
+		checkWinLossCondition()
 	else:
 		getPieceLabel.text = str(P1removed)
+		checkWinLossCondition()
 	if turnTimer:
 		getTimer.reset()
-	
+		
+func checkWinLossCondition():
+	if(str(P2removed) == "12"):
+		print("Player 1 Wins")
+	elif(str(P1removed) == "12"):
+		print("Player 2 Wins")
+		
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
