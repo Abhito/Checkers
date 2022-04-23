@@ -236,9 +236,12 @@ func nextTurn():
 	if turnTimer:
 		getTimer.reset()
 		
+#Function checks win and loss conditions for each player
 func checkWinLossCondition():
+	#if player 2 has had 12 pieces removed
 	if(str(P2removed) == "12"):
 		print("Player 1 Wins")
+	#if player 1 has had 12 pieces removed
 	elif(str(P1removed) == "12"):
 		print("Player 2 Wins")
 		
