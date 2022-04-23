@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scripts/FriendRequest.gd" type="Script" id=1]
+[ext_resource path="res://scripts/FriendEntry.gd" type="Script" id=1]
 [ext_resource path="res://images/profile_images/whiteCircle.svg" type="Texture" id=2]
 [ext_resource path="res://images/profile_images/default.jpg" type="Texture" id=3]
 [ext_resource path="res://fonts/UsernameFont.tres" type="DynamicFont" id=4]
@@ -74,7 +74,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeclineFriend" type="Button" parent="."]
+[node name="InviteToGame" type="Button" parent="."]
 margin_left = 170.0
 margin_top = 37.0
 margin_right = 231.0
@@ -84,7 +84,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AcceptFriend" type="Button" parent="."]
+[node name="InviteToGame2" type="Button" parent="."]
 margin_left = 106.0
 margin_top = 37.0
 margin_right = 165.0
@@ -113,9 +113,3 @@ texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="FriendRequestHTTP" type="HTTPRequest" parent="."]
-
-[connection signal="pressed" from="DeclineFriend" to="." method="_on_DeclineFriend_pressed"]
-[connection signal="pressed" from="AcceptFriend" to="." method="_on_AcceptFriend_pressed"]
-[connection signal="request_completed" from="FriendRequestHTTP" to="." method="_on_FriendRequestHTTP_request_completed"]
