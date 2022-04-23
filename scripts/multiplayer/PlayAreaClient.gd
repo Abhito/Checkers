@@ -5,8 +5,8 @@ onready var getTimer = $Rotation/Camera/GameInformation/Timer
 onready var getTimerLabel = $Rotation/Camera/GameInformation/Timer/RTU
 onready var getTurnLabel = $Rotation/Camera/GameInformation/TCL
 onready var getPieceLabel = $Rotation/Camera/GameInformation/PPU
-var P1removed
-var P2removed
+var P1removed = 0
+var P2removed = 0
 var P1Destroy
 var P2Destroy
 var xCord
