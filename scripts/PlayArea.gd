@@ -241,6 +241,7 @@ func checkWinLossCondition():
 	#if player 2 has had 12 pieces removed
 	if(str(P2removed) == "12"):
 		print("Player 1 Wins")
+		get_node("Rotation/Camera/Pause").visible = true
 	#if player 1 has had 12 pieces removed
 	elif(str(P1removed) == "12"):
 		print("Player 2 Wins")
