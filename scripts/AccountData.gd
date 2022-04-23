@@ -16,5 +16,15 @@ func _ready():
 func updateAll(input):
 	username = input.Items[0].username.S
 	email = input.Items[0].email.S
+	friendsList = input.Items[0].friends.SS
+	friendRequests = input.Items[0].friendrequests.SS
+	wins = input.Items[0].wins.N
+	losses = input.Items[0].losses.N
 
-
+func logOut():
+	username = null
+	email = null
+	friendsList = null
+	friendRequests = null
+	wins = null
+	losses = null

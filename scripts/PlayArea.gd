@@ -31,7 +31,6 @@ var cameraFOV = ConfigController.cameraFOV
 
 func validMove(held_object):
 	print("this piece's x value is ", held_object.get_X(), " when you dropped it")
-	
 	if held_object.get_King() == true:
 		return kingValidMove(held_object)
 	
@@ -79,7 +78,6 @@ func validMove(held_object):
 			
 			
 func kingValidMove(held_object):
-	
 	if held_object.get_Color() == true:
 		#wrong direction case
 		if currentPos[2] == held_object.get_Y():
