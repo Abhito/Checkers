@@ -12,4 +12,10 @@ func _ready():
 
 func _on_Next_pressed():
 	get_tree().change_scene("res://views/howto/HowTo_Menu2.tscn")
-	
+
+func _on_Previous_Button_pressed():
+	get_tree().change_scene("res://views/Menu.tscn")
+
+func _on_Previous2_pressed():
+	get_tree().change_scene("res://views/howto/HowTo_Menu.tscn")
+
