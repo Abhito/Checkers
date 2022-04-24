@@ -308,14 +308,14 @@ func _process(delta):
 	if currentTurn == myturn && currentTurn:
 		getTurnLabel.text = "Your Turn"
 		getPieceLabel.text = str(P2removed)
-		if(P2removed >= 12):
+		if(P2removed == 12):
 			Server.win()
 			get_node("Rotation/Camera/P1WinScreen/RichTextLabel").text = "You Win!"
 			get_node("Rotation/Camera/P1WinScreen").visible = true
 	elif currentTurn == myturn && !currentTurn:
 		getTurnLabel.text = "Your Turn"
 		getPieceLabel.text = str(P1removed)
-		if(P1removed >= 12):
+		if(P1removed == 12):
 			Server.win()
 			get_node("Rotation/Camera/P1WinScreen/RichTextLabel").text = "You Win!"
 			get_node("Rotation/Camera/P1WinScreen").visible = true

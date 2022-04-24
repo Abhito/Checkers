@@ -240,9 +240,13 @@ func AIturn():
 	getAI.printGrid()
 	getAI.generateValidMoves()
 	getAI.determineBestMove()
-	getAI.movePiece()
-	nextTurn()
+	if(getAI.validMoves.size() == 0):
+		get_node("Rotation/Camera/P1WinScreen").visible = true
+	else:
+		getAI.movePiece()
+		nextTurn()
 
+	
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return

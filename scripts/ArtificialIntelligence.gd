@@ -118,7 +118,7 @@ func determineBestMove():
 	var oneTrueMove = ValidMove.new()
 	if validMoves.size() == 0:
 		print("No moves left. You lose")
-		get_tree().quit()
+		#get_tree().quit()
 	elif validMoves.size() > 0:
 		for validMove in validMoves:
 			if biggestMove < validMove.moveList.size():

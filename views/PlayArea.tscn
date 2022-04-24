@@ -30,7 +30,7 @@
 [ext_resource path="res://sounds/versus.mp3" type="AudioStream" id=28]
 [ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=30]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=15]
 font_path = "res://fonts/FFFFORWA.TTF"
 
 [sub_resource type="DynamicFont" id=13]
@@ -39,7 +39,7 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = 15
 extra_spacing_char = 7
-font_data = SubResource( 1 )
+font_data = SubResource( 15 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
