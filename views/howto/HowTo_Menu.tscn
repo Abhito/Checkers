@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://images/menu_images/howto.jpg" type="Texture" id=1]
 [ext_resource path="res://fonts/MenuFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://views/howto/HowTo_Menu.gd" type="Script" id=3]
-[ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="HowTo" type="Control"]
 anchor_right = 1.0
@@ -46,7 +52,7 @@ margin_left = -503.0
 margin_top = -178.0
 margin_right = 503.0
 margin_bottom = 68.0
-custom_fonts/normal_font = ExtResource( 4 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "Welcome to the game of Checkers! Checkers is a two player strategy game involving diagonal movement and piece capturing. There's more than meets the eye in this thrilling game of strategy and board domination! Will you win the glory and reign as a master of checkers? Well with this guide you certainly can!"
 __meta__ = {
 "_edit_use_anchors_": false

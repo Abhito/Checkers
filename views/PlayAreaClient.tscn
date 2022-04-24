@@ -34,9 +34,3 @@ margin_bottom = 76.0
 [node name="PPU" parent="Rotation/Camera/GameInformation" index="4"]
 margin_top = 56.0
 margin_bottom = 74.0
-
-[node name="red" parent="Rotation/Camera/Intro/Versus" index="1"]
-frame = 1
-
-[node name="blue" parent="Rotation/Camera/Intro/Versus" index="2"]
-frame = 1
