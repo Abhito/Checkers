@@ -48,10 +48,14 @@ margin_right = 503.0
 margin_bottom = 184.0
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "3.)[u]King Pieces[/u]: pieces that reach the opposite end of the board become king pieces. King pieces may move both forward and backwards diagonally.
+bbcode_text = "3.) [u]King Pieces[/u]: pieces that reach the opposite end of the board become king pieces. King pieces may move both forward and backwards diagonally.
+
+4.) [u]Win Condition[/u]: victory shall be yours when your opponent is out of pieces
 
 [center]Now go forth and become the Master of Checkers...[/center]"
-text = "3.)King Pieces: pieces that reach the opposite end of the board become king pieces. King pieces may move both forward and backwards diagonally.
+text = "3.) King Pieces: pieces that reach the opposite end of the board become king pieces. King pieces may move both forward and backwards diagonally.
+
+4.) Win Condition: victory shall be yours when your opponent is out of pieces
 
 Now go forth and become the Master of Checkers..."
 __meta__ = {

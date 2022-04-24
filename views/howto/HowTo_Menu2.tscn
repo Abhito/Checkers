@@ -47,10 +47,10 @@ custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "1.) [u]Movement[/u]: pieces may be moved diagonally by one space when making a non capturing move. They cannot move into each other
 
-2.) [u]Capturing[/u]: in order to capture a piece belonging to your opponent, your piece must leap over theirs in a straight diagonal line and onto an empty space. A captured piece is then removed from the board. Multiple jumps are allowed in a single turn but, only one piece is allowed to be captured per jump"
+2.) [u]Capturing[/u]: in order to capture a piece belonging to your opponent, your piece must leap over theirs in a straight diagonal line and onto an empty space. A captured piece is then removed from the board. "
 text = "1.) Movement: pieces may be moved diagonally by one space when making a non capturing move. They cannot move into each other
 
-2.) Capturing: in order to capture a piece belonging to your opponent, your piece must leap over theirs in a straight diagonal line and onto an empty space. A captured piece is then removed from the board. Multiple jumps are allowed in a single turn but, only one piece is allowed to be captured per jump"
+2.) Capturing: in order to capture a piece belonging to your opponent, your piece must leap over theirs in a straight diagonal line and onto an empty space. A captured piece is then removed from the board. "
 __meta__ = {
 "_edit_use_anchors_": false
 }
