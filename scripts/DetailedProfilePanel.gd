@@ -9,7 +9,41 @@ func _ready():
 	onlineStatus = load("res://images/profile_images/statusOnline.svg")
 	awayStatus = load("res://images/profile_images/statusAway.svg")
 	offlineStatus = load("res://images/profile_images/statusOffline.svg")
+	
+	#Change - Testing
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.connect("request_completed", self, "_http_request_completed")
+	
+	# Perform the HTTP request. The URL below returns a PNG image as of writing.
+	var http_error = http_request.request("https://via.placeholder.com/500")
+	if http_error != OK:
+		print("An error occurred in the HTTP request.")
+	
+	#download_texture("https://checkers-profile-pictures.s3.amazonaws.com/NewImage.jpg", "test_profile_pic")
+	
 	add_status()
+	
+
+# Called when the HTTP request is completed. - Choice 1
+func _http_request_completed(result, response_code, headers, body):
+	var image = Image.new()
+	var image_error = image.load_png_from_buffer(body)
+	if image_error != OK:
+		print("An error occurred while trying to display the image.")
+
+	var texture = ImageTexture.new()
+	texture.create_from_image(image)
+	
+	#Replace TextureRect with a Sprite Node
+	$TextureRect.texture = texture
+
+# Choice 2
+func download_texture(url : String, file_name : String):
+	var http = HTTPRequest.new()
+	add_child(http)
+	http.set_download_file(file_name)
+	http.request(url)
 
 func add_status():
 	$StatusButton.add_icon_item(onlineStatus, "")
@@ -28,11 +62,8 @@ func _on_SaveDescriptionButton_pressed():
 	get_node("ProfileDescription").visible = true
 	get_node("EditDescriptionButton").visible = true
 
-
-
 func _on_UploadPhoto_pressed():
 	$FileSelection.popup()
-
 
 func _on_FileSelection_file_selected(path):
 	var image = Image.new()
