@@ -18,6 +18,9 @@ margin_right = 1111.0
 margin_bottom = 685.0
 texture = ExtResource( 1 )
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="RichTextLabel" parent="."]
 anchor_top = 0.018
@@ -45,17 +48,17 @@ margin_right = 503.0
 margin_bottom = 184.0
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "1.) [u]Movement[/u]: pieces may be moved diagonally by one space when making a non capturing move. They cannot move into each other
+bbcode_text = "3.)[u]King Pieces[/u]: pieces that reach the opposite end of the board become king pieces. King pieces may move both forward and backwards diagonally.
 
-2.) [u]Capturing[/u]: in order to capture a piece belonging to your opponent, your piece must leap over theirs in a straight diagonal line and onto an empty space. A captured piece is then removed from the board. Multiple jumps are allowed in a single turn but, only one piece is allowed to be captured per jump"
-text = "1.) Movement: pieces may be moved diagonally by one space when making a non capturing move. They cannot move into each other
+[center]Now go forth and become the Master of Checkers...[/center]"
+text = "3.)King Pieces: pieces that reach the opposite end of the board become king pieces. King pieces may move both forward and backwards diagonally.
 
-2.) Capturing: in order to capture a piece belonging to your opponent, your piece must leap over theirs in a straight diagonal line and onto an empty space. A captured piece is then removed from the board. Multiple jumps are allowed in a single turn but, only one piece is allowed to be captured per jump"
+Now go forth and become the Master of Checkers..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Previous2 Button" type="Button" parent="."]
+[node name="Previous3 Button" type="Button" parent="."]
 margin_left = 60.0
 margin_top = 460.0
 margin_right = 170.0
@@ -68,18 +71,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Previous2 Button2" type="Button" parent="."]
-margin_left = 841.0
-margin_top = 460.0
-margin_right = 951.0
-margin_bottom = 585.0
-custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "->"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="Previous2 Button" to="." method="_on_Previous2_pressed"]
-[connection signal="pressed" from="Previous2 Button2" to="." method="_on_Next2__pressed"]
+[connection signal="pressed" from="Previous3 Button" to="." method="_on_Previous3_pressed"]
