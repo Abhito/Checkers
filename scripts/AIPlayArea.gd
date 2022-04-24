@@ -239,10 +239,10 @@ func AIturn():
 	yield(get_tree().create_timer(0.25), "timeout")
 	getAI.printGrid()
 	getAI.generateValidMoves()
-	getAI.determineBestMove()
 	if(getAI.validMoves.size() == 0):
 		get_node("Rotation/Camera/P1WinScreen").visible = true
 	else:
+		getAI.determineBestMove()
 		getAI.movePiece()
 		nextTurn()
 
