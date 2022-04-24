@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://images/menu_images/howto.jpg" type="Texture" id=1]
+[ext_resource path="res://fonts/MenuFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://views/howto/HowTo_Menu.gd" type="Script" id=3]
+[ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=4]
+
+[node name="HowTo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1111.0
+margin_bottom = 685.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_top = 0.018
+anchor_bottom = 0.018
+margin_top = 1.0
+margin_right = 1023.0
+margin_bottom = 114.0
+custom_colors/default_color = Color( 0.219608, 0.839216, 0.592157, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]How to Play[/center]"
+text = "How to Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial Text" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -503.0
+margin_top = -178.0
+margin_right = 503.0
+margin_bottom = 68.0
+custom_fonts/normal_font = ExtResource( 4 )
+text = "Welcome to the game of Checkers! Checkers is a two player strategy game involving diagonal movement and piece capturing. There's more than meets the eye in this thrilling game of strategy and board domination! Will you win the glory and reign as a master of checkers? Well with this guide you certainly can!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next Button" type="Button" parent="."]
+margin_left = 841.0
+margin_top = 460.0
+margin_right = 992.0
+margin_bottom = 585.0
+custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "->"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Previous Button" type="Button" parent="."]
+margin_left = 60.0
+margin_top = 460.0
+margin_right = 170.0
+margin_bottom = 585.0
+custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "<-"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Next Button" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Previous Button" to="." method="_on_Previous_Button_pressed"]

@@ -15,10 +15,9 @@
 [ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
 [ext_resource path="res://views/FriendsPanel.gd" type="Script" id=14]
 [ext_resource path="res://views/FriendsRequestsPanel.gd" type="Script" id=15]
+[ext_resource path="res://images/singleplayer_menu_images/singleplayerbutton.tres" type="StyleBox" id=16]
 
 [sub_resource type="Theme" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -1200,28 +1199,29 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -424.0
-margin_right = 366.0
+anchor_bottom = 1.052
+margin_top = -477.0
+margin_right = 509.0
+margin_bottom = -32.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Solo" type="Button" parent="VBoxContainer"]
 light_mask = 0
-margin_right = 366.0
-margin_bottom = 103.0
+margin_right = 509.0
+margin_bottom = 92.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
-custom_styles/focus = SubResource( 1 )
+custom_styles/focus = ExtResource( 16 )
 text = "Solo"
 flat = true
 align = 0
 
 [node name="Online" type="Button" parent="VBoxContainer"]
-margin_top = 107.0
-margin_right = 366.0
-margin_bottom = 210.0
+margin_top = 96.0
+margin_right = 509.0
+margin_bottom = 188.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 2 )
@@ -1230,9 +1230,9 @@ flat = true
 align = 0
 
 [node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 214.0
-margin_right = 366.0
-margin_bottom = 317.0
+margin_top = 192.0
+margin_right = 509.0
+margin_bottom = 284.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 3 )
@@ -1240,10 +1240,21 @@ text = "Options"
 flat = true
 align = 0
 
+[node name="How to Play" type="Button" parent="VBoxContainer"]
+margin_top = 288.0
+margin_right = 509.0
+margin_bottom = 380.0
+custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/focus = SubResource( 3 )
+text = "How to Play"
+flat = true
+align = 0
+
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_top = 321.0
-margin_right = 366.0
-margin_bottom = 424.0
+margin_top = 384.0
+margin_right = 509.0
+margin_bottom = 476.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -1967,6 +1978,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="_on_Solo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/How to Play" to="." method="_on_HowTo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
 [connection signal="request_completed" from="UserPanels/LoginPanel/LoginRequestHandler" to="UserPanels/LoginPanel" method="_on_LoginRequestHandler_request_completed"]
