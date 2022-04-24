@@ -116,10 +116,7 @@ func isJumpable(xCord, yCord):
 func determineBestMove():
 	var biggestMove = 0
 	var oneTrueMove = ValidMove.new()
-	if validMoves.size() == 0:
-		print("No moves left. You lose")
-		#get_tree().quit()
-	elif validMoves.size() > 0:
+	if validMoves.size() > 0:
 		for validMove in validMoves:
 			if biggestMove < validMove.moveList.size():
 				biggestMove = validMove.moveList.size()
