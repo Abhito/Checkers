@@ -36,7 +36,7 @@ func _http_request_completed(result, response_code, headers, body):
 	texture.create_from_image(image)
 	
 	#Replace TextureRect with a Sprite Node
-	$TextureRect.texture = texture
+	$AccountPicture/TextureRect.texture = texture
 
 # Choice 2
 func download_texture(url : String, file_name : String):
