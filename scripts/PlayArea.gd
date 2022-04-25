@@ -290,5 +290,3 @@ func _intro():
 	yield(get_tree().create_timer(5.0), "timeout")
 	for piece in orange_pieces:
 		piece.turnToggle()
-	
-

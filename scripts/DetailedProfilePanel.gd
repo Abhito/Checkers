@@ -102,4 +102,6 @@ func updateDescription():
 	
 	$UpdateDescription.request()
 	
-	
+func _on_DetailedProfilePanel_visibility_changed():
+	$WinNumber.text = str(AccountData.wins)
+	$LossNumber.text = str(AccountData.losses)

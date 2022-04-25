@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scripts/FriendsPanel.gd" type="Script" id=14]
 [ext_resource path="res://scripts/FriendsRequestsPanel.gd" type="Script" id=15]
 [ext_resource path="res://images/singleplayer_menu_images/singleplayerbutton.tres" type="StyleBox" id=16]
+[ext_resource path="res://fonts/IngameFont.tres" type="DynamicFont" id=17]
 
 [sub_resource type="Theme" id=5]
 
@@ -1822,7 +1823,6 @@ __meta__ = {
 [node name="FriendRequestHandler" type="HTTPRequest" parent="UserPanels/FriendsRequestsPanel"]
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
-visible = false
 anchor_left = 1.006
 anchor_top = 1.0
 anchor_right = 1.006
@@ -1968,8 +1968,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project"
-current_path = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project/"
+current_dir = "/School Files/CheckersReturn/icsi418y-group7-checkers"
+current_path = "/School Files/CheckersReturn/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
@@ -1979,6 +1979,36 @@ margin_bottom = 126.0
 text = "Upload Profile Picture"
 
 [node name="UploadProfilePicture" type="HTTPRequest" parent="UserPanels/DetailedProfilePanel"]
+
+[node name="WinsLabel" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 115.0
+margin_top = 50.0
+margin_right = 154.0
+margin_bottom = 67.0
+custom_fonts/normal_font = ExtResource( 17 )
+text = "Wins:"
+
+[node name="LossesLabel" type="RichTextLabel" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 115.118
+margin_top = 68.0
+margin_right = 175.118
+margin_bottom = 86.0
+custom_fonts/normal_font = ExtResource( 17 )
+text = "Losses:"
+
+[node name="WinNumber" type="Label" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 150.118
+margin_top = 52.0
+margin_right = 160.118
+margin_bottom = 66.0
+text = "0"
+
+[node name="LossNumber" type="Label" parent="UserPanels/DetailedProfilePanel"]
+margin_left = 160.118
+margin_top = 70.0
+margin_right = 170.118
+margin_bottom = 84.0
+text = "0"
 
 [node name="MenuAnimator" type="Node2D" parent="."]
 position = Vector2( 777, 430 )
@@ -2019,6 +2049,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/AddFriendButton" to="UserPanels/FriendsRequestsPanel" method="_on_AddFriendButton_pressed"]
 [connection signal="request_completed" from="UserPanels/FriendsRequestsPanel/FriendRequestHandler" to="UserPanels/FriendsRequestsPanel" method="_on_FriendRequestHandler_request_completed"]
+[connection signal="visibility_changed" from="UserPanels/DetailedProfilePanel" to="UserPanels/DetailedProfilePanel" method="_on_DetailedProfilePanel_visibility_changed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/ReturnToProfile" to="." method="_on_ReturnToProfile_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/EditDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_EditDescriptionButton_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/SaveDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_SaveDescriptionButton_pressed"]

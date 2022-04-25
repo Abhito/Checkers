@@ -12,7 +12,8 @@ var losses
 var isLoggedIn = false
 
 func _ready():
-	pass
+	wins = 0
+	losses = 0
 
 func updateAll(input):
 	username = input.Items[0].username.S
