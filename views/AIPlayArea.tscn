@@ -637,7 +637,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="P2WinScreen2" type="Control" parent="Rotation/Camera"]
+[node name="P2WinScreen" type="Control" parent="Rotation/Camera"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -646,12 +646,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Rotation/Camera/P2WinScreen2"]
+[node name="TextureRect" type="TextureRect" parent="Rotation/Camera/P2WinScreen"]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 8 )
 
-[node name="ColorRect" type="ColorRect" parent="Rotation/Camera/P2WinScreen2"]
+[node name="ColorRect" type="ColorRect" parent="Rotation/Camera/P2WinScreen"]
 margin_left = 368.0
 margin_top = 343.0
 margin_right = 621.0
@@ -661,7 +661,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Rotation/Camera/P2WinScreen2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Rotation/Camera/P2WinScreen"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 277.0
@@ -679,7 +679,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="Button" parent="Rotation/Camera/P2WinScreen2"]
+[node name="Menu" type="Button" parent="Rotation/Camera/P2WinScreen"]
 margin_left = 397.0
 margin_top = 365.0
 margin_right = 592.0
@@ -701,7 +701,6 @@ volume_db = -22.0
 position = Vector2( 1280, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="PlayerName" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/red"]
@@ -720,7 +719,6 @@ __meta__ = {
 position = Vector2( -256, 249 )
 scale = Vector2( 0.533, 0.53 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="PlayerName2" type="RichTextLabel" parent="Rotation/Camera/Intro/Versus/blue"]
@@ -1053,4 +1051,4 @@ script = ExtResource( 29 )
 [connection signal="pressed" from="Rotation/Camera/Pause/Return" to="Rotation/Camera/Pause" method="_on_Button_pressed"]
 [connection signal="timeout" from="Rotation/Camera/GameInformation/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Rotation/Camera/P1WinScreen/Menu" to="Rotation/Camera/P1WinScreen" method="_on_Menu_pressed"]
-[connection signal="pressed" from="Rotation/Camera/P2WinScreen2/Menu" to="Rotation/Camera/P2WinScreen2" method="_on_Menu_pressed"]
+[connection signal="pressed" from="Rotation/Camera/P2WinScreen/Menu" to="Rotation/Camera/P2WinScreen" method="_on_Menu_pressed"]

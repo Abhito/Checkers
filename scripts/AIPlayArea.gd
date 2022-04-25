@@ -223,6 +223,8 @@ func nextTurn():
 	turnCount = turnCount + 1
 	getTurnLabel.text = str(turnCount)
 	if currentTurn:
+		#checks to see if loss condition has been met
+		checkLossCondition()
 		getPieceLabel.text = str(P2removed)
 	else:
 		getPieceLabel.text = str(getAI.P1removed)
@@ -231,6 +233,11 @@ func nextTurn():
 	if currentTurn == false:
 		AIturn()
 
+func checkLossCondition():
+	if(getAI.P1removed >= 12):
+		print("Computer Wins")
+		get_node("Rotation/Camera/P2WinScreen").visible = true
+		
 func AIturn():
 	print("AI turn started")
 	#getAI.updateGrids()
@@ -239,9 +246,6 @@ func AIturn():
 	getAI.generateValidMoves()
 	if(getAI.validMoves.size() == 0):
 		get_node("Rotation/Camera/P1WinScreen").visible = true
-	elif(getAI.P1removed >= 12):
-		print("Computer Wins")
-		get_node("Rotation/Camera/P2WinScreen").visible = true
 	else:
 		getAI.determineBestMove()
 		getAI.movePiece()
