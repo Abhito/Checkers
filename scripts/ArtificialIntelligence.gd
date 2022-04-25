@@ -9,7 +9,6 @@ func _ready():
 	P1Destroy = get_node("../ChessBoard/P1Holder").get_global_transform().origin + Vector3(0,1,0)
 
 func initAI(gridArray):
-	var i = 0
 	var j = 0
 	var toggle = true
 	var rowArray = Array()
