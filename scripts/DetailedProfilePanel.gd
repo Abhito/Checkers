@@ -90,3 +90,16 @@ func _on_UploadProfilePicture_request_completed(result, response_code, headers, 
 	var json = JSON.parse(body.get_string_from_utf8())
 	print(response_code, " ", json.result)
 	
+	
+#Update description function	
+func updateDescription():
+	
+	var headers = ["Content-Type: application/json"]
+	
+	var updateDesc = ConfigFile.new
+	updateDesc.load("")
+	updateDesc.save("")
+	
+	$UpdateDescription.request()
+	
+	
