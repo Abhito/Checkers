@@ -1,5 +1,4 @@
 extends Node
-
 var pieceMatrix = Array(Array())
 var validMoves = Array()
 var chosenMove

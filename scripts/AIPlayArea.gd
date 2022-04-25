@@ -241,25 +241,25 @@ func AIturn():
 	getAI.generateValidMoves()
 	if(getAI.validMoves.size() == 0):
 		get_node("Rotation/Camera/P1WinScreen").visible = true
-	elif(P1removed == 12):
+	elif(P1removed >= 12):
+		print("Computer Wins")
 		get_node("Rotation/Camera/P2WinScreen").visible = true
 	else:
 		getAI.determineBestMove()
 		getAI.movePiece()
 		nextTurn()
-
-	
+		
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
 	if color:
-		playerpiece.MODE_RIGID
+		P2removed = P2removed + 1
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
-		playerpiece.MODE_RIGID
+		P1removed = P1removed + 1
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
 		P1Destroy = P1Destroy + Vector3(0, 1, 0)
