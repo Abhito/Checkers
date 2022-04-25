@@ -1,15 +1,14 @@
 extends Node
-
 var pieceMatrix = Array(Array())
 var validMoves = Array()
 var chosenMove
 var P1Destroy
+var P1removed
 
 func _ready():
 	P1Destroy = get_node("../ChessBoard/P1Holder").get_global_transform().origin + Vector3(0,1,0)
 
 func initAI(gridArray):
-	var i = 0
 	var j = 0
 	var toggle = true
 	var rowArray = Array()
@@ -90,12 +89,14 @@ func generateValidMoves():
 	#print("Second Valid Move: " + str(validMoves[1].moveList))
 
 func destroy(xCord, yCord):
+	P1removed = P1removed +1
 	var playerpiece = pieceMatrix[xCord][yCord].checkerPresent
 	playerpiece.MODE_RIGID
 	playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 	playerpiece.global_transform.origin = Vector3(P1Destroy)
 	P1Destroy = P1Destroy + Vector3(0, 1, 0)
 	playerpiece.interactable = false
+	
 	
 func updateMatrix():
 	pass
@@ -117,10 +118,7 @@ func isJumpable(xCord, yCord):
 func determineBestMove():
 	var biggestMove = 0
 	var oneTrueMove = ValidMove.new()
-	if validMoves.size() == 0:
-		print("No moves left. You lose")
-		get_tree().quit()
-	elif validMoves.size() > 0:
+	if validMoves.size() > 0:
 		for validMove in validMoves:
 			if biggestMove < validMove.moveList.size():
 				biggestMove = validMove.moveList.size()

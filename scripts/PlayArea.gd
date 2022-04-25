@@ -12,7 +12,7 @@ var P1Destroy
 var P2Destroy
 var xCord
 var yCord
-var held_object = null
+var held_obj = null
 var gridLoc = PoolVector3Array()
 var grids = Array()
 var turnProcessing = false;
@@ -153,35 +153,35 @@ func _ready():
 	AudioManager.playMusic("res://music/BraveHeart.wav")
 	
 func _on_pickable_clicked(object):
-	if !held_object:
-		held_object = object
-		currentPos = held_object.pickup()
+	if !held_obj:
+		held_obj = object
+		currentPos = held_obj.pickup()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-		if held_object and !event.pressed:
-			if !validMove(held_object):
+		if held_obj and !event.pressed:
+			if !validMove(held_obj):
 				AudioManager.playSound("res://sounds/InvalidMove.wav")
-				held_object.drop(currentPos)
-				held_object = null
+				held_obj.drop(currentPos)
+				held_obj = null
 			else:
-				var dest = find_closest(held_object).get_global_transform().origin
+				var dest = find_closest(held_obj).get_global_transform().origin
 				var compare = dest - currentPos
 				if(compare.length() < 1):
 					print("Can't move to same spot")
 					AudioManager.playSound("res://sounds/InvalidMove.wav")
-					held_object.drop(currentPos)
-					held_object = null
+					held_obj.drop(currentPos)
+					held_obj = null
 				else:
 					AudioManager.playSound("res://sounds/CheckerPlace.mp3")
-					held_object.drop(dest)
-					if held_object.get_Color():
-						if held_object.get_X() <= -6:
-							held_object.make_King()
+					held_obj.drop(dest)
+					if held_obj.get_Color():
+						if held_obj.get_X() <= -6:
+							held_obj.make_King()
 					else:
-						if held_object.get_X() >= 6:
-							held_object.make_King()
-					held_object = null
+						if held_obj.get_X() >= 6:
+							held_obj.make_King()
+					held_obj = null
 					nextTurn()
 #	if event is InputEventKey and event.scancode == KEY_SPACE and not event.pressed:
 #		nextTurn()
@@ -193,8 +193,8 @@ func _unhandled_input(event):
 func _notification(isfocus):
 	if isfocus == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 		print("Focus Lost")
-		if held_object:
-			held_object.drop(find_closest(held_object).get_global_transform().origin)
+		if held_obj:
+			held_obj.drop(find_closest(held_obj).get_global_transform().origin)
 #
 func find_closest(piece):
 	var position = piece.get_global_transform().origin
@@ -229,30 +229,41 @@ func nextTurn():
 	getTurnLabel.text = str(turnCount)
 	if currentTurn:
 		getPieceLabel.text = str(P2removed)
+		checkWinLossCondition()
 	else:
 		getPieceLabel.text = str(P1removed)
+		checkWinLossCondition()
 	if turnTimer:
 		getTimer.reset()
-	
+		
+#Function checks win and loss conditions for each player
+func checkWinLossCondition():
+	#if player 2 has had 12 pieces removed
+	if(str(P2removed) == "12"):
+		print("Player 1 Wins")
+		get_node("Rotation/Camera/P1WinScreen").visible = true
+	#if player 1 has had 12 pieces removed
+	elif(str(P1removed) == "12"):
+		get_node("Rotation/Camera/P2WinScreen").visible = true
+		print("Player 2 Wins")
+		
 func destroy(playerpiece, color):
 	if playerpiece == null:
 		return
 	if color:
 		P2removed = P2removed + 1
-		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 	else:
 		P1removed = P1removed + 1
-		playerpiece.MODE_RIGID
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P1Destroy)
 		P1Destroy = P1Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 
-func _process(delta):
+func _process(_delta):
 	if turnProcessing == true:
 		rotationAmount = rotationAmount + (PI * 0.02)
 		$Rotation.rotate_y(PI * 0.02)
@@ -264,7 +275,7 @@ func _process(delta):
 func _on_Timer_timeout():
 	if getTimer._count == 0:
 		nextTurn()
-	var oldcount = turnCount
+	var _oldcount = turnCount
 	
 func _intro():
 	var orange_pieces = Array()

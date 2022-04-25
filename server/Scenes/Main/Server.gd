@@ -104,12 +104,15 @@ remote func nextTurn(object_path, drop_cord, object_destroyed_path):
 			rpc_id(otherPlayer, "ReturnTurn", true, object_path, drop_cord, object_destroyed_path)
 
 #End game for both players and delete pairs
-remote func endGame():
+remote func endGame(mode):
 	print("A User is ending the Game")
 	var otherPlayer = pairs.get(get_tree().get_rpc_sender_id())
 	pairs.erase(get_tree().get_rpc_sender_id())
 	network.disconnect_peer(get_tree().get_rpc_sender_id())
-	rpc_id(otherPlayer, "endMyGame")
+	if mode == 0:
+		rpc_id(otherPlayer, "endMyGame")
+	elif mode == 1:
+		rpc_id(otherPlayer, "gameLost")
 	pairs.erase(otherPlayer)
 	
 func lobbyTimer(lobby_id):

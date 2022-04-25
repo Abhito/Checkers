@@ -4,7 +4,7 @@ extends Control
 
 func _on_Menu_pressed():
 	get_tree().change_scene("res://views/Menu.tscn")
-	Server.sendEndGame() #Let the Server know that the game ended
+	Server.sendEndGame(0) #Let the Server know that the game ended
 
 
 func _on_Settings_pressed():
