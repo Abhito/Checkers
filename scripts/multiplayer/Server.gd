@@ -2,7 +2,7 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 #Change which ip is commented depending on which server your using
-#var ip = "127.0.0.1"  #Localhost IP
+#ar ip = "127.0.0.1"  #Localhost IP
 var ip = "54.173.65.208" #AWS IP
 var port = 35516
 
@@ -16,6 +16,7 @@ var piece_destroyed_path = null
 var connected = false
 var lobbies
 var lobbyUpdated = false
+var lost = false
 
 func ready():
 	pass
@@ -92,10 +93,15 @@ func disconnectClient():
 
 #Called when client wants to end game
 #sendEndGame is used when player backs out during a game
-func sendEndGame():
-	print("Telling Server to end game")
-	rpc_id(1, "endGame")
-	network = NetworkedMultiplayerENet.new()
+func sendEndGame(mode):
+	if mode == 0:
+		print("Telling Server to end game")
+		rpc_id(1, "endGame", 0)
+		network = NetworkedMultiplayerENet.new()
+	elif mode == 1:
+		print("Telling Server I won")
+		rpc_id(1, "endGame", 1)
+		network = NetworkedMultiplayerENet.new()
 	
 #Server can forcefully end a game
 remote func endMyGame():
@@ -103,9 +109,13 @@ remote func endMyGame():
 	disconnectClient()
 	get_tree().change_scene("res://views/Menu.tscn")
 	
+remote func gameLost():
+	print("I lost the Game")
+	disconnectClient()
+	lost = true
+	
 func win():
-	get_tree().change_scene("res://views/Menu.tscn")
-	sendEndGame()
+	sendEndGame(1)
 	
 func getLobbies():
 	rpc_id(1, "sendLobbies")
