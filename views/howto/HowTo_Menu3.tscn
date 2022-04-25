@@ -15,9 +15,6 @@ font_data = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1111.0
@@ -64,9 +61,6 @@ text = "3.) King Pieces: pieces that reach the opposite end of the board become 
 4.) Win Condition: victory shall be yours when your opponent is out of pieces
 
 Now go forth and become the Master of Checkers..."
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Previous3 Button" type="Button" parent="."]
 margin_left = 60.0
@@ -77,8 +71,16 @@ custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "<-"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Previous3 Button2" type="Button" parent="."]
+margin_left = 736.0
+margin_top = 460.0
+margin_right = 965.0
+margin_bottom = 585.0
+custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Home"
+flat = true
 
 [connection signal="pressed" from="Previous3 Button" to="." method="_on_Previous3_pressed"]
+[connection signal="pressed" from="Previous3 Button2" to="." method="_on_Previous3_Button2_pressed"]

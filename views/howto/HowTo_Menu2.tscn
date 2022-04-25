@@ -15,9 +15,6 @@ font_data = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1111.0
@@ -75,17 +72,14 @@ __meta__ = {
 }
 
 [node name="Previous2 Button2" type="Button" parent="."]
-margin_left = 841.0
+margin_left = 844.0
 margin_top = 460.0
-margin_right = 951.0
+margin_right = 954.0
 margin_bottom = 585.0
 custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "->"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="Previous2 Button" to="." method="_on_Previous2_pressed"]
 [connection signal="pressed" from="Previous2 Button2" to="." method="_on_Next2__pressed"]

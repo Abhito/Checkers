@@ -59,17 +59,14 @@ __meta__ = {
 }
 
 [node name="Next Button" type="Button" parent="."]
-margin_left = 841.0
+margin_left = 824.0
 margin_top = 460.0
-margin_right = 992.0
+margin_right = 975.0
 margin_bottom = 585.0
 custom_colors/font_color = Color( 0.219608, 0.839216, 0.592157, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "->"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Previous Button" type="Button" parent="."]
 margin_left = 60.0

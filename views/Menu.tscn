@@ -1236,7 +1236,7 @@ margin_bottom = 284.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 3 )
-text = "Options"
+text = "Settings"
 flat = true
 align = 0
 
@@ -1270,9 +1270,6 @@ anchor_bottom = 0.99
 margin_left = -646.76
 margin_top = -595.0
 margin_right = 0.23999
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AccountPanel" type="ColorRect" parent="UserPanels"]
 anchor_left = 0.99
@@ -1968,8 +1965,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/Users/jpot1/OneDrive/Desktop/Universal Storage Unit/College/418Y/icsi418y-group7-checkers"
-current_path = "/Users/jpot1/OneDrive/Desktop/Universal Storage Unit/College/418Y/icsi418y-group7-checkers/"
+current_dir = "/Users/JM/Documents/Git/icsi418y-group7-checkers"
+current_path = "/Users/JM/Documents/Git/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
