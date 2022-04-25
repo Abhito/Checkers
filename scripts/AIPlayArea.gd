@@ -6,7 +6,6 @@ onready var getTimer = $Rotation/Camera/GameInformation/Timer
 onready var getTimerLabel = $Rotation/Camera/GameInformation/Timer/RTU
 onready var getTurnLabel = $Rotation/Camera/GameInformation/TCU
 onready var getPieceLabel = $Rotation/Camera/GameInformation/PPU
-var P1removed
 var P2removed
 var P1Destroy
 var P2Destroy
@@ -73,8 +72,7 @@ func validMove(held_object):
 			print("this move is invalid because it went too far")
 			var inbetween = grid_find(((currentPos + held_object.get_global_transform().origin)/2))
 			if inbetween.checkerColor == true:
-				destroy(inbetween.checkerPresent, false)
-				P1removed = P1removed + 1
+				getAI.destroy(inbetween.checkerPresent, false)
 				print("Orange piece in between")
 				return true
 			AudioManager.playSound("res://sounds/InvalidMove.wav")
@@ -156,7 +154,7 @@ func _ready():
 	getTurnLabel.text = str(turnCount)
 	getPieceLabel.text = str(0)
 	getTimerLabel.text = str(30)
-	P1removed = 0
+	getAI.P1removed = 0
 	P2removed = 0
 	getAI.initAI(grids)
 	
@@ -227,7 +225,7 @@ func nextTurn():
 	if currentTurn:
 		getPieceLabel.text = str(P2removed)
 	else:
-		getPieceLabel.text = str(P1removed)
+		getPieceLabel.text = str(getAI.P1removed)
 	if turnTimer:
 		getTimer.reset()
 	if currentTurn == false:
@@ -241,7 +239,7 @@ func AIturn():
 	getAI.generateValidMoves()
 	if(getAI.validMoves.size() == 0):
 		get_node("Rotation/Camera/P1WinScreen").visible = true
-	elif(P1removed >= 12):
+	elif(getAI.P1removed >= 12):
 		print("Computer Wins")
 		get_node("Rotation/Camera/P2WinScreen").visible = true
 	else:
@@ -257,12 +255,6 @@ func destroy(playerpiece, color):
 		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
 		playerpiece.global_transform.origin = Vector3(P2Destroy)
 		P2Destroy = P2Destroy + Vector3(0, 1, 0)
-		playerpiece.interactable = false
-	else:
-		P1removed = P1removed + 1
-		playerpiece.apply_central_impulse(Vector3(0, -.5, 0))
-		playerpiece.global_transform.origin = Vector3(P1Destroy)
-		P1Destroy = P1Destroy + Vector3(0, 1, 0)
 		playerpiece.interactable = false
 
 func _process(delta):
