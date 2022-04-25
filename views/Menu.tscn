@@ -1270,9 +1270,6 @@ anchor_bottom = 0.99
 margin_left = -646.76
 margin_top = -595.0
 margin_right = 0.23999
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AccountPanel" type="ColorRect" parent="UserPanels"]
 anchor_left = 0.99

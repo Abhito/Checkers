@@ -1,7 +1,7 @@
 extends Spatial
 
 onready var getCam = $Rotation/Camera
-onready var getAI = $ArtificialIntelligence
+#onready var getAI = $ArtificialIntelligence
 onready var getTimer = $Rotation/Camera/GameInformation/Timer
 onready var getTimerLabel = $Rotation/Camera/GameInformation/Timer/RTU
 onready var getTurnLabel = $Rotation/Camera/GameInformation/TCU
