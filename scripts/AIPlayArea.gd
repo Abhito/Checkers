@@ -241,6 +241,8 @@ func AIturn():
 	getAI.generateValidMoves()
 	if(getAI.validMoves.size() == 0):
 		get_node("Rotation/Camera/P1WinScreen").visible = true
+	elif(P1removed == 12):
+		get_node("Rotation/Camera/P2WinScreen").visible = true
 	else:
 		getAI.determineBestMove()
 		getAI.movePiece()
