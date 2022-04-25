@@ -5,8 +5,8 @@ onready var getTimer = $Rotation/Camera/GameInformation/Timer
 onready var getTimerLabel = $Rotation/Camera/GameInformation/Timer/RTU
 onready var getTurnLabel = $Rotation/Camera/GameInformation/TCL
 onready var getPieceLabel = $Rotation/Camera/GameInformation/PPU
-var P1removed
-var P2removed
+var P1removed = 0
+var P2removed = 0
 var P1Destroy
 var P2Destroy
 var xCord
@@ -300,17 +300,25 @@ func _process(delta):
 			var destroyed_piece =  get_tree().get_root().get_node(Server.piece_destroyed_path)
 			destroy(destroyed_piece, !myturn)
 			Server.piece_destroyed_path = null
-			
+	if(Server.lost):
+		get_node("Rotation/Camera/P2WinScreen/RichTextLabel").text = "You Lost..."
+		get_node("Rotation/Camera/P2WinScreen").visible = true
+		Server.lost = false
+	
 	if currentTurn == myturn && currentTurn:
 		getTurnLabel.text = "Your Turn"
 		getPieceLabel.text = str(P2removed)
 		if(P2removed >= 12):
 			Server.win()
+			get_node("Rotation/Camera/P1WinScreen/RichTextLabel").text = "You Win!"
+			get_node("Rotation/Camera/P1WinScreen").visible = true
 	elif currentTurn == myturn && !currentTurn:
 		getTurnLabel.text = "Your Turn"
 		getPieceLabel.text = str(P1removed)
 		if(P1removed >= 12):
 			Server.win()
+			get_node("Rotation/Camera/P1WinScreen/RichTextLabel").text = "You Win!"
+			get_node("Rotation/Camera/P1WinScreen").visible = true
 
 #Stub for turn Timer, unfinished
 func _on_Timer_timeout():

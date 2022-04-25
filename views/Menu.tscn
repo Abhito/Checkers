@@ -15,10 +15,9 @@
 [ext_resource path="res://scripts/DetailedProfilePanel.gd" type="Script" id=13]
 [ext_resource path="res://scripts/FriendsPanel.gd" type="Script" id=14]
 [ext_resource path="res://scripts/FriendsRequestsPanel.gd" type="Script" id=15]
+[ext_resource path="res://images/singleplayer_menu_images/singleplayerbutton.tres" type="StyleBox" id=16]
 
 [sub_resource type="Theme" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -1175,10 +1174,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -210.0
-margin_top = -397.0
-margin_right = 1710.0
-margin_bottom = 879.0
+margin_left = -217.0
+margin_top = -398.0
+margin_right = 1703.0
+margin_bottom = 878.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1200,28 +1199,29 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -424.0
-margin_right = 366.0
+anchor_bottom = 1.052
+margin_top = -477.0
+margin_right = 509.0
+margin_bottom = -32.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Solo" type="Button" parent="VBoxContainer"]
 light_mask = 0
-margin_right = 366.0
-margin_bottom = 103.0
+margin_right = 509.0
+margin_bottom = 92.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
-custom_styles/focus = SubResource( 1 )
+custom_styles/focus = ExtResource( 16 )
 text = "Solo"
 flat = true
 align = 0
 
 [node name="Online" type="Button" parent="VBoxContainer"]
-margin_top = 107.0
-margin_right = 366.0
-margin_bottom = 210.0
+margin_top = 96.0
+margin_right = 509.0
+margin_bottom = 188.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 2 )
@@ -1230,20 +1230,31 @@ flat = true
 align = 0
 
 [node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 214.0
-margin_right = 366.0
-margin_bottom = 317.0
+margin_top = 192.0
+margin_right = 509.0
+margin_bottom = 284.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 3 )
-text = "Options"
+text = "Settings"
+flat = true
+align = 0
+
+[node name="How to Play" type="Button" parent="VBoxContainer"]
+margin_top = 288.0
+margin_right = 509.0
+margin_bottom = 380.0
+custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/focus = SubResource( 3 )
+text = "How to Play"
 flat = true
 align = 0
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_top = 321.0
-margin_right = 366.0
-margin_bottom = 424.0
+margin_top = 384.0
+margin_right = 509.0
+margin_bottom = 476.0
 custom_colors/font_color_hover = Color( 0.796078, 0.027451, 0.027451, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -1259,9 +1270,6 @@ anchor_bottom = 0.99
 margin_left = -646.76
 margin_top = -595.0
 margin_right = 0.23999
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AccountPanel" type="ColorRect" parent="UserPanels"]
 anchor_left = 0.99
@@ -1308,10 +1316,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -133.93
-margin_top = -59.9499
-margin_right = -39.93
-margin_bottom = -42.9499
+margin_left = -131.76
+margin_top = -59.9999
+margin_right = -1.75995
+margin_bottom = -43.9999
 text = "Not Logged In"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1340,14 +1348,12 @@ margin_left = 93.24
 margin_top = 77.9999
 margin_right = 288.24
 margin_bottom = 102.0
-text = "password"
 
 [node name="UsernameEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
 margin_left = 93.24
 margin_top = 44.9999
 margin_right = 287.24
 margin_bottom = 68.9999
-text = "testA"
 
 [node name="PasswordLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 12.24
@@ -1724,9 +1730,6 @@ margin_top = 3.0
 margin_right = 27.0
 margin_bottom = 23.0
 texture_normal = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FriendHandler" type="HTTPRequest" parent="UserPanels/FriendsPanel"]
 
@@ -1777,9 +1780,6 @@ margin_top = -456.0
 margin_right = -5.0
 margin_bottom = -436.0
 text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FriendRequestTitle" type="RichTextLabel" parent="UserPanels/FriendsRequestsPanel"]
 anchor_left = 1.0
@@ -1792,7 +1792,7 @@ margin_right = -91.0
 margin_bottom = -440.0
 text = "Friend Requests"
 
-[node name="AddFriendName" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
+[node name="LineEdit" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1999,11 +1999,11 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="_on_Solo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/How to Play" to="." method="_on_HowTo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
 [connection signal="updatedUser" from="UserPanels/LoginPanel" to="UserPanels/FriendsPanel" method="_on_LoginPanel_updatedUser"]
 [connection signal="updatedUser" from="UserPanels/LoginPanel" to="UserPanels/FriendsRequestsPanel" method="_on_LoginPanel_updatedUser"]
-[connection signal="verified" from="UserPanels/LoginPanel" to="UserPanels/FriendsRequestsPanel" method="_on_LoginPanel_verified"]
 [connection signal="request_completed" from="UserPanels/LoginPanel/LoginRequestHandler" to="UserPanels/LoginPanel" method="_on_LoginRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/LoginPanel/LoginButton" to="UserPanels/LoginPanel" method="_on_LoginButton_pressed"]
 [connection signal="pressed" from="UserPanels/LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]

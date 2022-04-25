@@ -12,7 +12,7 @@ signal updatedUser
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
-	tempHold = true
+	tempHold = false
 	MenuAnimationPlayer = get_node("../../MenuAnimator/AnimationPlayer")
 
 func _on_LoginButton_pressed():
@@ -29,14 +29,13 @@ func _on_LoginButton_pressed():
 			print("Verification Failed")
 	else:
 		print("Invalid Input")
-
+	
 func _on_LoginRequestHandler_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	#print(typeof(json.result))
 	#print(json.result)
 	if typeof(json.result) == 18:
 		#print("Dictionary Found")
-		print(json.result)
 		AccountData.updateAll(json.result)
 		get_node("../ProfilePanel/Username").text = AccountData.username
 		emit_signal("updatedUser")
@@ -49,12 +48,10 @@ func _on_LoginRequestHandler_request_completed(result, response_code, headers, b
 		
 	elif json != null:
 		if json.result == "false":
-			print("False Found")
+			#print("False Found")
 			tempHold = false
 			emit_signal("verified")
 		elif json.result == null:
-			print("Null Found")
-			tempHold = false
 			emit_signal("verified")
 		else:
 			print(json.result)
