@@ -1731,6 +1731,8 @@ margin_right = 27.0
 margin_bottom = 23.0
 texture_normal = ExtResource( 11 )
 
+[node name="FriendHandler" type="HTTPRequest" parent="UserPanels/FriendsPanel"]
+
 [node name="FriendsRequestsPanel" type="ColorRect" parent="UserPanels"]
 visible = false
 anchor_left = 1.008
@@ -1816,6 +1818,8 @@ texture_normal = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FriendRequestHandler" type="HTTPRequest" parent="UserPanels/FriendsRequestsPanel"]
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
 visible = false
@@ -1928,9 +1932,9 @@ __meta__ = {
 }
 
 [node name="EditDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
-margin_left = 442.118
+margin_left = 379.118
 margin_top = 301.0
-margin_right = 563.118
+margin_right = 500.118
 margin_bottom = 321.0
 text = "Edit Description"
 __meta__ = {
@@ -1938,7 +1942,6 @@ __meta__ = {
 }
 
 [node name="SaveDescriptionButton" type="Button" parent="UserPanels/DetailedProfilePanel"]
-visible = false
 margin_left = 512.0
 margin_top = 301.0
 margin_right = 563.0
@@ -1999,6 +2002,8 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="VBoxContainer/How to Play" to="." method="_on_HowTo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="UserPanels/AccountPanel/AccountButton" to="." method="_on_AccountButton_pressed"]
+[connection signal="updatedUser" from="UserPanels/LoginPanel" to="UserPanels/FriendsPanel" method="_on_LoginPanel_updatedUser"]
+[connection signal="updatedUser" from="UserPanels/LoginPanel" to="UserPanels/FriendsRequestsPanel" method="_on_LoginPanel_updatedUser"]
 [connection signal="request_completed" from="UserPanels/LoginPanel/LoginRequestHandler" to="UserPanels/LoginPanel" method="_on_LoginRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/LoginPanel/LoginButton" to="UserPanels/LoginPanel" method="_on_LoginButton_pressed"]
 [connection signal="pressed" from="UserPanels/LoginPanel/RegisterButton" to="." method="_on_RegisterButton_pressed"]
@@ -2010,7 +2015,13 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="pressed" from="UserPanels/ProfilePanel/FriendsButton" to="." method="_on_FriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/exitFriendsButton" to="." method="_on_exitFriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
+[connection signal="request_completed" from="UserPanels/FriendsPanel/FriendHandler" to="UserPanels/FriendsPanel" method="_on_FriendHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/FriendsRequestsPanel/exitFriendRequestButton" to="." method="_on_exitFriendRequestButton_pressed"]
+[connection signal="pressed" from="UserPanels/FriendsRequestsPanel/AddFriendButton" to="UserPanels/FriendsRequestsPanel" method="_on_AddFriendButton_pressed"]
+[connection signal="request_completed" from="UserPanels/FriendsRequestsPanel/FriendRequestHandler" to="UserPanels/FriendsRequestsPanel" method="_on_FriendRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/ReturnToProfile" to="." method="_on_ReturnToProfile_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/EditDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_EditDescriptionButton_pressed"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/SaveDescriptionButton" to="UserPanels/DetailedProfilePanel" method="_on_SaveDescriptionButton_pressed"]
+[connection signal="file_selected" from="UserPanels/DetailedProfilePanel/FileSelection" to="UserPanels/DetailedProfilePanel" method="_on_FileSelection_file_selected"]
+[connection signal="pressed" from="UserPanels/DetailedProfilePanel/UploadPhoto" to="UserPanels/DetailedProfilePanel" method="_on_UploadPhoto_pressed"]
+[connection signal="request_completed" from="UserPanels/DetailedProfilePanel/UploadProfilePicture" to="UserPanels/DetailedProfilePanel" method="_on_UploadProfilePicture_request_completed"]

@@ -7,6 +7,7 @@ var discoveredEmail
 var discoveredProfile
 var MenuAnimationPlayer
 signal verified
+signal updatedUser
 
 # Called when the node enters the scene tree for the first time.
 
@@ -37,7 +38,14 @@ func _on_LoginRequestHandler_request_completed(result, response_code, headers, b
 		#print("Dictionary Found")
 		AccountData.updateAll(json.result)
 		get_node("../ProfilePanel/Username").text = AccountData.username
+		emit_signal("updatedUser")
+		
 		MenuAnimationPlayer.play("loginToProfile")
+		
+		#Connect to multiplayer server
+		AccountData.isLoggedIn = true
+		Server.ConnectToServer()
+		
 	elif json != null:
 		if json.result == "false":
 			#print("False Found")
