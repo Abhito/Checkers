@@ -1344,17 +1344,18 @@ __meta__ = {
 
 [node name="LoginRequestHandler" type="HTTPRequest" parent="UserPanels/LoginPanel"]
 
-[node name="PasswordEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
-margin_left = 93.24
-margin_top = 77.9999
-margin_right = 288.24
-margin_bottom = 102.0
-
-[node name="UsernameEntry" type="TextEdit" parent="UserPanels/LoginPanel"]
+[node name="UsernameEntry" type="LineEdit" parent="UserPanels/LoginPanel"]
 margin_left = 93.24
 margin_top = 44.9999
 margin_right = 287.24
 margin_bottom = 68.9999
+
+[node name="PasswordEntry" type="LineEdit" parent="UserPanels/LoginPanel"]
+margin_left = 93.24
+margin_top = 77.9999
+margin_right = 288.24
+margin_bottom = 102.0
+secret = true
 
 [node name="PasswordLabel" type="RichTextLabel" parent="UserPanels/LoginPanel"]
 margin_left = 12.24
@@ -1525,7 +1526,7 @@ margin_right = -75.0
 margin_bottom = -20.0
 text = "Register new Account"
 
-[node name="UsernameEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+[node name="UsernameEntry" type="LineEdit" parent="UserPanels/RegisterPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 140.0
@@ -1533,7 +1534,7 @@ margin_top = 45.0
 margin_right = -5.0
 margin_bottom = -185.0
 
-[node name="EPasswordEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+[node name="EPasswordEntry" type="LineEdit" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1542,8 +1543,9 @@ margin_left = -210.24
 margin_top = -170.0
 margin_right = -5.23999
 margin_bottom = -150.0
+secret = true
 
-[node name="CPasswordEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+[node name="CPasswordEntry" type="LineEdit" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1552,8 +1554,9 @@ margin_left = -210.24
 margin_top = -135.0
 margin_right = -5.23999
 margin_bottom = -115.0
+secret = true
 
-[node name="EmailEntry" type="TextEdit" parent="UserPanels/RegisterPanel"]
+[node name="EmailEntry" type="LineEdit" parent="UserPanels/RegisterPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1969,8 +1972,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project"
-current_path = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project/"
+current_dir = "/Users/JM/Documents/Git/icsi418y-group7-checkers"
+current_path = "/Users/JM/Documents/Git/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
