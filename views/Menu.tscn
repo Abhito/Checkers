@@ -1793,7 +1793,7 @@ margin_right = -91.0
 margin_bottom = -440.0
 text = "Friend Requests"
 
-[node name="LineEdit" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
+[node name="AddFriendName" type="LineEdit" parent="UserPanels/FriendsRequestsPanel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1823,6 +1823,7 @@ __meta__ = {
 [node name="FriendRequestHandler" type="HTTPRequest" parent="UserPanels/FriendsRequestsPanel"]
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
+visible = false
 anchor_left = 1.006
 anchor_top = 1.0
 anchor_right = 1.006
@@ -1968,8 +1969,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School Files/CheckersReturn/icsi418y-group7-checkers"
-current_path = "/School Files/CheckersReturn/icsi418y-group7-checkers/"
+current_dir = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project"
+current_path = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
