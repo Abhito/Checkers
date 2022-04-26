@@ -93,9 +93,7 @@ func _on_UploadProfilePicture_request_completed(result, response_code, headers, 
 	
 #Update description function	
 func updateDescription():
-	
 	var headers = ["Content-Type: application/json"]
-	
 	var updateDesc = ConfigFile.new
 	updateDesc.load("")
 	updateDesc.save("")
@@ -105,3 +103,4 @@ func updateDescription():
 func _on_DetailedProfilePanel_visibility_changed():
 	$WinNumber.text = str(AccountData.wins)
 	$LossNumber.text = str(AccountData.losses)
+	print(AccountData.profilePicture)
