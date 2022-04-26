@@ -104,4 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FriendWrangler" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="InviteToGame" to="." method="_on_InviteToGame_pressed"]
+[connection signal="request_completed" from="FriendWrangler" to="." method="_on_FriendWrangler_request_completed"]

@@ -1311,6 +1311,9 @@ margin_right = -27.057
 margin_bottom = -9.888
 tab_size = 1
 text = "Profile:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Username" type="RichTextLabel" parent="UserPanels/AccountPanel"]
 anchor_left = 1.0
@@ -1604,7 +1607,7 @@ scale = Vector2( 0.175, 0.175 )
 texture = ExtResource( 7 )
 mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UserPanels/ProfilePanel/ProfilePicture"]
+[node name="ProfilePic" type="TextureRect" parent="UserPanels/ProfilePanel/ProfilePicture"]
 material = SubResource( 10 )
 margin_right = 100.0
 margin_bottom = 100.0
@@ -1849,7 +1852,7 @@ scale = Vector2( 0.175, 0.175 )
 texture = ExtResource( 7 )
 mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UserPanels/DetailedProfilePanel/AccountPicture"]
+[node name="AccountPic" type="TextureRect" parent="UserPanels/DetailedProfilePanel/AccountPicture"]
 material = SubResource( 10 )
 margin_right = 100.0
 margin_bottom = 100.0
@@ -1969,8 +1972,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project"
-current_path = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project/"
+current_dir = "/School Files/CheckersReturn/icsi418y-group7-checkers"
+current_path = "/School Files/CheckersReturn/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
@@ -2027,6 +2030,8 @@ anims/reset = SubResource( 12 )
 anims/shrinkLogin = SubResource( 7 )
 anims/shrinkRegister = SubResource( 9 )
 
+[node name="ProfileWrangler" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="_on_Solo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online" to="." method="_on_Online_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
@@ -2044,6 +2049,7 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="request_completed" from="UserPanels/RegisterPanel/RegisterRequestHandler" to="UserPanels/RegisterPanel" method="_on_RegisterRequestHandler_request_completed"]
 [connection signal="pressed" from="UserPanels/ProfilePanel/ProfileButton" to="." method="_on_ProfileButton_pressed"]
 [connection signal="pressed" from="UserPanels/ProfilePanel/FriendsButton" to="." method="_on_FriendsButton_pressed"]
+[connection signal="friendRecieved" from="UserPanels/FriendsPanel" to="." method="_on_FriendsPanel_friendRecieved"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/exitFriendsButton" to="." method="_on_exitFriendsButton_pressed"]
 [connection signal="pressed" from="UserPanels/FriendsPanel/FriendRequests" to="." method="_on_FriendRequests_pressed"]
 [connection signal="request_completed" from="UserPanels/FriendsPanel/FriendHandler" to="UserPanels/FriendsPanel" method="_on_FriendHandler_request_completed"]
@@ -2057,3 +2063,4 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="file_selected" from="UserPanels/DetailedProfilePanel/FileSelection" to="UserPanels/DetailedProfilePanel" method="_on_FileSelection_file_selected"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/UploadPhoto" to="UserPanels/DetailedProfilePanel" method="_on_UploadPhoto_pressed"]
 [connection signal="request_completed" from="UserPanels/DetailedProfilePanel/UploadProfilePicture" to="UserPanels/DetailedProfilePanel" method="_on_UploadProfilePicture_request_completed"]
+[connection signal="request_completed" from="ProfileWrangler" to="." method="_on_ProfileWrangler_request_completed"]

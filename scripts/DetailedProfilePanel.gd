@@ -25,26 +25,6 @@ func _ready():
 	add_status()
 	
 
-# Called when the HTTP request is completed. - Choice 1
-func _http_request_completed(result, response_code, headers, body):
-	var image = Image.new()
-	var image_error = image.load_png_from_buffer(body)
-	if image_error != OK:
-		print("An error occurred while trying to display the image.")
-
-	var texture = ImageTexture.new()
-	texture.create_from_image(image)
-	
-	#Replace TextureRect with a Sprite Node
-	$AccountPicture/TextureRect.texture = texture
-
-# Choice 2
-func download_texture(url : String, file_name : String):
-	var http = HTTPRequest.new()
-	add_child(http)
-	http.set_download_file(file_name)
-	http.request(url)
-
 func add_status():
 	$StatusButton.add_icon_item(onlineStatus, "")
 	$StatusButton.add_icon_item(awayStatus, "")
@@ -90,17 +70,16 @@ func _on_UploadProfilePicture_request_completed(result, response_code, headers, 
 	var json = JSON.parse(body.get_string_from_utf8())
 	print(response_code, " ", json.result)
 	
-	
 #Update description function	
 func updateDescription():
 	var headers = ["Content-Type: application/json"]
 	var updateDesc = ConfigFile.new
 	updateDesc.load("")
 	updateDesc.save("")
-	
 	$UpdateDescription.request()
 	
 func _on_DetailedProfilePanel_visibility_changed():
 	$WinNumber.text = str(AccountData.wins)
 	$LossNumber.text = str(AccountData.losses)
 	print(AccountData.profilePicture)
+

@@ -2,6 +2,7 @@ extends Control
 
 var username
 var friendname
+var profileLink
 var lobbyID
 signal interactionComplete
 
@@ -17,7 +18,10 @@ func _ready():
 func updateAll(currentUser, data):
 	username = currentUser
 	friendname = data.username.S
+	#print("This is the current friends profile pic: " + data.profilepicture.S)
+	profileLink = data.profilepicture.S
 	$Username.text = friendname
+	$FriendWrangler.request(profileLink)
 	checkForInvite()
 	
 func invited(inviteInfo):
@@ -26,14 +30,12 @@ func invited(inviteInfo):
 		$InviteToGame.text = "Join"
 		lobbyID = inviteInfo[2]
 
-
 func _on_InviteToGame_pressed():
 	if($InviteToGame.text == "Join"):
 		Server.JoinLobby(lobbyID, get_instance_id())
 	else:
 		Server.CreateLobby(get_instance_id(), true)
 		$InviteToGame.disabled = true
-		
 
 func _show_Lobby_ID(lobby_id):
 	Server.friendInvite(friendname, username, lobby_id)
@@ -53,3 +55,10 @@ func getInvite(inviteList):
 			
 func _lobby_failed():
 	$InviteToGame.text = "Invite to Game"
+
+func _on_FriendWrangler_request_completed(result, response_code, headers, body):
+	var img = Image.new()
+	var data = img.load_png_from_buffer(body)
+	var imgtex = ImageTexture.new()
+	imgtex.create_from_image(img)
+	$ProfilePicture/ProfileImage.texture = imgtex

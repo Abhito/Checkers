@@ -64,3 +64,14 @@ func _on_ProfileButton_pressed():
 
 func _on_ReturnToProfile_pressed():
 	MenuAnimationPlayer.play("detailedProfileToProfile")
+
+func _on_FriendsPanel_friendRecieved():
+	$ProfileWrangler.request(AccountData.profilePicture)
+
+func _on_ProfileWrangler_request_completed(result, response_code, headers, body):
+	var img = Image.new()
+	var data = img.load_png_from_buffer(body)
+	var imgtex = ImageTexture.new()
+	imgtex.create_from_image(img)
+	$UserPanels/ProfilePanel/ProfilePicture/ProfilePic.texture = imgtex
+	$UserPanels/DetailedProfilePanel/AccountPicture/AccountPic.texture = imgtex
