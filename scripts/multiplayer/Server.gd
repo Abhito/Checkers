@@ -58,6 +58,7 @@ func ConnectToServer():
 #If connection failed, send user back to main menu. Kind of slow
 func _OnConnectionFailed():
 	print("Failed to connect")
+	connected = false
 	#get_tree().change_scene("res://views/Menu.tscn")
 	
 #Just prints that connection was succesful

@@ -8,6 +8,8 @@ func _ready():
 	AudioManager.stopMusic()
 	MenuAnimationPlayer = get_tree().get_root().get_node("Menu/MenuAnimator/AnimationPlayer")
 	if(AccountData.isLoggedIn):
+		if(Server.network.get_connection_status() == 0):
+			Server.ConnectToServer()
 		getLogin.reLogin()
 	else:
 		MenuAnimationPlayer.play("reset")
