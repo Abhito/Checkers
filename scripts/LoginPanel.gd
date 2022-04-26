@@ -63,3 +63,9 @@ func verifyPassword():
 	#Also should move the HTTPS parameters to the query field so that they can be encoded
 	var headers = ["Content-Type: application/json"]
 	$LoginRequestHandler.request("https://oh339unq37.execute-api.us-east-1.amazonaws.com/alpha/verification?user=" + username + "&pass=" + password, headers, false, HTTPClient.METHOD_GET)
+
+func reLogin():
+	get_node("../ProfilePanel/Username").text = AccountData.username
+	emit_signal("updatedUser")
+		
+	MenuAnimationPlayer.play("loginToProfile")
