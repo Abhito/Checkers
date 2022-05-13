@@ -11,14 +11,14 @@ func _ready():
 	offlineStatus = load("res://images/profile_images/statusOffline.svg")
 	
 	#Change - Testing
-	var http_request = HTTPRequest.new()
-	add_child(http_request)
-	http_request.connect("request_completed", self, "_http_request_completed")
+	#var http_request = HTTPRequest.new()
+	#add_child(http_request)
+	#http_request.connect("request_completed", self, "_http_request_completed")
 	
 	# Perform the HTTP request. The URL below returns a PNG image as of writing.
-	var http_error = http_request.request("https://via.placeholder.com/500")
-	if http_error != OK:
-		print("An error occurred in the HTTP request.")
+	#var http_error = http_request.request("https://via.placeholder.com/500")
+	#if http_error != OK:
+		#print("An error occurred in the HTTP request.")
 	
 	#download_texture("https://checkers-profile-pictures.s3.amazonaws.com/NewImage.jpg", "test_profile_pic")
 	
@@ -41,6 +41,7 @@ func _on_SaveDescriptionButton_pressed():
 	get_node("SaveDescriptionButton").visible = false
 	get_node("ProfileDescription").visible = true
 	get_node("EditDescriptionButton").visible = true
+	updateDescription()
 
 func _on_UploadPhoto_pressed():
 	$FileSelection.popup()
@@ -73,13 +74,19 @@ func _on_UploadProfilePicture_request_completed(result, response_code, headers, 
 #Update description function	
 func updateDescription():
 	var headers = ["Content-Type: application/json"]
-	var updateDesc = ConfigFile.new
-	updateDesc.load("")
-	updateDesc.save("")
-	$UpdateDescription.request()
+	var updateDesc = $ProfileDescriptionEdit.text
+	$EditDesc.request("https://oh339unq37.execute-api.us-east-1.amazonaws.com/alpha/save-description?username=" + AccountData.username + "&desc=" + updateDesc, headers, false, HTTPClient.METHOD_PUT)
+	$ProfileDescription.text = updateDesc
 	
 func _on_DetailedProfilePanel_visibility_changed():
 	$WinNumber.text = str(AccountData.wins)
 	$LossNumber.text = str(AccountData.losses)
 	print(AccountData.profilePicture)
 
+func _on_EditDesc_request_completed(result, response_code, headers, body):
+	var json = JSON.parse(body.get_string_from_utf8())
+	if json == null:
+		print("Null return")
+	#print(json.result)
+	var ud = json.result
+	print("result" + str(ud))

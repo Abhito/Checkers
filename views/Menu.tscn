@@ -1829,7 +1829,6 @@ __meta__ = {
 [node name="FriendRequestHandler" type="HTTPRequest" parent="UserPanels/FriendsRequestsPanel"]
 
 [node name="DetailedProfilePanel" type="ColorRect" parent="UserPanels"]
-visible = false
 anchor_left = 1.006
 anchor_top = 1.0
 anchor_right = 1.006
@@ -1927,9 +1926,11 @@ margin_left = 20.0
 margin_top = 180.0
 margin_right = 565.0
 margin_bottom = 295.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ProfileDescriptionEdit" type="TextEdit" parent="UserPanels/DetailedProfilePanel"]
-visible = false
 margin_left = 20.0
 margin_top = 180.0
 margin_right = 565.0
@@ -1975,8 +1976,8 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-current_dir = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project"
-current_path = "/School/Courses/Junior/Semester 2/ICSI 418Y/Class Project/"
+current_dir = "/Users/brianheralall/Desktop/icsi418y-group7-checkers"
+current_path = "/Users/brianheralall/Desktop/icsi418y-group7-checkers/"
 
 [node name="UploadPhoto" type="Button" parent="UserPanels/DetailedProfilePanel"]
 margin_left = 12.118
@@ -2016,6 +2017,8 @@ margin_top = 70.0
 margin_right = 170.118
 margin_bottom = 84.0
 text = "0"
+
+[node name="EditDesc" type="HTTPRequest" parent="UserPanels/DetailedProfilePanel"]
 
 [node name="MenuAnimator" type="Node2D" parent="."]
 position = Vector2( 777, 430 )
@@ -2066,4 +2069,5 @@ anims/shrinkRegister = SubResource( 9 )
 [connection signal="file_selected" from="UserPanels/DetailedProfilePanel/FileSelection" to="UserPanels/DetailedProfilePanel" method="_on_FileSelection_file_selected"]
 [connection signal="pressed" from="UserPanels/DetailedProfilePanel/UploadPhoto" to="UserPanels/DetailedProfilePanel" method="_on_UploadPhoto_pressed"]
 [connection signal="request_completed" from="UserPanels/DetailedProfilePanel/UploadProfilePicture" to="UserPanels/DetailedProfilePanel" method="_on_UploadProfilePicture_request_completed"]
+[connection signal="request_completed" from="UserPanels/DetailedProfilePanel/EditDesc" to="UserPanels/DetailedProfilePanel" method="_on_EditDesc_request_completed"]
 [connection signal="request_completed" from="ProfileWrangler" to="." method="_on_ProfileWrangler_request_completed"]
