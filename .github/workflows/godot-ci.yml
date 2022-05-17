@@ -2,7 +2,7 @@ name: "godot-ci export"
 
 env:
     GODOT_VERSION: 3.4.2
-    EXPORT_NAME: checker
+    EXPORT_NAME: checkers
     
 on:
     workflow_dispatch:
@@ -34,5 +34,57 @@ jobs:
           - name: Upload Artifact
             uses: actions/upload-artifact@v1
             with:
-                name: windows
+                name: $EXPORT_NAME-windows
                 path: build/windows
+         
+    export-linux:
+        name: Linux Export
+        runs-on: ubuntu-20.04
+        
+        container:
+            image: barichello/godot-ci:3.4.2
+            
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+            
+          - name: Setup
+            run: |
+                mkdir -v -p ~/.local/share/godot/templates
+                mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          - name: Windows Build
+            run: |
+                mkdir -v -p build/linux
+                godot -v --path ./project --export "Linux/X11" ../build/linux/$EXPORT_NAME.exe
+                
+          - name: Upload Artifact
+            uses: actions/upload-artifact@v1
+            with:
+                name: $EXPORT_NAME-linux
+                path: build/linux
+                
+    export-linux:
+        name: Mac Export
+        runs-on: ubuntu-20.04
+        
+        container:
+            image: barichello/godot-ci:3.4.2
+            
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+            
+          - name: Setup
+            run: |
+                mkdir -v -p ~/.local/share/godot/templates
+                mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          - name: Windows Build
+            run: |
+                mkdir -v -p build/mac
+                godot -v --path ./project --export "Mac OSX" ../build/linux/$EXPORT_NAME.exe
+                
+          - name: Upload Artifact
+            uses: actions/upload-artifact@v1
+            with:
+                name: $EXPORT_NAME-mac
+                path: build/linux
