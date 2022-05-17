@@ -87,4 +87,4 @@ jobs:
             uses: actions/upload-artifact@v1
             with:
                 name: $EXPORT_NAME-mac
-                path: build/linux
+                path: build/mac
