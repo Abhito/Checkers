@@ -126,6 +126,8 @@ jobs:
           - name: Compress Project
             run: |
                 cd build/web
+                git lfs install
+                git lfs track "*.pck.gz"
                 wget https://raw.githubusercontent.com/nodeca/pako/master/dist/pako_inflate.min.js
                 gzip -f checkers.wasm
                 gzip -f checkers.pck
