@@ -124,7 +124,7 @@ jobs:
                 path: build/web
                 
           - name: Compress Project
-            run |
+            run: |
                 cd build/web
                 wget https://raw.githubusercontent.com/nodeca/pako/master/dist/pako_inflate.min.js
                 gzip -f checkers.wasm
