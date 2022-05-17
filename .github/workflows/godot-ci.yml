@@ -34,7 +34,7 @@ jobs:
           - name: Upload Artifact
             uses: actions/upload-artifact@v1
             with:
-                name: $checkers-windows
+                name: checkers-windows
                 path: build/windows
          
     export-linux:
@@ -60,7 +60,7 @@ jobs:
           - name: Upload Artifact
             uses: actions/upload-artifact@v1
             with:
-                name: $checkers-linux
+                name: checkers-linux
                 path: build/linux
                 
     export-mac:
@@ -114,11 +114,12 @@ jobs:
             with:
                 name: checkers-web
                 path: build/web
-          - name: Install rsync
-            run: |
-                apt-get update && apt-get install -y rsync
-          - name: Deploy to GitHub Pages
-            uses: JamesIves/github-pages-deploy-action@releases/v4
+          - name: Deploy
+            uses: peaceiris/actions-gh-pages@v3
             with:
-                branch: gh-pages
-                folder: build/web
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./build/web
+                force_orphan: true #This allows you to make your publish branch with only the latest commit.
+                user_name: 'github-ci[bot]'
+                user_email: 'github-actions[bot]@users.noreply.github.com'
+                commit_message: 'Publish to gh-pages'
