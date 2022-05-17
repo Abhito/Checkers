@@ -63,7 +63,7 @@ jobs:
                 name: $EXPORT_NAME-linux
                 path: build/linux
                 
-    export-linux:
+    export-mac:
         name: Mac Export
         runs-on: ubuntu-20.04
         
