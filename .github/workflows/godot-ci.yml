@@ -122,12 +122,11 @@ jobs:
             with:
                 name: checkers-web
                 path: build/web
-          - name: Deploy
-            uses: peaceiris/actions-gh-pages@v3
+          - name: Install rsync
+            run: |
+                apt-get update && apt-get install -y rsync
+          - name: Deploy to Github Pages
+            uses: JamesIves/github-pages-deploy-action@releases/v3
             with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: ./build/web
-                force_orphan: true #This allows you to make your publish branch with only the latest commit.
-                user_name: 'github-ci[bot]'
-                user_email: 'github-actions[bot]@users.noreply.github.com'
-                commit_message: 'Publish to gh-pages'
+                branch: gh-pages
+                folder: build/web
