@@ -1,4 +1,4 @@
-# ICSI418Y Online Checkers
+# Online Checkers
 
 **Collaborative Checkers project that was made by Group 7 for ICSI418Y.**
 
