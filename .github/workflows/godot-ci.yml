@@ -123,11 +123,18 @@ jobs:
                 name: checkers-web
                 path: build/web
                 
-          - name: Add to LFS
+          - name: Compress Project
             run: |
                 cd build/web
-                git lfs install
-                git lfs track "*.pck"
+                wget https://raw.githubusercontent.com/nodeca/pako/master/dist/pako_inflate.min.js
+                gzip -f checkers.wasm
+                gzip -f checkers.pck
+                FIND="<script type='text/javascript' src='checkers.js'></script>"
+                REPLACE="<script type=\"text/javascript\" src=\"pako_inflate.min.js\"></script>$FIND"
+                sed -i -e "s@$FIND@$REPLACE@" checkers.html
+                FIND="function loadXHR(resolve, reject, file, tracker) {"
+                REPLACE=$FIND" if (file.substr(-5) === '.wasm' || file.substr(-4) === '.pck') { file += '.gz'; var resolve_orig = resolve; resolve = function(xhr) { return resolve_orig(xhr.responseURL.substr(-3) === '.gz' ? { response: pako.inflate(xhr.response), responseType: xhr.responseType, responseURL: xhr.responseURL, status: xhr.status, statusText: xhr.statusText } : xhr); }; }"
+                sed -i -e "s@$FIND@$REPLACE@" checkers.js
                 
           - name: Deploy
             uses: peaceiris/actions-gh-pages@v3
