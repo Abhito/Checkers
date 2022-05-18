@@ -1,6 +1,6 @@
 # ICSI418Y Online Checkers
 
-**Collaborative Checkers project that was made by Group 7 for ICSI418Y. Now maintained by Abhinav.**
+**Collaborative Checkers project that was made by Group 7 for ICSI418Y.**
 
 ![Checkers](https://i.imgur.com/EJTkkmG.png)
 
