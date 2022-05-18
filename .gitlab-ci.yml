@@ -52,3 +52,17 @@ web:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/web
+
+pages:
+  stage: deploy
+  dependencies:
+    - web
+  script:
+    # This ensures the `pages` branch is available.
+    - git fetch
+    - git checkout pages
+    - rm -f *.md
+    - mv build/web/** ./public
+  artifacts:
+    paths:
+      - public
