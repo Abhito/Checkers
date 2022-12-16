@@ -6,9 +6,6 @@
 
 ## Demo
 
-You can demo the offline features of the project here https://abhito.itch.io/online-checkers as well as at https://abhito.gitlab.io/Checkers/.
+You can demo the offline features of the project aswell as download it here https://abhito.itch.io/online-checkers.
 
-## Installation
-
-You can download the project to use the online features. Checkout https://github.com/Abhito/Checkers/releases for the latest versions.
 
